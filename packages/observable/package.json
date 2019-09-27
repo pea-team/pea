@@ -1,8 +1,8 @@
 {
   "name": "@peajs/observable",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "main": "dist/index.js",
-  "module": "dist/pea-observable.esm.js",
+  "module": "dist/observable.esm.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
