@@ -14,12 +14,7 @@
     "lint": "tsdx lint"
   },
   "peerDependencies": {
-    "react": ">=16"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "tsdx lint"
-    }
+    "react": ">=16.9.0"
   },
   "prettier": {
     "printWidth": 100,
@@ -32,7 +27,6 @@
     "@types/jest": "^24.0.18",
     "@types/react": "^16.9.3",
     "@types/react-dom": "^16.9.1",
-    "husky": "^3.0.5",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "tsdx": "^0.9.2",
