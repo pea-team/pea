@@ -1,0 +1,25 @@
+{
+  "name": "example",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "dh start ",
+    "build": "dh build",
+    "test": "dh test"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "private": true,
+  "dependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/react": "^16.8.13",
+    "@types/react-dom": "^16.8.3",
+    "dahlia": "^1.13.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "typescript": "^3.4.2"
+  }
+}
