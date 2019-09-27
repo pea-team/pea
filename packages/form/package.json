@@ -1,6 +1,6 @@
 {
   "name": "@peajs/form",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/form.esm.js",
   "typings": "dist/index.d.ts",
@@ -37,8 +37,8 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
+    "@peajs/store": "^0.0.1",
     "checkok": "^1.1.1",
-    "@peajs/store": "^0.0.0",
     "fast-deep-equal": "^2.0.1",
     "lodash.get": "^4.4.2",
     "lodash.set": "^4.3.2",

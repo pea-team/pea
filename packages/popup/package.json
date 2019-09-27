@@ -1,6 +1,6 @@
 {
   "name": "@peajs/popup",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/popup.esm.js",
   "typings": "dist/index.d.ts",
@@ -36,6 +36,6 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "@peajs/store": "^0.0.0"
+    "@peajs/store": "^0.0.1"
   }
 }
