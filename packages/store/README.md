@@ -5,7 +5,7 @@
 ## Installation
 
 ```sh
-yarn add @peajs/store
+npm i @peajs/store
 ```
 
 ## Quick Start
