@@ -1,0 +1,39 @@
+{
+  "name": "myapp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "pea dev ",
+    "test": "pea test",
+    "build": "pea build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@peajs/core": "0.0.1",
+    "antd": "^3.23.4",
+    "react": "^16.10.0",
+    "react-dom": "^16.10.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "@types/node": "^12.7.8",
+    "@types/react": "^16.9.3",
+    "@types/react-dom": "^16.9.1",
+    "pea-cli": "^0.0.1",
+    "typescript": "3.4.5"
+  }
+}

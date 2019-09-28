@@ -1,0 +1,51 @@
+{
+  "docs": {
+    "简介": ["intro/quick-start", "intro/about"],
+    "样式": [
+      "styles/css",
+      "styles/css-modules",
+      "styles/sass",
+      "styles/less",
+      "styles/styled-components",
+      "styles/styled-jsx"
+    ],
+    "路由": [
+      "router/basic",
+      "router/config",
+      "router/link",
+      "router/navigate",
+      "router/url-params",
+      "router/nested",
+      "router/active-link",
+      "router/intercept"
+    ],
+    "网络请求(Rest)": [
+      "rest/basic",
+      "rest/started",
+      "rest/useFetch",
+      "rest/useUpdate",
+      "rest/fetch",
+      "rest/reFetch"
+    ],
+    "网络请求(GraphQL)": [
+      "graphql/basic",
+      "graphql/started",
+      "graphql/useQuery",
+      "graphql/useMutate",
+      "graphql/query"
+    ],
+    "状态管理": [
+      "store/intro",
+      "store/started",
+      "store/async",
+      "store/ts",
+      "store/dir"
+    ],
+    "表单": ["doc3"],
+    "弹窗": ["modal/basic", "modal/antd"],
+    "配置": ["config/basic", "config/router"],
+    "自定义webpack配置": ["webpack/basic", "webpack/plugin"],
+    "例子": ["doc3"],
+    "FAQ": ["faq"]
+  }
+}
