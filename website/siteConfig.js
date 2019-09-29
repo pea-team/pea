@@ -36,7 +36,7 @@ const siteConfig = {
   // },
 
   // Used for publishing and more
-  projectName: 'peajs.github.io',
+  projectName: 'pea-team.github.io',
   organizationName: 'pea-team',
 
   // For top-level user or org sites, the organization is still the same.
@@ -63,7 +63,7 @@ const siteConfig = {
   /* Colors for website */
   colors: {
     primaryColor: '#3cb6a4',
-    secondaryColor: '#3cb6a4',
+    secondaryColor: '#E84424',
     accentColor1: '#717171',
     accentColor2: '#F3EAFF',
     accentColor3: '#D2B9F3',
