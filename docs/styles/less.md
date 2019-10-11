@@ -9,14 +9,17 @@ sidebar_label: 使用 Less
 **`pea.config.ts`**
 
 ```js
+import { PeaConfig } from '@peajs/types'
 import LessPlugin from 'pea-plugin-less'
 
-const config = {
+const config: PeaConfig = {
   plugins: [
-    new LessPlugin(),
+    new LessPlugin()
   ],
 }
+
 export default config
+
 ```
 
 **`button.less`**
