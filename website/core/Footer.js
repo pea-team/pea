@@ -55,14 +55,28 @@ class Footer extends React.Component {
             >
               Stack Overflow
             </a>
-            <a href="https://github.com/pea-team/pea/issues">Issue</a>
+            <a
+              href="https://github.com/pea-team/pea/issues"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              Issue
+            </a>
           </div>
           <div>
             <h5>更多</h5>
-            <a href="https://github.com/pea-team/pea">GitHub</a>
+            <a
+              href="https://github.com/pea-team/pea"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              GitHub
+            </a>
             <a
               className="github-button"
-              href={this.props.config.repoUrl}
+              href="https://github.com/pea-team/pea"
+              target="_blank"
+              rel="noreferrer noopener"
               data-icon="octicon-star"
               data-count-href="/pea-team/pea/stargazers"
               data-show-count="true"

@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "一个 Opinionated 的 React 框架",
+    "tagline": "一个 TypeScript React 框架",
     "docs": {
       "api/bootstrap": {
         "title": "api/bootstrap"
@@ -95,8 +95,8 @@
         "sidebar_label": "获取数据 (useQuery)"
       },
       "intro/about": {
-        "title": "Pea",
-        "sidebar_label": "关于 Pea"
+        "title": "pea",
+        "sidebar_label": "关于 peajs"
       },
       "intro/quick-start": {
         "title": "快速上手",
