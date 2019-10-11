@@ -4,7 +4,13 @@ title: 使用 Sass
 sidebar_label: 使用 Sass
 ---
 
-`Pea` 默认支持 Sass，你不需要额外配置什么，类似导入 CSS 文件一样导入即可。
+在 `peajs` 使用 Sass 非常简单，`peajs`已经内置了`sass-loader`，你只需安装 `node-sass`:
+
+```bash
+npm i node-sass -D
+```
+
+使用方式类似导入 CSS 文件一样导入即可:
 
 **`button.scss`**
 
@@ -14,12 +20,12 @@ sidebar_label: 使用 Sass
 }
 ```
 
-**`Button.js`**
+**`Button.tsx`**
 
 ```jsx
 import React from 'react'
 
 import './button.scss'
 
-const Button = () => <button>Error Button</button>
+const Button = () => <button className="error">Error Button</button>
 ```

@@ -21,8 +21,8 @@ const users = [
 ]
 
 const siteConfig = {
-  title: 'pea', // Title for your website.
-  tagline: '一个 TypeScript React 框架',
+  title: 'Pea', // Title for your website.
+  tagline: 'A React Framework based on TypeScript.',
   url: 'https://pea.js.org', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:

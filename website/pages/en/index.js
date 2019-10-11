@@ -37,7 +37,7 @@ class HomeSplash extends React.Component {
 
     const ProjectTitle = () => (
       <h2 className="projectTitle">
-        {siteConfig.title}
+        <div className="title">{siteConfig.title}</div>
         <small>{siteConfig.tagline}</small>
       </h2>
     )
@@ -67,6 +67,39 @@ class HomeSplash extends React.Component {
         <Logo img_src={`${baseUrl}img/logo.png`} />
         <div className="inner">
           <ProjectTitle siteConfig={siteConfig} />
+          <ul className="feature">
+            <li>
+              <a href="https://reactjs.org/" target="_blank">
+                React
+              </a>
+            </li>
+            <li>
+              <a href="https://www.typescriptlang.org/" target="_blank">
+                TypeScript
+              </a>
+            </li>
+            <li>
+              <a href="/docs/rest/basic" target="_blank">
+                Restful
+              </a>
+            </li>
+            <li>
+              <a href="/docs/graphql/basic" target="_blank">
+                GraphQL
+              </a>
+            </li>
+            <li>
+              <a href="/docs/form/basic" target="_blank">
+                Form
+              </a>
+            </li>
+            <li>
+              <a href="/docs/plugin/basic" target="_blank">
+                Plugin
+              </a>
+            </li>
+          </ul>
+
           <PromoSection>
             <Button className="started" href={docUrl('intro/quick-start.html')}>
               快速开始

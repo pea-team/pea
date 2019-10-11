@@ -1,6 +1,6 @@
 # peajs
 
-> An opinionated React Framework for building modern web applications.
+> A React Framework based on TypeScript.
 
 ## Quick Start
 

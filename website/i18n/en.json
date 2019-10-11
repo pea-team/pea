@@ -3,7 +3,7 @@
   "localized-strings": {
     "next": "Next",
     "previous": "Previous",
-    "tagline": "一个 TypeScript React 框架",
+    "tagline": "A React Framework based on TypeScript.",
     "docs": {
       "api/bootstrap": {
         "title": "api/bootstrap"
@@ -109,6 +109,22 @@
       "modal/basic": {
         "title": "约定式弹窗",
         "sidebar_label": "约定式弹窗"
+      },
+      "plugin/development": {
+        "title": "插件开发",
+        "sidebar_label": "插件开发"
+      },
+      "plugin/intro": {
+        "title": "简介",
+        "sidebar_label": "简介"
+      },
+      "plugin/list": {
+        "title": "插件列表",
+        "sidebar_label": "插件列表"
+      },
+      "plugin/use": {
+        "title": "使用插件",
+        "sidebar_label": "使用插件"
       },
       "rest/basic": {
         "title": "简介",
@@ -245,6 +261,7 @@
     },
     "categories": {
       "简介": "简介",
+      "插件": "插件",
       "样式": "样式",
       "路由": "路由",
       "网络请求(Rest)": "网络请求(Rest)",

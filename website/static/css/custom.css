@@ -1,3 +1,45 @@
+body {
+  background-color: #fdf9f3;
+}
+
+@font-face {
+  font-family: 'calligraffittiregular';
+  src: url('/fonts/calligraffitti-regular-webfont.eot');
+  src: url('/fonts/calligraffitti-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/fonts/calligraffitti-regular-webfont.woff2') format('woff2'),
+    url('/fonts/calligraffitti-regular-webfont.woff') format('woff'),
+    url('/fonts/calligraffitti-regular-webfont.ttf') format('truetype'),
+    url('/fonts/calligraffitti-regular-webfont.svg#calligraffittiregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.projectTitle .title,
+.headerTitleWithLogo {
+  font-family: 'calligraffittiregular';
+}
+
+.projectTitle small {
+  font-weight: 200;
+}
+.fixedHeaderContainer header .headerTitleWithLogo {
+  margin-bottom: -5px;
+}
+
+.feature li {
+  font-weight: 100;
+  display: inline-block;
+  background: #f0f0f0;
+  margin: 2px 2px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.nav-tabs {
+  border-bottom: 0 solid #e0e0e0;
+}
+
+/* //////////////////////////////////////// */
 header.postHeader:empty {
   display: none;
 }
@@ -288,7 +330,7 @@ header.postHeader:empty+article h1 {
 .fixedHeaderContainer {
   /* background: pink; */
   /* background: powderblue; */
-  background: #fff;
+  background: #fdf9f3;
   color: #000;
   min-height: 50px;
   padding: 10px 0;
@@ -338,6 +380,7 @@ header.postHeader:empty+article h1 {
   padding: 0;
   font-size: 18px;
   width: 140px;
+  font-weight: 200;
 }
 
 input#search_input_react {
