@@ -37,8 +37,8 @@ export const DefaultModalContainer: FunctionComponent<Props> = ({ visible, child
   }
 
   return (
-    <div className="@peajs/modal" ref={ref} style={overlay}>
-      <div className="@peajs/modal-content" style={content}>
+    <div className="pea-modal" ref={ref} style={overlay}>
+      <div className="pea-modal-content" style={content}>
         {children}
       </div>
     </div>

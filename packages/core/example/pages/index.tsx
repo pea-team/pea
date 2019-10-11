@@ -1,9 +1,9 @@
 import React from 'react'
-import { modalStore } from 'dahlia/modal'
+import { modalStore } from 'Pea/modal'
 
 export default () => (
   <div>
-    Hi, Dahlia!!!!
+    Hi, Pea!!!!
     <button onClick={() => modalStore.open('user')}>open</button>
   </div>
 )

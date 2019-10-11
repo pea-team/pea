@@ -1,6 +1,6 @@
-# Dahlia
+# Pea
 
-[![npm](https://img.shields.io/npm/v/dahlia.svg)](https://www.npmjs.com/package/dahlia) [![npm](https://img.shields.io/badge/TypeScript-%E2%9C%93-007ACC.svg)](https://www.typescriptlang.org/) [![GitHub license](https://img.shields.io/github/license/pea-team/pea.svg)](https://github.com/pea-team/pea/blob/master/LICENSE)
+[![npm](https://img.shields.io/npm/v/Pea.svg)](https://www.npmjs.com/package/Pea) [![npm](https://img.shields.io/badge/TypeScript-%E2%9C%93-007ACC.svg)](https://www.typescriptlang.org/) [![GitHub license](https://img.shields.io/github/license/pea-team/pea.svg)](https://github.com/pea-team/pea/blob/master/LICENSE)
 
 > An opinionated React Framework for building modern web applications.
 
