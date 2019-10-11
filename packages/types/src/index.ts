@@ -1,7 +1,7 @@
 import { Configuration } from 'webpack'
 export interface IPlugin {
   beforeCompile?: () => any
-  updateWebpackConfig?: (config: Configuration) => Configuration
+  updateWebpackConfig?: (config: Configuration, env?: string) => Configuration
   addImportCode?: () => any
   addBootstrapCode?: () => any
   addRenderCode?: () => any
