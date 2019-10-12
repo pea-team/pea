@@ -24,6 +24,15 @@
     "singleQuote": true,
     "trailingComma": "all"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pea-team/pea.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pea-team/pea/issues"
+  },
+  "homepage": "https://github.com/pea-team/pea/tree/master/packages/store",
   "devDependencies": {
     "@types/jest": "^24.0.18",
     "@types/lodash.debounce": "^4.0.6",
