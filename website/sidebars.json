@@ -1,12 +1,8 @@
 {
   "docs": {
     "简介": ["intro/quick-start", "intro/about"],
-    "插件": [
-      "plugin/intro",
-      "plugin/use",
-      "plugin/list",
-      "plugin/development"
-    ],
+    "配置": ["config/intro", "config/router"],
+    "插件": ["plugin/intro", "plugin/use", "plugin/list", "plugin/development"],
     "样式": [
       "styles/css",
       "styles/css-modules",

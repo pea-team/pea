@@ -38,9 +38,9 @@
       "api/useupdate": {
         "title": "api/useupdate"
       },
-      "config/basic": {
-        "title": "配置文件",
-        "sidebar_label": "配置文件"
+      "config/intro": {
+        "title": "简介",
+        "sidebar_label": "简介"
       },
       "config/router": {
         "title": "路由配置",
@@ -261,6 +261,7 @@
     },
     "categories": {
       "简介": "简介",
+      "配置": "配置",
       "插件": "插件",
       "样式": "样式",
       "路由": "路由",
@@ -269,7 +270,6 @@
       "状态管理": "状态管理",
       "表单": "表单",
       "弹窗": "弹窗",
-      "配置": "配置",
       "自定义webpack配置": "自定义webpack配置",
       "例子": "例子",
       "FAQ": "FAQ"

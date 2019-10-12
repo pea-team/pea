@@ -4,4 +4,4 @@ title: 简介
 sidebar_label: 简介
 ---
 
-插件机制 `peajs` 最重要的机制之一，
+...
