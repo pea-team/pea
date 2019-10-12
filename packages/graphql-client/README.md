@@ -92,4 +92,4 @@ const data = await query<Person>(endpoint, GET_PERSON, {
 
 ## License
 
-[MIT License](https://github.com/forsigner/gery/blob/master/LICENSE)
+[MIT License](https://github.com/pea-team/pea/blob/master/LICENSE)

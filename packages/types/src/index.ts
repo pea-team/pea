@@ -1,3 +1,4 @@
+import { ComponentType } from 'react'
 import { Configuration } from 'webpack'
 
 export interface IPlugin {
@@ -14,4 +15,10 @@ export interface PeaConfig {
   outputHtml?: string
   buildDir?: string
   plugins: IPlugin[]
+}
+
+export interface Config {
+  root: string
+  host: string
+  app?: ComponentType<any>
 }
