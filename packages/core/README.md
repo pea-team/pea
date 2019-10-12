@@ -1,63 +1,28 @@
-# Pea
+# @peajsi/core
 
-[![npm](https://img.shields.io/npm/v/Pea.svg)](https://www.npmjs.com/package/Pea) [![npm](https://img.shields.io/badge/TypeScript-%E2%9C%93-007ACC.svg)](https://www.typescriptlang.org/) [![GitHub license](https://img.shields.io/github/license/pea-team/pea.svg)](https://github.com/pea-team/pea/blob/master/LICENSE)
+## Installation
 
-> An opinionated React Framework for building modern web applications.
-
-## Quick Start
-
-```bash
-npx create-pea-app myapp
-cd myapp
-npm start
+```sh
+npm i @peajs/core
 ```
 
-It will create a directory called myapp inside the current folder:
+## Api
 
-```bash
-.
-├── package.json
-├── pages
-│   └── index.tsx
-└── tsconfig.json
+### `bootstrap`
+
+```js
+import Pea from '@peajs/core'
+
+Pea.bootstrap()
 ```
 
-<p align='center'>
-  <img src='http://forsigner.com/images/pea/pea-app.png' width='700' alt='npm start'>
-</p>
+### `updateConfig`
 
-## Other choices
+```js
+import Pea from '@peajs/core'
 
-### npx
-
-```bash
-npx create-pea-app myapp
+Pea.updateConfig({ foo: 'bar' })
 ```
-
-## npm
-
-```bash
-npm init pea-app myapp
-```
-
-## yarn
-
-```bash
-yarn create pea-app myapp
-```
-
-## globally
-
-```bash
-yarn global add create-pea-app
-create-pea-app myapp
-```
-
-## Scripts
-
-- `npm start`
-- `npm test`
-- `npm build`
 
 ## License
 
