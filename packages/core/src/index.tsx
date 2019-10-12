@@ -1,7 +1,5 @@
 import { render } from 'react-dom'
 
-export * from './config'
-
 export default class Pea {
   static config: any = {
     root: '#root',
