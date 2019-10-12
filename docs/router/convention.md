@@ -1,43 +1,28 @@
 ---
-id: config
-title: 配置式路由
-sidebar_label: 配置式路由
+id: convention
+title: 约定式路由
+sidebar_label: 约定式路由
 ---
 
-对与复杂的应用，你可以使用配置式路由，配置式路由更加灵活强大，启用配置式路由非常简单，在约定式路由的基础上，增加配置文件 `src/config/router.config.ts`:
+对于简单的项目，非常推荐使用 **约定式路由**，它更加简洁，易于上手，让你更容易专注于业务的开发。
 
-```js
-import { Routes } from '@peajs/router'
-import Index from '@pages/index'
-import About from '@pages/about'
-
-const routes: Routes = [
-  {
-    path: '/',
-    component: Index,
-  },
-  {
-    path: '/about',
-    component: About,
-  },
-]
-
-export default routes
-```
-
-项目目录结构：
+假设在你已经配置好路由插件，新建一个项目，目录结构如下：
 
 ```bash
 .
 ├── package.json
 ├── pea.config.ts
 ├── src
-│   ├── config
-│   │   └── router.config.ts # 路由配置文件
 │   └── pages
-│       ├── about.tsx
-│       └── index.tsx
+│       ├── index.tsx # localhost:3000
+│       └── about.tsx # localhost:3000/about
 └── tsconfig.json
+```
+
+请确保你已经安装下面相关包:
+
+```bash
+npm i pea-plugin-router @peajs/router
 ```
 
 项目代码如下:
@@ -53,27 +38,6 @@ const config = {
   plugins: [new RouterPlugin()],
 }
 export default config
-```
-
-<!--src/config/router.config.ts-->
-
-```js
-import { Routes } from '@peajs/router'
-import Index from '@pages/index'
-import About from '@pages/about'
-
-const routes: Routes = [
-  {
-    path: '/',
-    component: Index,
-  },
-  {
-    path: '/about',
-    component: About,
-  },
-]
-
-export default routes
 ```
 
 <!--src/pages/index.ts-->
@@ -165,10 +129,7 @@ export default () => (
     "strict": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "paths": {
-      "@pages/*": ["pages/*"]
-    }
+    "noEmit": true
   },
   "include": ["src"]
 }
@@ -178,4 +139,6 @@ export default () => (
 
 线上 Demo: https://build-2okbldsfc.now.sh
 
-新的路由映射方式将由配置文件决定。
+文件夹 `src/pages` 的 `.tsx` 文件会映射为路由的 path。
+
+举个例子，`src/pages/about.tsx` 文件会直接到 url 的 path: `/about`。

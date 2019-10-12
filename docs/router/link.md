@@ -23,7 +23,7 @@ export default Home
 ```
 
 ```js
-// pages/src/about.js
+// src/pages/about.js
 function About() {
   return <p>Page About!</p>
 }

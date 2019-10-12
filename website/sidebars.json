@@ -12,7 +12,8 @@
       "styles/styled-jsx"
     ],
     "路由": [
-      "router/intro",
+      "router/plugin",
+      "router/convention",
       "router/config",
       "router/link",
       "router/navigate",

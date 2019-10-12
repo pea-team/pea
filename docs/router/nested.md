@@ -4,8 +4,7 @@ title: 嵌套路由
 sidebar_label: 嵌套路由
 ---
 
-
-路由配置：
+嵌套路由必须使用配置式路由，路由配置：
 
 ```jsx
 import { Routes } from '@peajs/router'
@@ -54,6 +53,3 @@ const Settings: FunctionComponent = ({ children }) => (
 
 export default Settings
 ```
-
-完整例子： TODO: //
-

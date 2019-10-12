@@ -56,7 +56,7 @@ export default class App extends React.Component {
     "test": "pea test"
   },
   "dependencies": {
-    "@peajs/core": "0.0.2",
+    "@peajs/core": "0.1.0",
     "pea-cli": "^0.1.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
@@ -102,6 +102,8 @@ export default class App extends React.Component {
 
 这是一个最小化的 pea 应用，核心文件只有一个 `App.tsx`，修改文件 `App.tsx`, 页面会自动刷新。
 
+线上 Demo：https://build-e9c7iqnm3.now.sh
+
 ## 使用路由
 
 peajs 是一个插件化的框架，使用 peajs 官方提供的路由插件 `pea-plugin-router`，你可以快速的使用路由功能。
@@ -114,10 +116,11 @@ peajs 是一个插件化的框架，使用 peajs 官方提供的路由插件 `pe
 ├── pea.config.ts
 ├── src
 │   └── pages
-│       ├── about.tsx
-│       └── index.tsx
+│       ├── index.tsx # localhost:3000
+│       └── about.tsx # localhost:3000/about
 └── tsconfig.json
 ```
+
 为了使用路由插件，你需要安装相关包:
 
 ```bash
@@ -172,7 +175,6 @@ export default () => (
     </nav>
   </div>
 )
-
 ```
 
 <!--package.json-->
@@ -188,8 +190,8 @@ export default () => (
     "test": "pea test"
   },
   "dependencies": {
-    "@peajs/core": "0.0.2",
-    "@peajs/router": "0.0.1",
+    "@peajs/core": "0.1.0",
+    "@peajs/router": "0.1.0",
     "@types/react": "^16.9.5",
     "@types/react-dom": "^16.9.1",
     "pea-cli": "^0.1.0",
@@ -235,6 +237,8 @@ export default () => (
 ```
 
 <!--END_DOCUSAURUS_CODE_TABS-->
+
+线上 Demo: https://build-2okbldsfc.now.sh
 
 `pea.config.ts` 是项目的配置文件，我们在配置文件使用插件 `pea-plugin-router`，即可启用 peajs 的路由功能，路由插件默认使用约定式路由，文件夹 `src/pages` 的文件会映射为路由的 path。
 

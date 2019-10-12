@@ -1,5 +1,5 @@
 ---
-id: basic
+id: intro
 title: 约定式路由
 sidebar_label: 约定式路由
 ---
