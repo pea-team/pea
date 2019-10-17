@@ -38,13 +38,13 @@
       "api/useupdate": {
         "title": "api/useupdate"
       },
-      "config/intro": {
-        "title": "简介",
-        "sidebar_label": "简介"
+      "config/build": {
+        "title": "构建配置",
+        "sidebar_label": "构建配置"
       },
-      "config/router": {
-        "title": "路由配置",
-        "sidebar_label": "路由配置"
+      "config/business": {
+        "title": "业务配置",
+        "sidebar_label": "业务配置"
       },
       "css": {
         "title": "css"
@@ -113,10 +113,6 @@
       "plugin/development": {
         "title": "插件开发",
         "sidebar_label": "插件开发"
-      },
-      "plugin/intro": {
-        "title": "简介",
-        "sidebar_label": "简介"
       },
       "plugin/list": {
         "title": "插件列表",

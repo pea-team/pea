@@ -1,3 +1,2 @@
-export { createForm } from './createForm'
-export { createAntdForm } from './createAntdForm'
+export { useForm } from './useForm'
 export * from './types'

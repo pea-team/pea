@@ -33,24 +33,20 @@
   },
   "homepage": "https://github.com/pea-team/pea/tree/master/packages/form",
   "devDependencies": {
-    "@types/jest": "^24.0.18",
+    "@types/jest": "^24.0.19",
     "@types/lodash.get": "^4.4.6",
     "@types/lodash.set": "^4.3.6",
-    "@types/react": "^16.9.5",
-    "@types/react-dom": "^16.9.1",
-    "antd": "^3.23.6",
+    "@types/react": "^16.9.9",
+    "@types/react-dom": "^16.9.2",
+    "antd": "^3.24.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "tsdx": "^0.9.3",
+    "tsdx": "^0.10.5",
     "tslib": "^1.10.0",
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@peajs/store": "^0.1.0",
-    "checkok": "^1.1.1",
-    "fast-deep-equal": "^2.0.1",
     "lodash.get": "^4.4.2",
-    "lodash.set": "^4.3.2",
-    "util-is-array": "^1.0.0"
+    "lodash.set": "^4.3.2"
   }
 }

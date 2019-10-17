@@ -1,8 +1,8 @@
 {
   "docs": {
     "简介": ["intro/quick-start", "intro/about"],
-    "配置": ["config/intro", "config/router"],
-    "插件": ["plugin/intro", "plugin/use", "plugin/list", "plugin/development"],
+    "配置": ["config/business", "config/build"],
+    "插件": ["plugin/use", "plugin/list", "plugin/development"],
     "样式": [
       "styles/css",
       "styles/css-modules",
@@ -46,7 +46,6 @@
     ],
     "表单": ["doc3"],
     "弹窗": ["modal/intro", "modal/antd"],
-    "配置": ["config/intro", "config/router"],
     "自定义webpack配置": ["webpack/intro", "webpack/plugin"],
     "例子": ["doc3"],
     "FAQ": ["faq"]
