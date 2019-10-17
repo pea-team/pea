@@ -26,13 +26,16 @@ export function helper(store: State<Post>, name: string) {
 }
 
 export default () => {
-  const { state, action, name } = useForm(Post)
+  const { state, action, name, error } = useForm(Post)
 
   console.log('reder......')
   return (
     <div style={{ margin: '200px' }}>
       <form onSubmit={action.handleSubmit}>
         <pre>{JSON.stringify(state, null, 2)}</pre>
+
+        <input type="text" {...name('email')} />
+        <div>{error('email')}</div>
 
         <Form.Item {...helper(state, 'phone')}>
           <Input type="number" {...name('phone')} />

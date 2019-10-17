@@ -1,12 +1,10 @@
-import { useState, FormEvent } from 'react'
-import produce, { original } from 'immer'
+import { useState } from 'react'
+import produce from 'immer'
 
 import { Errors, Touched, State, ModelType, IModel, FieldProps } from './types'
-import { validateForm } from './utils/validateForm'
-import { checkValid } from './utils/checkValid'
 import { createChangeHandler } from './utils/createChangeHandler'
 import { createBlurHandler } from './utils/createBlurHandler'
-import { touchAll } from './utils/touchAll'
+import { createSubmitHandler } from './utils/createSubmitHandler'
 
 export function useForm<T>(Model: ModelType<T>) {
   const instance = new Model()
@@ -21,6 +19,8 @@ export function useForm<T>(Model: ModelType<T>) {
     submitting: false,
   } as State<T>
   const [state, setState] = useState(initialValue)
+  const submitHandler = createSubmitHandler(state, setState, methods)
+
   const result = {
     state: state,
     action: {
@@ -28,18 +28,16 @@ export function useForm<T>(Model: ModelType<T>) {
       handleChange: createChangeHandler(state, setState),
       setSubmitting,
       resetForm,
-      submitForm,
-      handleSubmit,
+      submitForm: submitHandler,
+      handleSubmit: submitHandler,
     },
     name,
+    error,
   }
 
   return result
 
-  /////////////////////////////////////
   // functions
-  /////////////////////////////////////
-
 
   function name(fieldName: string, { onBlur } = { onBlur: true }) {
     const props: FieldProps = {
@@ -52,25 +50,10 @@ export function useForm<T>(Model: ModelType<T>) {
     return props
   }
 
-  function submitForm() {
-    setSubmitCount(1)
-    setSubmitting(true)
-    const nextErrors = validateForm(state.values)
-    const nextState = produce<State<T>, State<T>>(state, draft => {
-      if (nextErrors) state.errors = nextErrors
-
-      const isValid = checkValid(draft.errors)
-      draft.valid = isValid
-      draft.touched = touchAll(state.values)
-
-      if (!isValid && methods.onError) {
-        methods.onError(original<any>(draft.errors))
-      }
-      if (isValid && methods.onSubmit) {
-        methods.onSubmit(draft.values)
-      }
-    })
-    setState({ ...nextState })
+  function error(name: string) {
+    const { errors, touched } = state
+    if (!touched[name] && !errors[name]) return null
+    return errors[name] ? errors[name] : null
   }
 
   function resetForm() {
@@ -82,17 +65,5 @@ export function useForm<T>(Model: ModelType<T>) {
       draft.submitting = submitting
     })
     setState({ ...nextState })
-  }
-
-  function setSubmitCount(count: number) {
-    const nextState = produce<State<T>, State<T>>(state, draft => {
-      draft.submitCount += count
-    })
-    setState({ ...nextState })
-  }
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-    if (e && e.preventDefault) e.preventDefault()
-    submitForm()
   }
 }

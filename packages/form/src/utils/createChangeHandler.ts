@@ -1,20 +1,21 @@
 import produce from 'immer'
 import get from 'lodash.get'
+import { ChangeEvent } from 'react'
 
 import { validateField } from './validateField'
 import { isTouched } from './isTouched'
 import { checkValid } from './checkValid'
 import { val } from './val'
-import { ChangeEvent } from 'react'
-import { FieldElement, State } from 'src/types'
+import { FieldElement, State } from '../types'
 
-export function createChangeHandler<T>(state: State<T>, setState: any) {
+export function createChangeHandler<T>(state: State<T>, setState: any, fieldName?: string) {
   return function handleChange(e: ChangeEvent<FieldElement> | any) {
     if (typeof e !== 'object') return
     if (e.persist) e.persist()
 
     const $node = e.target
-    const { value, type, name } = $node
+    const { value, type } = $node
+    const name = fieldName || $node.name
     const errMsg = validateField(state.values, name)
 
     const nextState = produce<State<T>, State<T>>(state, draft => {

@@ -23,6 +23,7 @@ export class Post implements IModel {
   @Contains('hello')
   desc: string = 'desc..'
 
+
   onSubmit(values: Post) {
     console.log('values:', values)
   }
