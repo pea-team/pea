@@ -10,13 +10,11 @@ export type Touched<T> = {
   [K in keyof T]?: T[K] extends object ? Touched<T[K]> : boolean
 }
 
-export type Validate<T> = (values: T) => any
-
 export interface IModel<T = any> {
+  validate?: (values: T) => any
   onSubmit?: (values: T) => any
   onError?: (errors: Errors<T>) => any
   onReset?: () => any
-  validate?: Validate<T>
 }
 
 export interface ModelType<T = any> {

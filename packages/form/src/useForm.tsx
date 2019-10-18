@@ -2,9 +2,7 @@ import { useState } from 'react'
 import produce from 'immer'
 
 import { Errors, Touched, State, ModelType, IModel, FieldProps } from './types'
-import { createChangeHandler } from './utils/createChangeHandler'
-import { createBlurHandler } from './utils/createBlurHandler'
-import { createSubmitHandler } from './utils/createSubmitHandler'
+import { HandlerBuilder } from './utils/HandlerBuilder'
 
 export function useForm<T>(Model: ModelType<T>) {
   const instance = new Model()
@@ -19,13 +17,14 @@ export function useForm<T>(Model: ModelType<T>) {
     submitting: false,
   } as State<T>
   const [state, setState] = useState(initialValue)
-  const submitHandler = createSubmitHandler(state, setState, methods)
+  const handler = new HandlerBuilder(state, setState, methods)
+  const submitHandler = handler.createSubmitHandler()
 
   const result = {
     state: state,
     action: {
-      handleBlur: createBlurHandler(state, setState),
-      handleChange: createChangeHandler(state, setState),
+      handleBlur: handler.createBlurHandler(),
+      handleChange: handler.createChangeHandler(),
       setSubmitting,
       resetForm,
       submitForm: submitHandler,
@@ -37,8 +36,9 @@ export function useForm<T>(Model: ModelType<T>) {
 
   return result
 
+  /////////////////////////////////////
   // functions
-
+  /////////////////////////////////////
   function name(fieldName: string, { onBlur } = { onBlur: true }) {
     const props: FieldProps = {
       name: fieldName,

@@ -1,15 +1,14 @@
 import React, { ReactElement } from 'react'
 import get from 'lodash.get'
 import { State } from '../types'
-import { createChangeHandler } from './createChangeHandler'
-import { createBlurHandler } from './createBlurHandler'
+import { HandlerBuilder } from './HandlerBuilder'
 
 export interface FieldProps {
   name: string
   children?: ReactElement
 }
 
-export function createField<T>(state: State<T>, setState: any) {
+export function createField<T>(handler: HandlerBuilder<T>, state: State<T>) {
   const Field: React.FC<FieldProps> = props => {
     const { name, children } = props
 
@@ -17,8 +16,8 @@ export function createField<T>(state: State<T>, setState: any) {
     // TODO:: handle any
     const field: any = {
       name,
-      onChange: createChangeHandler(state, setState, name),
-      onBlur: createBlurHandler(state, setState),
+      onChange: handler.createChangeHandler(name),
+      onBlur: handler.createBlurHandler(),
     }
 
     if (!children) return null

@@ -26,6 +26,7 @@
     "antd": "^3.19.8",
     "class-validator": "^0.10.2",
     "fooks": "^1.2.1",
+    "formik": "^1.5.8",
     "immer": "^4.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
