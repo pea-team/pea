@@ -1,18 +1,29 @@
-// import { Length } from 'class-validator'
-import { Contains, Length, IsEmail, IsBoolean } from 'class-validator'
+import { Contains, Length, IsEmail, IsBoolean, ValidateNested } from 'class-validator'
 import { Errors, IModel } from './src/types'
-
-export enum fileds {
-  email = 'email',
-  phone = 'phone',
-}
 
 // const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
+export class User {
+  @Length(10, 20, {
+    message: 'Tag is too short or long',
+  })
+  name: string
+}
 export class Post implements IModel {
+  @ValidateNested()
+  user: User = {
+    name: 'livia',
+  }
+
+  drone = 'dewey'
+
+  age = 10
+
+  checks = ['horns']
+
   @IsEmail()
   @Length(10, 20)
-  email = 'livia...'
+  email = 'qqcom'
 
   @Length(10, 20)
   password: string = '123456'
@@ -26,10 +37,10 @@ export class Post implements IModel {
   @Contains('hello')
   desc: string = 'desc..'
 
-  validate() {
+ async validate() {
     let errors: Errors<Post> = {}
-    errors.email = 'not email'
-    errors.phone = 'not phone'
+    // errors.email = 'not email'
+    // errors.phone = 'not phone'
     // await sleep(3000)
     return errors
   }

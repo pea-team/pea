@@ -34,7 +34,7 @@ input.error {
   border-color: pink;
 }
 
-.field-error {
+.pea-form-field-error {
   color: pink;
 }
 

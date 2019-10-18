@@ -1,13 +1,20 @@
 import React from 'react'
-import { State } from '../src'
+import { State, useForm } from '../src'
 import { Button, Input, Form, Select, Radio } from 'antd'
 import { FormItemProps } from 'antd/lib/form'
+
 import { Post } from '../Post'
 
-import { useForm } from '../src/useForm'
 import './index.css'
 
 const { Option } = Select
+
+// PeaForm.register('Field', ({}) => {
+//   const Field = () => {
+//     return <div>hahahxxxx..........</div>
+//   }
+//   return Field
+// })
 
 export function helper(store: State<Post>, name: string) {
   const itemProps = {} as FormItemProps
@@ -26,15 +33,47 @@ export function helper(store: State<Post>, name: string) {
 }
 
 export default () => {
-  const { state, action, name, error } = useForm(Post)
+  const { Field, state, handlers, actions, name, error } = useForm<Post, FormItemProps>(Post)
 
   console.log('reder......')
   return (
     <div style={{ margin: '200px' }}>
-      <form onSubmit={action.handleSubmit}>
+      <form onSubmit={handlers.handleSubmit}>
         <pre>{JSON.stringify(state, null, 2)}</pre>
 
+        <span>
+          <Field name="drone" label="" origin>
+            <input type="radio" id="huey" value="huey" />
+          </Field>
+          <label htmlFor="huey">Huey</label>
+        </span>
+        <span>
+          <Field name="drone">
+            <input type="radio" id="dewey" value="dewey" />
+          </Field>
+          <label htmlFor="dewey">Dewey</label>
+        </span>
+        <span>
+          <Field name="drone">
+            <input type="radio" id="louie" value="louie" />
+          </Field>
+          <label htmlFor="louie">Louie</label>
+        </span>
+
+        {state.values.drone === 'louie' && (
+          <Field name="age">
+            <Input placeholder="age" />
+          </Field>
+        )}
+
+        <input type="text" {...name('user.name')} />
+
+        <Field name="email">
+          <input type="text" {...name('email')} />
+        </Field>
+
         <input type="text" {...name('email')} />
+
         <div>{error('email')}</div>
 
         <Form.Item {...helper(state, 'phone')}>
@@ -54,7 +93,7 @@ export default () => {
         </Form.Item>
 
         <Form.Item {...helper(state, 'phone')}>
-          <Select onChange={action.handleChange} style={{ width: 200 }}>
+          <Select onChange={handlers.handleChange} style={{ width: 200 }}>
             <Option value="86">+86</Option>
             <Option value="87">+87</Option>
           </Select>
@@ -67,6 +106,19 @@ export default () => {
           </Radio.Group>
         </Form.Item>
 
+        <span>
+          <Field name="checks">
+            <input type="checkbox" id="scales" value="scales" />
+          </Field>
+          <label htmlFor="scales">Scales</label>
+        </span>
+        <span>
+          <Field name="checks">
+            <input type="checkbox" id="horns" value="horns" />
+          </Field>
+          <label htmlFor="horns">Horns</label>
+        </span>
+
         <div>
           <Button htmlType="submit" disabled={!state.valid}>
             submit
@@ -74,12 +126,12 @@ export default () => {
         </div>
 
         <div>
-          <Button htmlType="reset" onClick={action.resetForm}>
+          <Button htmlType="reset" onClick={actions.resetForm}>
             reset
           </Button>
         </div>
 
-        <Button type="default" onClick={action.submitForm}>
+        <Button type="default" onClick={actions.submitForm}>
           submitForm
         </Button>
       </form>
