@@ -1,12 +1,28 @@
 import { useState } from 'react'
 import get from 'lodash.get'
-
-import { Errors, Touched, State, ModelType, IModel, FieldProps, Handlers, Actions } from './types'
+import {
+  Errors,
+  Touched,
+  State,
+  ModelType,
+  IModel,
+  NameProps,
+  Handlers,
+  Actions,
+  NameOptions,
+  Result,
+} from './types'
 import { HandlerBuilder } from './HandlerBuilder'
 import { ActionBuilder } from './ActionBuilder'
-import { createField } from './utils/createField'
+import { ComponentBuilder } from './ComponentBuilder'
 
-export function useForm<T>(Model: ModelType<T>) {
+/**
+ * useForm hooks
+ * @generic T Model Type
+ * @generic F Field Type
+ * @param Model
+ */
+export function useForm<T, F>(Model: ModelType<T>) {
   const instance = new Model()
   const methods: IModel<T> = Object.getPrototypeOf(instance)
   const initialValue = {
@@ -36,29 +52,31 @@ export function useForm<T>(Model: ModelType<T>) {
     submitForm: submitHandler,
     setState,
   }
-  const Field = createField<T>(handlerBuilder, state)
-
-  return {
+  const componentBuilder = new ComponentBuilder<T>(handlerBuilder, state, handlers, actions)
+  const result: Result<F, T> = {
     state,
     handlers,
     actions,
     name,
     error,
-    Field,
+    Field: componentBuilder.createField<F>(),
+    Form: componentBuilder.createForm(),
+    ErrorMessage: componentBuilder.createErrorMessage(),
   }
+  return result
 
   /**
    * shortcut to bind form field with name，onChange, onBlur
    * @param name name of field
    * @param options onBlur options
    */
-  function name(name: string, { onBlur } = { onBlur: true }) {
-    const props: FieldProps = {
+  function name(name: string, options: NameOptions = { onBlur: true }) {
+    const props: NameProps = {
       name: name,
       value: get(state.values, name),
       onChange: handlers.handleChange,
     }
-    if (onBlur) props.onBlur = handlers.handleBlur
+    if (options.onBlur) props.onBlur = handlers.handleBlur
     return props
   }
 
@@ -66,7 +84,7 @@ export function useForm<T>(Model: ModelType<T>) {
    * shortcut to get error message
    * @param name name of field
    */
-  function error(name: string) {
+  function error(name: string): string | null {
     const { errors, touched } = state
     if (!touched[name] && !errors[name]) return null
     return errors[name] ? errors[name] : null

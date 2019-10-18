@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC, ReactElement } from 'react'
 
 export type FieldElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 
@@ -52,16 +52,37 @@ export interface Handlers {
 }
 
 export interface ErrorMessageProps<T> {
-  name: keyof T & string
+  name: string
   className?: string
   component?: string | React.ComponentType
   children?: (error: string) => React.ReactNode
   [key: string]: any
 }
 
-export interface FieldProps<T = any> {
+export interface NameProps<T = any> {
   name: string
   value: T
   onChange: any
   onBlur?: any
+}
+
+export interface FieldProps {
+  name: string
+  children?: ReactElement
+  origin?: boolean
+}
+
+export interface NameOptions {
+  onBlur: boolean
+}
+
+export interface Result<F, T> {
+  state: State<T>
+  handlers: Handlers
+  actions: Actions<T>
+  name(name: string, options?: NameOptions): NameProps
+  error(name: string): string | null
+  Field: FC<FieldProps & F>
+  ErrorMessage: FC<ErrorMessageProps<T>>
+  Form: FC
 }
