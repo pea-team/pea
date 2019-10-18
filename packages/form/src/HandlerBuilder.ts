@@ -7,7 +7,6 @@ import { FieldElement, State, IModel, Errors } from './types'
 import { validateForm } from './utils/validateForm'
 import { checkValid } from './utils/checkValid'
 import { touchAll } from './utils/touchAll'
-import { isPromise } from './utils/isPromise'
 import { isTouched } from './utils/isTouched'
 
 export class HandlerBuilder<T> {
@@ -39,22 +38,6 @@ export class HandlerBuilder<T> {
     setState({ ...nextState })
   }
 
-  private runValidate(state: State<T>, methods: IModel<T>, cb: (errors: Errors<T>) => any) {
-    const validateResult = validateForm(state, methods)
-
-    if (isPromise(validateResult)) {
-      ;(validateResult as Promise<Errors<T>>)
-        .then(errors => {
-          cb(errors)
-        })
-        .catch(e => {
-          console.log(e)
-        })
-    } else {
-      cb(validateResult as Errors<T>)
-    }
-  }
-
   private getValue(value: any, type: string, checked: boolean, name: string): any {
     const { state } = this
 
@@ -76,56 +59,57 @@ export class HandlerBuilder<T> {
   createSubmitHandler() {
     const { state, methods } = this
 
-    return (e?: any) => {
+    return async (e?: any) => {
       if (e && e.preventDefault) e.preventDefault()
-      this.runValidate(state, methods, errors => {
-        this.updateBeforeSubmit(errors)
-      })
+      const errors = await validateForm(state, methods)
+      this.updateBeforeSubmit(errors)
     }
   }
 
   createBlurHandler() {
     const { state, setState, methods } = this
 
-    return (e: FocusEvent<FieldElement>) => {
+    return async (e: FocusEvent<FieldElement>) => {
       if (typeof e !== 'object') return
       if (e.persist) e.persist()
 
       const { name } = e.target
+      const errors = await validateForm(state, methods)
 
-      this.runValidate(state, methods, errors => {
-        const nextState = produce<State<T>, State<T>>(state, draft => {
-          draft.touched[name] = true
-          draft.errors = errors
-          draft.valid = checkValid(draft.errors)
-        })
-        setState({ ...nextState })
+      const nextState = produce<State<T>, State<T>>(state, draft => {
+        draft.touched[name] = true
+        draft.errors = errors
+        draft.valid = checkValid(draft.errors)
       })
+      setState({ ...nextState })
     }
   }
 
   createChangeHandler(fieldName?: string) {
     const { state, setState, methods } = this
-
-    return (e: ChangeEvent<FieldElement> | any) => {
+    return async (e: ChangeEvent<FieldElement> | any) => {
       if (typeof e !== 'object') return
       if (e.persist) e.persist()
 
-      const { value, type, checked, name = 'fieldName' } = e.target
+      const { value, type, checked, name = fieldName } = e.target
 
-      this.runValidate(state, methods, errors => {
-        const nextState = produce<State<T>, State<T>>(state, draft => {
-          // check from is valid
-          if (isTouched(state.touched, name)) {
-            draft.errors = errors
-            draft.valid = checkValid(draft.errors)
-          }
-
-          // set Value
-          set(draft.values as any, name, this.getValue(value, type, checked, name))
-        })
-        setState({ ...nextState })
+      // setValues first，do not block ui
+      const newState = produce<State<T>, State<T>>(state, draft => {
+        set(draft.values as any, name, this.getValue(value, type, checked, name))
       })
+
+      setState({ ...newState })
+
+      // setErrors
+      const errors = await validateForm(state, methods)
+      const nextState = produce<State<T>, State<T>>(state, draft => {
+        // check from is valid
+        if (isTouched(state.touched, name)) {
+          draft.errors = errors
+          draft.valid = checkValid(draft.errors)
+        }
+      })
+      setState({ ...nextState })
     }
   }
 }

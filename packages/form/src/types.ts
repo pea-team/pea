@@ -42,13 +42,17 @@ export interface Actions<T> {
 }
 
 export interface Handlers {
-  handleSubmit: (e?: React.FormEvent<HTMLFormElement>) => void
-  handleBlur(e: React.FocusEvent<any>): void
-  handleBlur<T = string | any>(fieldOrEvent: T): T extends string ? ((e: any) => void) : void
-  handleChange(e: React.ChangeEvent<any>): void
+  handleSubmit: (e?: React.FormEvent<HTMLFormElement>) => Promise<any>
+  handleBlur(e: React.FocusEvent<any>): Promise<any>
+  handleBlur<T = string | any>(
+    fieldOrEvent: T,
+  ): T extends string ? ((e: any) => void) : Promise<any>
+  handleChange(e: React.ChangeEvent<any>): Promise<any>
   handleChange<T = unknown | React.ChangeEvent<any>>(
     field: T,
-  ): T extends React.ChangeEvent<any> ? void : ((e: unknown | React.ChangeEvent<any>) => void)
+  ):
+    | (T extends React.ChangeEvent<any> ? void : ((e: unknown | React.ChangeEvent<any>) => void))
+    | Promise<any>
 }
 
 export interface ErrorMessageProps<T> {
