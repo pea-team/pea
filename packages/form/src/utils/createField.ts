@@ -1,7 +1,8 @@
 import React, { ReactElement } from 'react'
 import get from 'lodash.get'
 import { State } from '../types'
-import { HandlerBuilder } from './HandlerBuilder'
+import { HandlerBuilder } from '../HandlerBuilder'
+import { PeaForm } from '../PeaForm'
 
 export interface FieldProps {
   name: string
@@ -9,6 +10,10 @@ export interface FieldProps {
 }
 
 export function createField<T>(handler: HandlerBuilder<T>, state: State<T>) {
+
+  if (PeaForm.fieldCreator) {
+    return PeaForm.fieldCreator(handler, state)
+  }
   const Field: React.FC<FieldProps> = props => {
     const { name, children } = props
 

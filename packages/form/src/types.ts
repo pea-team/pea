@@ -26,12 +26,29 @@ export interface State<T> {
   errors: Errors<T>
   touched: Touched<T>
   submitting: boolean
-  validating: boolean
   dirty: boolean
   valid: boolean
-  validateOnChange: boolean
-  validateOnBlur: boolean
   submitCount: number
+}
+
+export interface Actions<T> {
+  setTouched(touched: Touched<T>): void
+  setErrors(errors: Errors<T>): void
+  setSubmitting(isSubmitting: boolean): void
+  setValues(values: T): void
+  resetForm(): void
+  submitForm(): void
+  setState(state: State<T>): void
+}
+
+export interface Handlers {
+  handleSubmit: (e?: React.FormEvent<HTMLFormElement>) => void
+  handleBlur(e: React.FocusEvent<any>): void
+  handleBlur<T = string | any>(fieldOrEvent: T): T extends string ? ((e: any) => void) : void
+  handleChange(e: React.ChangeEvent<any>): void
+  handleChange<T = unknown | React.ChangeEvent<any>>(
+    field: T,
+  ): T extends React.ChangeEvent<any> ? void : ((e: unknown | React.ChangeEvent<any>) => void)
 }
 
 export interface ErrorMessageProps<T> {

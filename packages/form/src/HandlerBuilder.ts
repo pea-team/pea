@@ -3,12 +3,12 @@ import produce, { original } from 'immer'
 import get from 'lodash.get'
 import set from 'lodash.set'
 
-import { FieldElement, State, IModel, Errors } from '../types'
-import { validateForm } from './validateForm'
-import { checkValid } from './checkValid'
-import { touchAll } from './touchAll'
-import { isPromise } from './isPromise'
-import { isTouched } from './isTouched'
+import { FieldElement, State, IModel, Errors } from './types'
+import { validateForm } from './utils/validateForm'
+import { checkValid } from './utils/checkValid'
+import { touchAll } from './utils/touchAll'
+import { isPromise } from './utils/isPromise'
+import { isTouched } from './utils/isTouched'
 
 export class HandlerBuilder<T> {
   constructor(
@@ -27,6 +27,7 @@ export class HandlerBuilder<T> {
       draft.touched = touchAll(state.values)
       draft.submitCount += 1
       draft.submitting = true
+      draft.dirty = true
 
       if (!isValid && methods.onError) {
         methods.onError(original<any>(draft.errors))
@@ -75,7 +76,7 @@ export class HandlerBuilder<T> {
   createSubmitHandler() {
     const { state, methods } = this
 
-    return (e: any) => {
+    return (e?: any) => {
       if (e && e.preventDefault) e.preventDefault()
       this.runValidate(state, methods, errors => {
         this.updateBeforeSubmit(errors)

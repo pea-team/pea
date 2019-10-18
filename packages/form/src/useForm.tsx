@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import produce from 'immer'
 import get from 'lodash.get'
 
-import { Errors, Touched, State, ModelType, IModel, FieldProps } from './types'
-import { HandlerBuilder } from './utils/HandlerBuilder'
+import { Errors, Touched, State, ModelType, IModel, FieldProps, Handlers, Actions } from './types'
+import { HandlerBuilder } from './HandlerBuilder'
+import { ActionBuilder } from './ActionBuilder'
 import { createField } from './utils/createField'
 
 export function useForm<T>(Model: ModelType<T>) {
@@ -19,48 +19,56 @@ export function useForm<T>(Model: ModelType<T>) {
     submitting: false,
   } as State<T>
   const [state, setState] = useState(initialValue)
-  const handler = new HandlerBuilder(state, setState, methods)
-  const submitHandler = handler.createSubmitHandler()
-  const action = {
-    handleBlur: handler.createBlurHandler(),
-    handleChange: handler.createChangeHandler(),
-    setSubmitting,
-    resetForm,
-    submitForm: submitHandler,
+  const handlerBuilder = new HandlerBuilder(state, setState, methods)
+  const actionBuilder = new ActionBuilder(state, setState, initialValue)
+  const submitHandler = handlerBuilder.createSubmitHandler()
+  const handlers: Handlers = {
+    handleBlur: handlerBuilder.createBlurHandler(),
+    handleChange: handlerBuilder.createChangeHandler(),
     handleSubmit: submitHandler,
   }
-  const Field = createField<T>(handler, state)
+  const actions: Actions<T> = {
+    setTouched: actionBuilder.setTouched,
+    setValues: actionBuilder.setValues,
+    setErrors: actionBuilder.setErrros,
+    setSubmitting: actionBuilder.setSubmitting,
+    resetForm: actionBuilder.resetForm,
+    submitForm: submitHandler,
+    setState,
+  }
+  const Field = createField<T>(handlerBuilder, state)
 
-  return { state, action, name, error, Field }
+  return {
+    state,
+    handlers,
+    actions,
+    name,
+    error,
+    Field,
+  }
 
-  /////////////////////////////////////
-  // functions
-  /////////////////////////////////////
-  function name(fieldName: string, { onBlur } = { onBlur: true }) {
+  /**
+   * shortcut to bind form field with name，onChange, onBlur
+   * @param name name of field
+   * @param options onBlur options
+   */
+  function name(name: string, { onBlur } = { onBlur: true }) {
     const props: FieldProps = {
-      name: fieldName,
-      value: get(state.values, fieldName),
-      onChange: action.handleChange,
+      name: name,
+      value: get(state.values, name),
+      onChange: handlers.handleChange,
     }
-    if (onBlur) props.onBlur = action.handleBlur
-
+    if (onBlur) props.onBlur = handlers.handleBlur
     return props
   }
 
+  /**
+   * shortcut to get error message
+   * @param name name of field
+   */
   function error(name: string) {
     const { errors, touched } = state
     if (!touched[name] && !errors[name]) return null
     return errors[name] ? errors[name] : null
-  }
-
-  function resetForm() {
-    setState(initialValue)
-  }
-
-  function setSubmitting(submitting: boolean) {
-    const nextState = produce<State<T>, State<T>>(state, draft => {
-      draft.submitting = submitting
-    })
-    setState({ ...nextState })
   }
 }
