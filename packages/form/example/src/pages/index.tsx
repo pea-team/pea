@@ -13,7 +13,7 @@ export function helper(store: State<Post>, name: string) {
   const itemProps = {} as FormItemProps
   const error = store.errors[name]
 
-  if (error) {
+  if (error && store.touched[name]) {
     itemProps.validateStatus = 'error'
     itemProps.help = error
   }

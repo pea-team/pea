@@ -1,5 +1,5 @@
-import { Length } from 'class-validator'
-// import { Contains, Length, IsEmail, IsBoolean } from 'class-validator'
+// import { Length } from 'class-validator'
+import { Contains, Length, IsEmail, IsBoolean } from 'class-validator'
 import { Errors, IModel } from './src/types'
 
 export enum fileds {
@@ -10,23 +10,23 @@ export enum fileds {
 // const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
 export class Post implements IModel {
-  // @IsEmail()
-  // @Length(10, 20)
+  @IsEmail()
+  @Length(10, 20)
   email = 'livia...'
 
-  // @Length(10, 20)
+  @Length(10, 20)
   password: string = '123456'
 
   @Length(11)
   phone = 158
 
-  // @IsBoolean()
+  @IsBoolean()
   removed = false
 
-  // @Contains('hello')
+  @Contains('hello')
   desc: string = 'desc..'
 
-  async validate() {
+  validate() {
     let errors: Errors<Post> = {}
     errors.email = 'not email'
     errors.phone = 'not phone'
