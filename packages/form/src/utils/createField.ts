@@ -13,7 +13,6 @@ export function createField<T>(handler: HandlerBuilder<T>, state: State<T>) {
     const { name, children } = props
 
     const { values } = state
-    // TODO:: handle any
     const field: any = {
       name,
       onChange: handler.createChangeHandler(name),

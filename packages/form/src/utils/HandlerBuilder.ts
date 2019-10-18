@@ -1,6 +1,7 @@
 import { FocusEvent, ChangeEvent } from 'react'
 import produce, { original } from 'immer'
 import get from 'lodash.get'
+import set from 'lodash.set'
 
 import { FieldElement, State, IModel, Errors } from '../types'
 import { validateForm } from './validateForm'
@@ -8,7 +9,6 @@ import { checkValid } from './checkValid'
 import { touchAll } from './touchAll'
 import { isPromise } from './isPromise'
 import { isTouched } from './isTouched'
-import { val } from './val'
 
 export class HandlerBuilder<T> {
   constructor(
@@ -54,6 +54,24 @@ export class HandlerBuilder<T> {
     }
   }
 
+  private getValue(value: any, type: string, checked: boolean, name: string): any {
+    const { state } = this
+
+    if (/number|range/.test(type)) {
+      const parsed = parseFloat(value)
+      return isNaN(parsed) ? '' : parsed
+    }
+
+    if (/checkbox/.test(type)) {
+      const checkedValues = get(state.values, name)
+      if (checked) {
+        return [...checkedValues, value]
+      }
+      return checkedValues.filter((item: any) => item !== value)
+    }
+    return value
+  }
+
   createSubmitHandler() {
     const { state, methods } = this
 
@@ -92,39 +110,18 @@ export class HandlerBuilder<T> {
       if (typeof e !== 'object') return
       if (e.persist) e.persist()
 
-      const $node = e.target
-      const { value, type } = $node
-      const name = fieldName || $node.name
+      const { value, type, checked, name = 'fieldName' } = e.target
 
       this.runValidate(state, methods, errors => {
         const nextState = produce<State<T>, State<T>>(state, draft => {
-          let filedValue: any
-
-          if (type === 'checkbox') {
-            const checkedValues = get(state.values, name)
-            const checked = val($node)
-            let newCheckedValues: any // TODO:
-            if (checked) {
-              newCheckedValues = [...checkedValues, value]
-            } else {
-              newCheckedValues = checkedValues.filter((item: any) => item !== value)
-            }
-            filedValue = newCheckedValues
-          } else {
-            console.log('value:', value);
-            // filedValue = value
-            filedValue = val($node)
-          }
-
           // check from is valid
           if (isTouched(state.touched, name)) {
             draft.errors = errors
             draft.valid = checkValid(draft.errors)
           }
-          console.log('filedValue:', filedValue)
 
           // set Value
-          draft.values[name] = filedValue
+          set(draft.values as any, name, this.getValue(value, type, checked, name))
         })
         setState({ ...nextState })
       })

@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import produce from 'immer'
+import get from 'lodash.get'
 
 import { Errors, Touched, State, ModelType, IModel, FieldProps } from './types'
 import { HandlerBuilder } from './utils/HandlerBuilder'
+import { createField } from './utils/createField'
 
 export function useForm<T>(Model: ModelType<T>) {
   const instance = new Model()
@@ -19,22 +21,17 @@ export function useForm<T>(Model: ModelType<T>) {
   const [state, setState] = useState(initialValue)
   const handler = new HandlerBuilder(state, setState, methods)
   const submitHandler = handler.createSubmitHandler()
-
-  const result = {
-    state: state,
-    action: {
-      handleBlur: handler.createBlurHandler(),
-      handleChange: handler.createChangeHandler(),
-      setSubmitting,
-      resetForm,
-      submitForm: submitHandler,
-      handleSubmit: submitHandler,
-    },
-    name,
-    error,
+  const action = {
+    handleBlur: handler.createBlurHandler(),
+    handleChange: handler.createChangeHandler(),
+    setSubmitting,
+    resetForm,
+    submitForm: submitHandler,
+    handleSubmit: submitHandler,
   }
+  const Field = createField<T>(handler, state)
 
-  return result
+  return { state, action, name, error, Field }
 
   /////////////////////////////////////
   // functions
@@ -42,10 +39,10 @@ export function useForm<T>(Model: ModelType<T>) {
   function name(fieldName: string, { onBlur } = { onBlur: true }) {
     const props: FieldProps = {
       name: fieldName,
-      value: result.state.values[fieldName],
-      onChange: result.action.handleChange,
+      value: get(state.values, fieldName),
+      onChange: action.handleChange,
     }
-    if (onBlur) props.onBlur = result.action.handleBlur
+    if (onBlur) props.onBlur = action.handleBlur
 
     return props
   }

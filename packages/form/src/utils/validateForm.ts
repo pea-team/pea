@@ -1,4 +1,4 @@
-import { validateSync, ValidationError } from 'class-validator'
+import { validate, validateSync, ValidationError } from 'class-validator'
 import { Errors, IModel, State } from '../types'
 import { isPromise } from './isPromise'
 
@@ -14,6 +14,19 @@ export function validateForm<T>(
 
   // class-validator validate
   const validateMetaErrors: ValidationError[] = (validateSync as any)(state.values)
+
+  console.log('state.values:', state.values)
+  console.log('validateMetaErrors:', validateMetaErrors)
+
+  validate(state.values).then(errors => {
+    // errors is an array of validation errors
+    if (errors.length > 0) {
+      console.log('validation failed. errors: ', errors)
+    } else {
+      console.log('validation succeed')
+    }
+  })
+
   for (const error of validateMetaErrors) {
     const values = Object.values(error.constraints)
     // TODO: may be should expose all error
