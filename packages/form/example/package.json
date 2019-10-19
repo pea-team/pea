@@ -29,6 +29,7 @@
     "immer": "^4.0.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-fast-compare": "^2.0.4",
     "react-hook-form": "^3.24.0",
     "scheduler": "^0.16.2"
   },

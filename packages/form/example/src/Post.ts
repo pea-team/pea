@@ -1,5 +1,5 @@
 import { Contains, Length, IsEmail, IsBoolean, ValidateNested } from 'class-validator'
-import { Errors, IModel } from './src/types'
+import { Errors, IModel } from '../../src/types'
 
 // const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -9,7 +9,7 @@ export class User {
   })
   name: string
 }
-export class Post implements IModel {
+export class Post implements IModel<Post> {
   @ValidateNested()
   user: User = {
     name: 'livia',
@@ -29,7 +29,7 @@ export class Post implements IModel {
   password: string = '123456'
 
   @Length(11)
-  phone = 158
+  phone = 87
 
   @IsBoolean()
   removed = false
@@ -37,7 +37,7 @@ export class Post implements IModel {
   @Contains('hello')
   desc: string = 'desc..'
 
- async validate() {
+  validate() {
     let errors: Errors<Post> = {}
     // errors.email = 'not email'
     // errors.phone = 'not phone'

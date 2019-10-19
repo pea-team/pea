@@ -1,5 +1,5 @@
 import React from 'react'
-import { State, useForm } from '../src'
+import { useForm, PeaForm } from '../src'
 import { Button, Input, Form, Select, Radio } from 'antd'
 import { FormItemProps } from 'antd/lib/form'
 
@@ -9,97 +9,89 @@ import './index.css'
 
 const { Option } = Select
 
-// PeaForm.register('Field', ({}) => {
-//   const Field = () => {
-//     return <div>hahahxxxx..........</div>
-//   }
-//   return Field
-// })
-
-export function helper(store: State<Post>, name: string) {
+PeaForm.register('help', ({ name, state }) => {
   const itemProps = {} as FormItemProps
-  const error = store.errors[name]
+  const error = state.errors[name]
 
-  if (error && store.touched[name]) {
+  if (error && state.touched[name]) {
     itemProps.validateStatus = 'error'
     itemProps.help = error
   }
 
-  if (!error && store.touched[name]) {
+  if (!error && state.touched[name]) {
     itemProps.validateStatus = 'success'
     itemProps.hasFeedback = true
   }
   return itemProps
-}
+})
 
 export default () => {
-  const { Field, state, handlers, actions, name, error } = useForm<Post, FormItemProps>(Post)
+  const { state, handlers, handlerBuilder, actions, name, error, help } = useForm(Post, {
+    onSubmit(values) {
+      console.log('values hahaha:', values)
+    },
+    onError(errors, { actions }) {
+      console.log('error hahaha:', errors)
+    },
+  })
 
-  console.log('reder......')
   return (
     <div style={{ margin: '200px' }}>
       <form onSubmit={handlers.handleSubmit}>
         <pre>{JSON.stringify(state, null, 2)}</pre>
 
         <span>
-          <Field name="drone" label="" origin>
-            <input type="radio" id="huey" value="huey" />
-          </Field>
+          <input type="radio" id="huey" value="huey" />
           <label htmlFor="huey">Huey</label>
         </span>
         <span>
-          <Field name="drone">
-            <input type="radio" id="dewey" value="dewey" />
-          </Field>
+          <input type="radio" id="dewey" value="dewey" />
           <label htmlFor="dewey">Dewey</label>
         </span>
         <span>
-          <Field name="drone">
-            <input type="radio" id="louie" value="louie" />
-          </Field>
+          <input type="radio" id="louie" value="louie" />
           <label htmlFor="louie">Louie</label>
         </span>
 
-        {state.values.drone === 'louie' && (
-          <Field name="age">
-            <Input placeholder="age" />
-          </Field>
-        )}
+        {state.values.drone === 'louie' && <Input placeholder="age" />}
 
         <input type="text" {...name('user.name')} />
 
-        <Field name="email">
-          <input type="text" {...name('email')} />
-        </Field>
+        <div>1111</div>
 
+        <div>2222</div>
         <input type="text" {...name('email')} />
 
         <div>{error('email')}</div>
 
-        <Form.Item {...helper(state, 'phone')}>
+        <Form.Item {...help('phone')}>
           <Input type="number" {...name('phone')} />
         </Form.Item>
 
-        <Form.Item {...helper(state, 'desc')}>
+        <Form.Item {...help('desc')}>
           <Input {...name('desc')} />
         </Form.Item>
 
-        <Form.Item {...helper(state, 'email')}>
+        <Form.Item {...help('email')}>
           <Input {...name('email')} />
         </Form.Item>
 
-        <Form.Item {...helper(state, 'password')}>
+        <Form.Item {...help('password')}>
           <Input {...name('password')} />
         </Form.Item>
 
-        <Form.Item {...helper(state, 'phone')}>
-          <Select onChange={handlers.handleChange} style={{ width: 200 }}>
+        <Form.Item {...help('phone')}>
+          <Select
+            value={state.values.phone}
+            onChange={handlerBuilder.createChangeHandler('phone')}
+            style={{ width: 200 }}
+          >
             <Option value="86">+86</Option>
             <Option value="87">+87</Option>
           </Select>
         </Form.Item>
 
-        <Form.Item {...helper(state, 'removed')}>
+        <Form.Item {...help('removed')}>
           <Radio.Group {...name('removed')}>
             <Radio value={true}>应该</Radio>
             <Radio value={false}>不应该</Radio>
@@ -107,15 +99,11 @@ export default () => {
         </Form.Item>
 
         <span>
-          <Field name="checks">
-            <input type="checkbox" id="scales" value="scales" />
-          </Field>
+          <input type="checkbox" id="scales" value="scales" />
           <label htmlFor="scales">Scales</label>
         </span>
         <span>
-          <Field name="checks">
-            <input type="checkbox" id="horns" value="horns" />
-          </Field>
+          <input type="checkbox" id="horns" value="horns" />
           <label htmlFor="horns">Horns</label>
         </span>
 
