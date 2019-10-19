@@ -9,9 +9,9 @@ import { ToolBuilder } from './ToolBuilder'
  * @generic T Model Type
  * @param Model
  */
-export function useForm<T>(Model: ModelType<T>, methods: Methods<T>) {
+export function useForm<T>(Model: ModelType<T>, methods: Methods<T> = {}) {
   const instance = new Model()
-  methods = { ...Object.getPrototypeOf(instance), ...methods }
+
   const initialValue = {
     values: instance,
     touched: {} as Touched<T>,
@@ -21,8 +21,10 @@ export function useForm<T>(Model: ModelType<T>, methods: Methods<T>) {
     submitCount: 0,
     submitting: false,
   } as State<T>
+
   const [state, setState] = useState(initialValue)
   const actionBuilder = new ActionBuilder(state, setState, initialValue)
+
   const actions = {
     setTouched: actionBuilder.setTouched,
     setValues: actionBuilder.setValues,
@@ -31,15 +33,20 @@ export function useForm<T>(Model: ModelType<T>, methods: Methods<T>) {
     resetForm: actionBuilder.resetForm,
     setState,
   } as Actions<T>
+
   const handlerBuilder = new HandlerBuilder(state, actions, setState, methods)
   const submitHandler = handlerBuilder.createSubmitHandler()
+
   const handlers: Handlers = {
     handleBlur: handlerBuilder.createBlurHandler(),
     handleChange: handlerBuilder.createChangeHandler(),
     handleSubmit: submitHandler,
   }
+
   const toolBuilder = new ToolBuilder(handlers, handlerBuilder, state, actions)
+
   actions.submitForm = submitHandler // attach submitHandler to action
+
   const result: Result<T> = {
     state,
     handlers,

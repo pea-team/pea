@@ -1,5 +1,5 @@
 import { Contains, Length, IsEmail, IsBoolean, ValidateNested } from 'class-validator'
-import { Errors, IModel } from '../../src/types'
+import { Errors } from '@peajs/form'
 
 // const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
@@ -9,7 +9,7 @@ export class User {
   })
   name: string
 }
-export class Post implements IModel<Post> {
+export class Post {
   @ValidateNested()
   user: User = {
     name: 'livia',

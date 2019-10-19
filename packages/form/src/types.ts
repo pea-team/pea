@@ -76,5 +76,3 @@ export interface Methods<T> {
   onError?: (errors: Errors<T>, { state, actions }: { state: State<T>; actions: Actions<T> }) => any
   onReset?: ({ state, actions }: { state: State<T>; actions: Actions<T> }) => any
 }
-
-export interface IModel<T> extends Methods<T> {}

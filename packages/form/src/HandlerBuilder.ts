@@ -4,7 +4,7 @@ import get from 'lodash.get'
 import set from 'lodash.set'
 import isEqual from 'react-fast-compare'
 
-import { FieldElement, State, IModel, Errors, Actions } from './types'
+import { FieldElement, State, Errors, Actions, Methods } from './types'
 import { validateForm } from './utils/validateForm'
 import { checkValid } from './utils/checkValid'
 import { touchAll } from './utils/touchAll'
@@ -15,7 +15,7 @@ export class HandlerBuilder<T> {
     private state: State<T>,
     private actions: Actions<T>,
     private setState: any, // TODO: handle any
-    private methods: IModel<T>,
+    private methods: Methods<T>,
   ) {}
 
   private updateBeforeSubmit(errors: Errors<T>) {

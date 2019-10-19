@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@peajs/core": "^0.1.0",
+    "@peajs/form": "^0.2.0",
     "@peajs/router": "^0.1.0",
     "antd": "^3.19.8",
     "class-validator": "^0.10.2",

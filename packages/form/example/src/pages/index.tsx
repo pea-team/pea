@@ -1,5 +1,5 @@
 import React from 'react'
-import { useForm, PeaForm } from '../src'
+import { useForm, PeaForm } from '@peajs/form'
 import { Button, Input, Form, Select, Radio } from 'antd'
 import { FormItemProps } from 'antd/lib/form'
 
