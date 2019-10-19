@@ -44,6 +44,7 @@ export function useForm<T>(Model: ModelType<T>) {
     state,
     handlers,
     actions,
+    handlerBuilder,
     name: toolBuilder.createName(),
     error: toolBuilder.createError(),
     help: toolBuilder.createHelp(),

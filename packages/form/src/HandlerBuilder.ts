@@ -67,16 +67,17 @@ export class HandlerBuilder<T> {
     }
   }
 
-  createBlurHandler() {
+  createBlurHandler(fieldName = '') {
     const { state, setState, methods } = this
 
     return async (e: FocusEvent<FieldElement>) => {
-      if (typeof e !== 'object') return
       if (e.persist) e.persist()
 
-      const { name } = e.target
-      const errors = await validateForm(state, methods)
+      // hack for some custom onChange, eg: Antd Select
+      const node = typeof e === 'object' ? e.target : ({} as any)
+      const { name = fieldName } = node
 
+      const errors = await validateForm(state, methods)
       const nextState = produce<State<T>, State<T>>(state, draft => {
         draft.touched[name] = true
         draft.errors = errors
@@ -86,13 +87,13 @@ export class HandlerBuilder<T> {
     }
   }
 
-  createChangeHandler(fieldName?: string) {
+  createChangeHandler(fieldName = '', fieldValue?: any) {
     const { state, setState, methods } = this
     return async (e: ChangeEvent<FieldElement> | any) => {
-      if (typeof e !== 'object') return
       if (e.persist) e.persist()
-
-      const { value, type, checked, name = fieldName } = e.target
+      // hack for some custom onChange, eg: Antd Select
+      const node = typeof e === 'object' ? e.target : {}
+      const { value = fieldValue || e, name = fieldName, type, checked } = node
 
       // setValues first，do not block ui
       const newState = produce<State<T>, State<T>>(state, draft => {
@@ -106,7 +107,6 @@ export class HandlerBuilder<T> {
       // setErrors
       const errors = await validateForm(state, methods)
 
-      console.log('isEqual(errors, state.values):', isEqual(errors, state.values))
       if (isEqual(errors, state.errors)) return
 
       const nextState = produce<State<T>, State<T>>(state, draft => {

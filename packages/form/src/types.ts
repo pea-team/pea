@@ -1,3 +1,5 @@
+import { HandlerBuilder } from './HandlerBuilder'
+
 export type FieldElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 
 export type Errors<T> = {
@@ -68,7 +70,8 @@ export interface Result<T> {
   state: State<T>
   handlers: Handlers
   actions: Actions<T>
-  name(name: string, options?: NameOptions): any
+  handlerBuilder: HandlerBuilder<T>
+  name(name: string, options?: any): any
   error(name: string): any
   help(name: string): any
 }
