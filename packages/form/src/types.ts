@@ -1,5 +1,3 @@
-import React, { FC, ReactElement } from 'react'
-
 export type FieldElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 
 export type Errors<T> = {
@@ -55,14 +53,6 @@ export interface Handlers {
     | Promise<any>
 }
 
-export interface ErrorMessageProps<T> {
-  name: string
-  className?: string
-  component?: string | React.ComponentType
-  children?: (error: string) => React.ReactNode
-  [key: string]: any
-}
-
 export interface NameProps<T = any> {
   name: string
   value: T
@@ -70,23 +60,15 @@ export interface NameProps<T = any> {
   onBlur?: any
 }
 
-export interface FieldProps {
-  name: string
-  children?: ReactElement
-  origin?: boolean
-}
-
 export interface NameOptions {
   onBlur: boolean
 }
 
-export interface Result<F, T> {
+export interface Result<T> {
   state: State<T>
   handlers: Handlers
   actions: Actions<T>
-  name(name: string, options?: NameOptions): NameProps
-  error(name: string): string | null
-  Field: FC<FieldProps & F>
-  ErrorMessage: FC<ErrorMessageProps<T>>
-  Form: FC
+  name(name: string, options?: NameOptions): any
+  error(name: string): any
+  help(name: string): any
 }

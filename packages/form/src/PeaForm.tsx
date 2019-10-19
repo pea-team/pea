@@ -2,41 +2,43 @@ import { HandlerBuilder } from './HandlerBuilder'
 import { State, Handlers, Actions } from './types'
 
 export type Creator = <T>({
+  name,
   handlerBuilder,
   state,
   handlers,
   actions,
 }: {
+  name: string
   handlerBuilder: HandlerBuilder<T>
   state: State<T>
   handlers: Handlers
   actions: Actions<T>
 }) => any
 
-type Name = 'Form' | 'Field' | 'ErrorMessage'
+type Name = 'help' | 'name' | 'error'
 
 export class PeaForm {
-  static formCreator: any = null
-  static fieldCreator: any = null
-  static errorMessageCreator: any = null
+  static helpCreator: any = null
+  static nameCreator: any = null
+  static errorCreator: any = null
   /**
    *
-   * @param name Component Name
-   * @param creator function to override Component
+   * @param toolName tool name
+   * @param creator tool function to override Component
    */
-  static register(name: Name, creator: Creator) {
-    // override Form
-    if (name === 'Form') {
-      PeaForm.formCreator = creator
+  static register(toolName: Name, creator: Creator) {
+    // override help
+    if (toolName === 'help') {
+      PeaForm.helpCreator = creator
     }
-    // override Field
-    if (name === 'Field') {
-      PeaForm.fieldCreator = creator
+    // override name
+    if (toolName === 'name') {
+      PeaForm.nameCreator = creator
     }
 
-    // override ErrorMessage
-    if (name === 'ErrorMessage') {
-      PeaForm.errorMessageCreator = creator
+    // override name
+    if (toolName === 'name') {
+      PeaForm.errorCreator = creator
     }
   }
 }

@@ -2,6 +2,7 @@ import { FocusEvent, ChangeEvent } from 'react'
 import produce, { original } from 'immer'
 import get from 'lodash.get'
 import set from 'lodash.set'
+import isEqual from 'react-fast-compare'
 
 import { FieldElement, State, IModel, Errors } from './types'
 import { validateForm } from './utils/validateForm'
@@ -97,17 +98,21 @@ export class HandlerBuilder<T> {
       const newState = produce<State<T>, State<T>>(state, draft => {
         set(draft.values as any, name, this.getValue(value, type, checked, name))
       })
-
       setState({ ...newState })
+
+      // validate only touched
+      if (!isTouched(state.touched, name)) return
 
       // setErrors
       const errors = await validateForm(state, methods)
+
+      console.log('isEqual(errors, state.values):', isEqual(errors, state.values))
+      if (isEqual(errors, state.errors)) return
+
       const nextState = produce<State<T>, State<T>>(state, draft => {
         // check from is valid
-        if (isTouched(state.touched, name)) {
-          draft.errors = errors
-          draft.valid = checkValid(draft.errors)
-        }
+        draft.errors = errors
+        draft.valid = checkValid(draft.errors)
       })
       setState({ ...nextState })
     }
