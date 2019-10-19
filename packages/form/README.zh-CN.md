@@ -1,3 +1,18 @@
+# @peajs/form
+
+> 一个极简主义设计的 React Form
+
+[English](./README.md) | 简体中文
+
+## 安装
+
+```sh
+npm i @peajs/form
+```
+
+## 快速开始
+
+```js
 import React from 'react'
 import { useForm } from '@peajs/form'
 
@@ -21,3 +36,8 @@ export default () => {
     </form>
   )
 }
+```
+
+## License
+
+[MIT License](https://github.com/pea-team/pea/blob/master/LICENSE)

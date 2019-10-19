@@ -1,6 +1,8 @@
 # @peajs/form
 
-> React form based on Hooks
+> A minimalist design Form for React
+
+English | [简体中文](./README.zh-CN.md)
 
 ## Installation
 
@@ -8,42 +10,32 @@
 npm i @peajs/form
 ```
 
-## Usage
+## Quickstart
 
 ```js
 import React from 'react'
-import ReactDOM from 'react-dom'
-import { createForm } from '@peajs/form'
+import { useForm } from '@peajs/form'
 
-const { Field, store } = createForm({
-  initialValues: {
-    email: '',
-    password: '',
-  },
-  onSubmit: async (values, { setSubmitting }) => {
-    alert(JSON.stringify(values, null, 2))
-    setSubmitting(false)
-  },
-})
+class User {
+  username = 'foo'
+  password = ''
+}
 
-const App = () => {
+export default () => {
+  const { handlers, name } = useForm(User, {
+    onSubmit(values) {
+      console.log('values:', values)
+    },
+  })
+
   return (
-    <form onSubmit={store.handleSubmit}>
-      <Field name="email">
-        <input type="text" />
-      </Field>
-
-      <Field name="password">
-        <input type="password" />
-      </Field>
-      <button type="submit" disabled={store.submitting}>
-        submit
-      </button>
+    <form onSubmit={handlers.handleSubmit}>
+      <input {...name('username')} />
+      <input {...name('password')} />
+      <button type="submit">Submit</button>
     </form>
   )
 }
-
-ReactDOM.render(<App />, document.getElementById('root'))
 ```
 
 ## License
