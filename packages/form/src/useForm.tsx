@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Errors, Touched, State, ModelType, IModel, Handlers, Actions, Result } from './types'
+import { Errors, Touched, State, ModelType, Handlers, Actions, Result, Methods } from './types'
 import { HandlerBuilder } from './HandlerBuilder'
 import { ActionBuilder } from './ActionBuilder'
 import { ToolBuilder } from './ToolBuilder'
@@ -9,9 +9,9 @@ import { ToolBuilder } from './ToolBuilder'
  * @generic T Model Type
  * @param Model
  */
-export function useForm<T>(Model: ModelType<T>) {
+export function useForm<T>(Model: ModelType<T>, methods: Methods<T>) {
   const instance = new Model()
-  const methods: IModel<T> = Object.getPrototypeOf(instance)
+  methods = { ...Object.getPrototypeOf(instance), ...methods }
   const initialValue = {
     values: instance,
     touched: {} as Touched<T>,

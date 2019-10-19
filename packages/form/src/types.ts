@@ -10,13 +10,6 @@ export type Touched<T> = {
   [K in keyof T]?: T[K] extends object ? Touched<T[K]> : boolean
 }
 
-export interface IModel<T = any> {
-  validate?: (values: T) => any
-  onSubmit?: (values: T) => any
-  onError?: (errors: Errors<T>) => any
-  onReset?: () => any
-}
-
 export interface ModelType<T = any> {
   new (...args: any[]): T
 }
@@ -74,4 +67,14 @@ export interface Result<T> {
   name(name: string, options?: any): any
   error(name: string): any
   help(name: string): any
+}
+
+export interface Methods<T> {
+  validate?: (values: T) => any
+  onSubmit?: (values: T) => any
+  onError?: (errors: Errors<T>) => any
+  onReset?: () => any
+}
+
+export interface IModel<T> extends Methods<T> {
 }
