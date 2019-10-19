@@ -1,13 +1,17 @@
 import { validateSync, ValidationError } from 'class-validator'
 import deepmerge from 'deepmerge'
-import { Errors, IModel, State } from '../types'
+import { Errors, IModel, State, Actions } from '../types'
 import { isPromise } from './isPromise'
 
 /**
  * validate entire Form
  * @param state Form values
  */
-export async function validateForm<T>(state: State<T>, methods: IModel<T>): Promise<Errors<T>> {
+export async function validateForm<T>(
+  state: State<T>,
+  actions: Actions<T>,
+  methods: IModel<T>,
+): Promise<Errors<T>> {
   const errors: Errors<T> = {}
 
   // class-validator validate
@@ -22,7 +26,7 @@ export async function validateForm<T>(state: State<T>, methods: IModel<T>): Prom
   if (!methods.validate) return errors
 
   // function validate
-  let validateFnErrors = methods.validate(state.values)
+  let validateFnErrors = methods.validate(state.values, { state, actions })
 
   // sync validate
   if (!isPromise(validateFnErrors)) {

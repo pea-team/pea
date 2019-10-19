@@ -4,7 +4,6 @@ import { HandlerBuilder } from './HandlerBuilder'
 import { State, Handlers, NameOptions, NameProps, Actions } from './types'
 
 export class ToolBuilder<T> {
-  setState: any
   constructor(
     private handlers: Handlers,
     private handlerBuilder: HandlerBuilder<T>,
@@ -12,7 +11,7 @@ export class ToolBuilder<T> {
     private actions: Actions<T>,
   ) {}
 
-  createName() {
+  createName = () => {
     const { state, handlers } = this
     /**
      * shortcut to bind form field with name，onChange, onBlur
@@ -30,7 +29,7 @@ export class ToolBuilder<T> {
     }
   }
 
-  createError() {
+  createError = () => {
     const { errors, touched } = this.state
     /**
      * shortcut to get error message
@@ -42,7 +41,7 @@ export class ToolBuilder<T> {
     }
   }
 
-  createHelp() {
+  createHelp = () => {
     /**
      * a helper
      * @param name name of field

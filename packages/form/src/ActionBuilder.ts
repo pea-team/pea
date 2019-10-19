@@ -9,32 +9,32 @@ export class ActionBuilder<T> {
     private initialValue: State<T>,
   ) {}
 
-  resetForm() {
+  resetForm = () => {
     this.setState(this.initialValue)
   }
 
-  setTouched(touched: Touched<T>) {
+  setTouched = (touched: Touched<T>) => {
     const nextState = produce<State<T>, State<T>>(this.state, draft => {
       draft.touched = touched
     })
     this.setState({ ...nextState })
   }
 
-  setErrros(errors: Errors<T>) {
+  setErrros = (errors: Errors<T>) => {
     const nextState = produce<State<T>, State<T>>(this.state, draft => {
       draft.errors = errors
     })
     this.setState({ ...nextState })
   }
 
-  setValues(values: T) {
+  setValues = (values: T) => {
     const nextState = produce<State<T>, State<T>>(this.state, draft => {
       draft.values = values
     })
     this.setState({ ...nextState })
   }
 
-  setSubmitting(submitting: boolean) {
+  setSubmitting = (submitting: boolean) => {
     const nextState = produce<State<T>, State<T>>(this.state, draft => {
       draft.submitting = submitting
     })

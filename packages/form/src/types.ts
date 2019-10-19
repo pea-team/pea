@@ -1,3 +1,4 @@
+import React from 'react'
 import { HandlerBuilder } from './HandlerBuilder'
 
 export type FieldElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -70,11 +71,10 @@ export interface Result<T> {
 }
 
 export interface Methods<T> {
-  validate?: (values: T) => any
-  onSubmit?: (values: T) => any
-  onError?: (errors: Errors<T>) => any
-  onReset?: () => any
+  validate?: (values: T, { state, actions }: { state: State<T>; actions: Actions<T> }) => any
+  onSubmit?: (values: T, { state, actions }: { state: State<T>; actions: Actions<T> }) => any
+  onError?: (errors: Errors<T>, { state, actions }: { state: State<T>; actions: Actions<T> }) => any
+  onReset?: ({ state, actions }: { state: State<T>; actions: Actions<T> }) => any
 }
 
-export interface IModel<T> extends Methods<T> {
-}
+export interface IModel<T> extends Methods<T> {}

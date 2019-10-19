@@ -22,24 +22,24 @@ export function useForm<T>(Model: ModelType<T>, methods: Methods<T>) {
     submitting: false,
   } as State<T>
   const [state, setState] = useState(initialValue)
-  const handlerBuilder = new HandlerBuilder(state, setState, methods)
   const actionBuilder = new ActionBuilder(state, setState, initialValue)
+  const actions = {
+    setTouched: actionBuilder.setTouched,
+    setValues: actionBuilder.setValues,
+    setErrors: actionBuilder.setErrros,
+    setSubmitting: actionBuilder.setSubmitting,
+    resetForm: actionBuilder.resetForm,
+    setState,
+  } as Actions<T>
+  const handlerBuilder = new HandlerBuilder(state, actions, setState, methods)
   const submitHandler = handlerBuilder.createSubmitHandler()
   const handlers: Handlers = {
     handleBlur: handlerBuilder.createBlurHandler(),
     handleChange: handlerBuilder.createChangeHandler(),
     handleSubmit: submitHandler,
   }
-  const actions: Actions<T> = {
-    setTouched: actionBuilder.setTouched,
-    setValues: actionBuilder.setValues,
-    setErrors: actionBuilder.setErrros,
-    setSubmitting: actionBuilder.setSubmitting,
-    resetForm: actionBuilder.resetForm,
-    submitForm: submitHandler,
-    setState,
-  }
   const toolBuilder = new ToolBuilder(handlers, handlerBuilder, state, actions)
+  actions.submitForm = submitHandler // attach submitHandler to action
   const result: Result<T> = {
     state,
     handlers,
