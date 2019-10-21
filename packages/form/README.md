@@ -1,6 +1,6 @@
 # @peajs/form
 
-> A minimalist design Form for React
+> React Form base on hooks
 
 English | [简体中文](./README.zh-CN.md)
 

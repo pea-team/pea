@@ -3,6 +3,7 @@ import { Errors, Touched, State, ModelType, Handlers, Actions, Result, Methods }
 import { HandlerBuilder } from './HandlerBuilder'
 import { ActionBuilder } from './ActionBuilder'
 import { ToolBuilder } from './ToolBuilder'
+import { Validator } from './Validator'
 
 /**
  * useForm hooks
@@ -34,7 +35,8 @@ export function useForm<T>(Model: ModelType<T>, methods: Methods<T> = {}) {
     setState,
   } as Actions<T>
 
-  const handlerBuilder = new HandlerBuilder(state, actions, setState, methods)
+  const validator = new Validator(Model, state, actions, methods)
+  const handlerBuilder = new HandlerBuilder(state, actions, setState, methods, validator)
   const submitHandler = handlerBuilder.createSubmitHandler()
 
   const handlers: Handlers = {

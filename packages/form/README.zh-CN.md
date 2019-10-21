@@ -1,6 +1,6 @@
 # @peajs/form
 
-> 一个极简主义设计的 React Form
+> React Form base on hooks
 
 [English](./README.md) | 简体中文
 
@@ -41,3 +41,8 @@ export default () => {
 ## License
 
 [MIT License](https://github.com/pea-team/pea/blob/master/LICENSE)
+
+问题
+- 第三方需求
+- 前端功能规划 (产品经理)
+- 社区面试

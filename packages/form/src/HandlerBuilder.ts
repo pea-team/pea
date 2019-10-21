@@ -5,7 +5,7 @@ import set from 'lodash.set'
 import isEqual from 'react-fast-compare'
 
 import { FieldElement, State, Errors, Actions, Methods } from './types'
-import { validateForm } from './utils/validateForm'
+import { Validator } from './Validator'
 import { checkValid } from './utils/checkValid'
 import { touchAll } from './utils/touchAll'
 import { isTouched } from './utils/isTouched'
@@ -16,6 +16,7 @@ export class HandlerBuilder<T> {
     private actions: Actions<T>,
     private setState: any, // TODO: handle any
     private methods: Methods<T>,
+    private validator: Validator<T>,
   ) {}
 
   private updateBeforeSubmit(errors: Errors<T>) {
@@ -59,17 +60,15 @@ export class HandlerBuilder<T> {
   }
 
   createSubmitHandler = () => {
-    const { state, actions, methods } = this
-
     return async (e?: any) => {
       if (e && e.preventDefault) e.preventDefault()
-      const errors = await validateForm(state, actions, methods)
+      const errors = await this.validator.validateForm()
       this.updateBeforeSubmit(errors)
     }
   }
 
   createBlurHandler = (fieldName = '') => {
-    const { state, actions, setState, methods } = this
+    const { state, setState } = this
 
     return async (e: FocusEvent<FieldElement>) => {
       if (e.persist) e.persist()
@@ -78,7 +77,7 @@ export class HandlerBuilder<T> {
       const node = typeof e === 'object' ? e.target : ({} as any)
       const { name = fieldName } = node
 
-      const errors = await validateForm(state, actions, methods)
+      const errors = await this.validator.validateForm()
       const nextState = produce<State<T>, State<T>>(state, draft => {
         draft.touched[name] = true
         draft.errors = errors
@@ -89,7 +88,7 @@ export class HandlerBuilder<T> {
   }
 
   createChangeHandler = (fieldName = '', fieldValue?: any) => {
-    const { state, actions, setState, methods } = this
+    const { state, setState } = this
     return async (e: ChangeEvent<FieldElement> | any) => {
       if (e.persist) e.persist()
       // hack for some custom onChange, eg: Antd Select
@@ -106,7 +105,7 @@ export class HandlerBuilder<T> {
       if (!isTouched(state.touched, name)) return
 
       // setErrors
-      const errors = await validateForm(state, actions, methods)
+      const errors = await this.validator.validateForm()
 
       if (isEqual(errors, state.errors)) return
 

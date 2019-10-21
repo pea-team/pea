@@ -37,7 +37,8 @@ export class ToolBuilder<T> {
      */
     return (name: string): any => {
       if (!touched[name] && !errors[name]) return null
-      return errors[name] ? errors[name] : null
+      const error = get(errors, name)
+      return error || null
     }
   }
 
