@@ -26,10 +26,10 @@ export interface State<T> {
 }
 
 export interface Actions<T> {
-  setTouched(touched: Touched<T>): void
-  setErrors(errors: Errors<T>): void
+  setTouched(fn: (touched: Touched<T>) => void): void
+  setErrors(fn: (errors: Errors<T>) => void): void
+  setValues(fn: (values: T) => void): void
   setSubmitting(isSubmitting: boolean): void
-  setValues(values: T): void
   resetForm(): void
   submitForm(): void
   setState(state: State<T>): void
@@ -49,15 +49,19 @@ export interface Handlers {
     | Promise<any>
 }
 
-export interface NameProps<T = any> {
+export interface NameProps {
   name: string
-  value: T
+  value?: any
   onChange: any
   onBlur?: any
+  type?: string
+  checked?: boolean
 }
 
 export interface NameOptions {
-  onBlur: boolean
+  value?: any
+  type?: string
+  onBlur?: boolean
 }
 
 export interface Result<T> {
@@ -65,7 +69,7 @@ export interface Result<T> {
   handlers: Handlers
   actions: Actions<T>
   handlerBuilder: HandlerBuilder<T>
-  name(name: string, options?: any): any
+  name(name: string, options?: NameOptions): any
   error(name: string): any
   help(name: string): any
 }

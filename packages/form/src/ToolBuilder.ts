@@ -19,11 +19,21 @@ export class ToolBuilder<T> {
      * @param options onBlur options
      */
     return (name: string, options: NameOptions = { onBlur: true }) => {
+      let { type, value } = options
       const props: NameProps = {
-        name: name,
-        value: get(state.values, name),
+        name,
         onChange: handlers.handleChange,
       }
+      if (type) props.type = type
+
+      if (type === 'checkbox') {
+        props.checked = get(state.values, name).includes(value)
+      }
+      if (type === 'radio') {
+        props.checked = get(state.values, name) === value
+      }
+      props.value = value || get(state.values, name)
+
       if (options.onBlur) props.onBlur = handlers.handleBlur
       return props
     }
@@ -36,8 +46,9 @@ export class ToolBuilder<T> {
      * @param name name of field
      */
     return (name: string): any => {
-      if (!touched[name] && !errors[name]) return null
+      const isTouched = get(touched, name)
       const error = get(errors, name)
+      if (!isTouched) return null
       return error || null
     }
   }

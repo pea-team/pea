@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 export { useForm } from './useForm'
 export { HandlerBuilder } from './HandlerBuilder'
 export { PeaForm } from './PeaForm'

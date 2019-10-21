@@ -1,4 +1,4 @@
-import { FocusEvent, ChangeEvent } from 'react'
+import { FocusEvent } from 'react'
 import produce, { original } from 'immer'
 import get from 'lodash.get'
 import set from 'lodash.set'
@@ -67,19 +67,25 @@ export class HandlerBuilder<T> {
     }
   }
 
-  createBlurHandler = (fieldName = '') => {
+  createBlurHandler = (name?: string) => {
     const { state, setState } = this
 
     return async (e: FocusEvent<FieldElement>) => {
-      if (e.persist) e.persist()
+      let fieldName: string
+      if (name) {
+        fieldName = name
+      } else {
+        if (e.persist) e.persist()
 
-      // hack for some custom onChange, eg: Antd Select
-      const node = typeof e === 'object' ? e.target : ({} as any)
-      const { name = fieldName } = node
+        // hack for some custom onChange, eg: Antd Select
+        const node = typeof e === 'object' ? e.target : ({} as any)
+        const { name } = node
+        fieldName = name
+      }
 
       const errors = await this.validator.validateForm()
       const nextState = produce<State<T>, State<T>>(state, draft => {
-        draft.touched[name] = true
+        draft.touched[fieldName] = true
         draft.errors = errors
         draft.valid = checkValid(draft.errors)
       })
@@ -87,22 +93,34 @@ export class HandlerBuilder<T> {
     }
   }
 
-  createChangeHandler = (fieldName = '', fieldValue?: any) => {
+  createChangeHandler = (name?: string) => {
     const { state, setState } = this
-    return async (e: ChangeEvent<FieldElement> | any) => {
-      if (e.persist) e.persist()
-      // hack for some custom onChange, eg: Antd Select
-      const node = typeof e === 'object' ? e.target : {}
-      const { value = fieldValue || e, name = fieldName, type, checked } = node
+    return async (e?: any) => {
+      let fieldName: string
+      let value: any
+
+      if (name) {
+        fieldName = name
+        value = e
+      } else {
+        if (e && e.persist) e.persist()
+
+        // hack for some custom onChange, eg: Antd Select
+        const node = typeof e === 'object' ? e.target : {}
+        const { value: nodeValue, name, type, checked } = node
+        fieldName = name
+
+        value = this.getValue(nodeValue, type, checked, name)
+      }
 
       // setValues first，do not block ui
       const newState = produce<State<T>, State<T>>(state, draft => {
-        set(draft.values as any, name, this.getValue(value, type, checked, name))
+        set(draft.values as any, fieldName, value)
       })
       setState({ ...newState })
 
       // validate only touched
-      if (!isTouched(state.touched, name)) return
+      if (!isTouched(state.touched, fieldName)) return
 
       // setErrors
       const errors = await this.validator.validateForm()

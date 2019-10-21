@@ -1,7 +1,8 @@
 import { Touched } from '../types'
 
 /**
- * make field touched
+ * make field touched 
+ * TODO: handle array
  * @param values state object
  */
 export function touchAll<T>(values: T): Touched<T> {

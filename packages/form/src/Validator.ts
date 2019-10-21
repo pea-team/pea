@@ -1,4 +1,4 @@
-import { validateSync, ValidationError } from 'class-validator'
+import { validateOrReject, ValidationError } from 'class-validator'
 import deepmerge from 'deepmerge'
 import { plainToClass } from 'class-transformer'
 import set from 'lodash.set'
@@ -32,31 +32,38 @@ export class Validator<T> {
     return errors
   }
 
-  validateForm = async (): Promise<Errors<T>> => {
-    let errors: Errors<T> = {}
+  // class-validator validate
+  private async runValidateMeta() {
+    const values: any = plainToClass(this.Model, this.state.values)
+    try {
+      await validateOrReject(values)
+      return {} as Errors<T>
+    } catch (errors) {
+      return this.formatErrorsFromMeta(errors)
+    }
+  }
+
+  private async runValidateFn(): Promise<Errors<T>> {
     const { methods, state, actions } = this
-    const values: any = plainToClass(this.Model, state.values)
-
-    // class-validator validate
-    const validateMetaErrors: ValidationError[] = (validateSync as any)(values)
-
-    errors = this.formatErrorsFromMeta(validateMetaErrors)
-
-    if (!methods.validate) return errors
+    if (!methods.validate) return {}
 
     // function validate
-    let validateFnErrors = methods.validate(values, { state, actions })
+    let validateFnErrors = methods.validate(state.values, { state, actions })
 
     // sync validate
     if (!isPromise(validateFnErrors)) {
-      return deepmerge<Errors<T>>(errors, validateFnErrors)
+      return validateFnErrors
     }
 
     try {
-      const errorData = await validateFnErrors
-      return deepmerge<Errors<T>>(errors, errorData)
+      return await validateFnErrors
     } catch {
-      return errors
+      return {}
     }
+  }
+
+  validateForm = async (): Promise<Errors<T>> => {
+    const [error1, error2] = await Promise.all([this.runValidateMeta(), this.runValidateFn()])
+    return deepmerge<Errors<T>>(error1, error2)
   }
 }

@@ -9,29 +9,27 @@ export class ActionBuilder<T> {
     private initialValue: State<T>,
   ) {}
 
+  private runFn(fn: any, type: string) {
+    const nextState = produce<State<T>, State<T>>(this.state, draft => {
+      fn(draft[type])
+    })
+    this.setState({ ...nextState })
+  }
+
   resetForm = () => {
     this.setState(this.initialValue)
   }
 
-  setTouched = (touched: Touched<T>) => {
-    const nextState = produce<State<T>, State<T>>(this.state, draft => {
-      draft.touched = touched
-    })
-    this.setState({ ...nextState })
+  setTouched = (fn: (touched: Touched<T>) => void) => {
+    this.runFn(fn, 'touched')
   }
 
-  setErrros = (errors: Errors<T>) => {
-    const nextState = produce<State<T>, State<T>>(this.state, draft => {
-      draft.errors = errors
-    })
-    this.setState({ ...nextState })
+  setErrros = (fn: (errors: Errors<T>) => void) => {
+    this.runFn(fn, 'errors')
   }
 
-  setValues = (values: T) => {
-    const nextState = produce<State<T>, State<T>>(this.state, draft => {
-      draft.values = values
-    })
-    this.setState({ ...nextState })
+  setValues = (fn: (values: T) => T) => {
+    this.runFn(fn, 'values')
   }
 
   setSubmitting = (submitting: boolean) => {
