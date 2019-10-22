@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/pea-team/pea/tree/master/packages/observable",
   "devDependencies": {
+    "@types/is-promise": "^2.1.0",
     "@types/jest": "^24.0.18",
     "@types/react": "^16.9.5",
     "@types/react-dom": "^16.9.1",
@@ -41,5 +42,8 @@
     "tsdx": "^0.9.3",
     "tslib": "^1.10.0",
     "typescript": "^3.6.4"
+  },
+  "dependencies": {
+    "is-promise": "^2.1.0"
   }
 }

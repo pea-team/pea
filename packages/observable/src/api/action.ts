@@ -1,5 +1,5 @@
+import isPromise from 'is-promise'
 import { globalState } from '../core/globalState'
-import { isPromise } from '../utils/isPromise'
 import { ActionFn } from '../typings'
 
 export async function action(fn: ActionFn) {
