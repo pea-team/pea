@@ -23,10 +23,38 @@ export class HandlerBuilder<T> {
   private runExcludes(draft: any) {
     const target = Object.getPrototypeOf(this.state.values)
     const excludes = PeaForm.excludeMaps.get(target)
-    if(!excludes) return
+    if (!excludes) return
     for (const item of excludes) {
       if (item.fn(draft.values)) {
         delete draft.values[item.propertyKey]
+      }
+    }
+  }
+
+  private flatObject(obj: any, parentKey = '', result = {}) {
+    for (let key in obj) {
+      if (typeof obj[key] === 'object') {
+        this.flatObject(obj[key], key, result)
+      } else {
+        const cur = parentKey ? `${parentKey}.${key}` : key
+        result[cur] = obj[key]
+      }
+    }
+    return result
+  }
+
+  private checkVisible(draft: any) {
+    // handle visible
+    const flatVisible = this.flatObject(draft.visible)
+
+    for (const key of Object.keys(flatVisible)) {
+      if (flatVisible[key] !== false) continue
+      if (!key.includes('.')) {
+        delete draft.values[key]
+      } else {
+        const arr = key.split('.')
+        const last = arr.pop() as string
+        delete get(draft.values, arr.join('.'))[last]
       }
     }
   }
@@ -44,6 +72,7 @@ export class HandlerBuilder<T> {
       draft.dirty = true
 
       this.runExcludes(draft)
+      this.checkVisible(draft)
 
       if (!isValid && methods.onError) {
         methods.onError(original<any>(draft.errors), { state, actions })
@@ -100,7 +129,7 @@ export class HandlerBuilder<T> {
 
       const errors = await this.validator.validateForm()
       const nextState = produce<State<T>, State<T>>(state, draft => {
-        draft.touched[fieldName] = true
+        set(draft.touched, fieldName, true)
         draft.errors = errors
         draft.valid = checkValid(draft.errors)
       })
@@ -111,27 +140,26 @@ export class HandlerBuilder<T> {
   createChangeHandler = (name?: string) => {
     const { state, setState } = this
     return async (e?: any) => {
-      let fieldName: string
+      let fieldName: string = ''
       let value: any
 
-      if (name) {
-        fieldName = name
-        value = e
-      } else {
+      // hack for some custom onChange, eg: Antd Select
+      if (name) fieldName = name
+
+      if (typeof e === 'object' && e.target) {
         if (e && e.persist) e.persist()
-
-        // hack for some custom onChange, eg: Antd Select
-        const node = typeof e === 'object' ? e.target : {}
-        const { value: nodeValue, name, type, checked } = node
-        fieldName = name
-
+        const { value: nodeValue, name, type, checked } = e.target
+        if (name) fieldName = name
         value = this.getValue(nodeValue, type, checked, name)
+      } else {
+        value = e
       }
 
       // setValues first，do not block ui
       const newState = produce<State<T>, State<T>>(state, draft => {
         set(draft.values as any, fieldName, value)
         this.runExcludes(draft)
+        this.checkVisible(draft)
       })
       setState({ ...newState })
 

@@ -3,30 +3,36 @@ import { HandlerBuilder } from './HandlerBuilder'
 
 export type FieldElement = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 
-export type Errors<T> = {
+export type Errors<T = any> = {
   [K in keyof T]?: T[K] extends object ? Errors<T[K]> : string
 }
 
-export type Touched<T> = {
+export type Touched<T = any> = {
   [K in keyof T]?: T[K] extends object ? Touched<T[K]> : boolean
+}
+
+export type Visible<T = any> = {
+  [K in keyof T]?: T[K] extends object ? Visible<T[K]> : boolean
 }
 
 export interface ModelType<T = any> {
   new (...args: any[]): T
 }
 
-export interface State<T> {
+export interface State<T = any> {
   values: T
   errors: Errors<T>
   touched: Touched<T>
+  visible: Visible<T>
   submitting: boolean
   dirty: boolean
   valid: boolean
   submitCount: number
 }
 
-export interface Actions<T> {
+export interface Actions<T = any> {
   setTouched(fn: (touched: Touched<T>) => void): void
+  setVisible(fn: (visible: Visible<T>) => void): void
   setErrors(fn: (errors: Errors<T>) => void): void
   setValues(fn: (values: T) => void): void
   setSubmitting(isSubmitting: boolean): void
@@ -64,7 +70,7 @@ export interface NameOptions {
   onBlur?: boolean
 }
 
-export interface Result<T> {
+export interface Result<T = any> {
   state: State<T>
   handlers: Handlers
   actions: Actions<T>
@@ -74,7 +80,7 @@ export interface Result<T> {
   help(name: string): any
 }
 
-export interface Methods<T> {
+export interface Methods<T = any> {
   validate?: (values: T, { state, actions }: { state: State<T>; actions: Actions<T> }) => any
   onSubmit?: (values: T, { state, actions }: { state: State<T>; actions: Actions<T> }) => any
   onError?: (errors: Errors<T>, { state, actions }: { state: State<T>; actions: Actions<T> }) => any

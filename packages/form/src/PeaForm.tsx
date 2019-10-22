@@ -23,7 +23,6 @@ export interface ExcludeItem {
 
 export class PeaForm {
   static excludeMaps = new WeakMap<object, ExcludeItem[]>()
-
   static helpCreator: any = null
   static nameCreator: any = null
   static errorCreator: any = null

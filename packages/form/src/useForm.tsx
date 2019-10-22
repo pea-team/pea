@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Errors, Touched, State, ModelType, Handlers, Actions, Result, Methods } from './types'
+import { State, ModelType, Handlers, Actions, Result, Methods } from './types'
 import { HandlerBuilder } from './HandlerBuilder'
 import { ActionBuilder } from './ActionBuilder'
 import { ToolBuilder } from './ToolBuilder'
@@ -15,8 +15,9 @@ export function useForm<T>(Model: ModelType<T>, methods: Methods<T> = {}) {
 
   const initialValue = {
     values: instance,
-    touched: {} as Touched<T>,
-    errors: {} as Errors<T>,
+    touched: {},
+    errors: {},
+    visible: {},
     dirty: false,
     valid: true,
     submitCount: 0,
@@ -30,6 +31,7 @@ export function useForm<T>(Model: ModelType<T>, methods: Methods<T> = {}) {
     setTouched: actionBuilder.setTouched,
     setValues: actionBuilder.setValues,
     setErrors: actionBuilder.setErrros,
+    setVisible: actionBuilder.setVisible,
     setSubmitting: actionBuilder.setSubmitting,
     resetForm: actionBuilder.resetForm,
     setState,
