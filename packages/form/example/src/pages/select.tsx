@@ -1,11 +1,8 @@
-import 'reflect-metadata'
 import React from 'react'
 import { useForm } from '@peajs/form'
 
-
 class User {
-  username = ''
-  password = ''
+  selected = 'audi'
 }
 
 export default () => {
@@ -17,8 +14,14 @@ export default () => {
 
   return (
     <form onSubmit={handlers.handleSubmit}>
-      <input placeholder="username" {...name('username')} />
-      <input placeholder="password" {...name('password')} />
+      <select {...name('selected')}>
+        <option value="">任意</option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="opel">Opel</option>
+        <option value="audi">Audi</option>
+      </select>
+
       <button type="submit">Submit</button>
     </form>
   )

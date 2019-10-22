@@ -2,10 +2,16 @@ import 'reflect-metadata'
 import React from 'react'
 import { useForm } from '@peajs/form'
 
+class Profile {
+  name: string
+  intro: string
+}
 
 class User {
-  username = ''
-  password = ''
+  profile: Profile = {
+    name: 'James',
+    intro: 'hey guys',
+  }
 }
 
 export default () => {
@@ -17,8 +23,8 @@ export default () => {
 
   return (
     <form onSubmit={handlers.handleSubmit}>
-      <input placeholder="username" {...name('username')} />
-      <input placeholder="password" {...name('password')} />
+      <input {...name('profile.name')} />
+      <input {...name('profile.intro')} />
       <button type="submit">Submit</button>
     </form>
   )

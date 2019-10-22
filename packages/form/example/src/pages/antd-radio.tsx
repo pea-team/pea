@@ -1,11 +1,9 @@
-import 'reflect-metadata'
 import React from 'react'
+import { Radio, Button } from 'antd'
 import { useForm } from '@peajs/form'
 
-
 class User {
-  username = ''
-  password = ''
+  removed = false
 }
 
 export default () => {
@@ -17,9 +15,12 @@ export default () => {
 
   return (
     <form onSubmit={handlers.handleSubmit}>
-      <input placeholder="username" {...name('username')} />
-      <input placeholder="password" {...name('password')} />
-      <button type="submit">Submit</button>
+      <Radio.Group {...name('removed')}>
+        <Radio value={true}>应该</Radio>
+        <Radio value={false}>不应该</Radio>
+      </Radio.Group>
+
+      <Button htmlType="submit">Submit</Button>
     </form>
   )
 }

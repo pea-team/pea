@@ -1,14 +1,13 @@
-import 'reflect-metadata'
 import React from 'react'
 import { useForm } from '@peajs/form'
-
+import { TextField } from '@material-ui/core'
 
 class User {
-  username = ''
+  username = 'foo'
   password = ''
 }
 
-export default () => {
+export default function App() {
   const { handlers, name } = useForm(User, {
     onSubmit(values) {
       alert(JSON.stringify(values, null, 2))
@@ -17,8 +16,12 @@ export default () => {
 
   return (
     <form onSubmit={handlers.handleSubmit}>
-      <input placeholder="username" {...name('username')} />
-      <input placeholder="password" {...name('password')} />
+      <div>
+        <TextField label="username" {...name('username')} />
+      </div>
+      <div>
+        <TextField label="password" {...name('password')} />
+      </div>
       <button type="submit">Submit</button>
     </form>
   )

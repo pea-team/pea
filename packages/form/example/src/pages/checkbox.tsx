@@ -1,11 +1,8 @@
-import 'reflect-metadata'
 import React from 'react'
 import { useForm } from '@peajs/form'
 
-
 class User {
-  username = ''
-  password = ''
+  checks = ['horns']
 }
 
 export default () => {
@@ -17,8 +14,15 @@ export default () => {
 
   return (
     <form onSubmit={handlers.handleSubmit}>
-      <input placeholder="username" {...name('username')} />
-      <input placeholder="password" {...name('password')} />
+      <span>
+        <input id="scales" {...name('checks', { type: 'checkbox', value: 'scales' })} />
+        <label htmlFor="scales">Scales</label>
+      </span>
+      <span>
+        <input id="horns" {...name('checks', { type: 'checkbox', value: 'horns' })} />
+        <label htmlFor="horns">Horns</label>
+      </span>
+
       <button type="submit">Submit</button>
     </form>
   )
