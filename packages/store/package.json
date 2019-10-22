@@ -1,6 +1,6 @@
 {
   "name": "@peajs/store",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "State management for Pea",
   "main": "dist/index.js",
   "module": "dist/store.esm.js",
@@ -46,7 +46,7 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@peajs/observable": "^0.1.0",
+    "@peajs/observable": "^0.1.1",
     "fast-deep-equal": "^2.0.1",
     "lodash.debounce": "^4.0.8"
   }

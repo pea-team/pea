@@ -1,6 +1,6 @@
 {
   "name": "@peajs/router",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.js",
   "module": "dist/router.esm.js",
   "typings": "dist/index.d.ts",
@@ -43,7 +43,7 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@peajs/store": "^0.1.0",
+    "@peajs/store": "^0.1.1",
     "path-parser": "^4.2.0"
   }
 }
