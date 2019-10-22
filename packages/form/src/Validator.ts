@@ -1,9 +1,9 @@
 import { validateOrReject, ValidationError } from 'class-validator'
+import isPromise from 'is-promise'
 import deepmerge from 'deepmerge'
 import { plainToClass } from 'class-transformer'
 import set from 'lodash.set'
 import { Errors, State, Actions, Methods } from './types'
-import { isPromise } from './utils/isPromise'
 
 export class Validator<T> {
   constructor(
