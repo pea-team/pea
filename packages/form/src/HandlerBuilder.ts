@@ -9,15 +9,27 @@ import { Validator } from './Validator'
 import { checkValid } from './utils/checkValid'
 import { touchAll } from './utils/touchAll'
 import { isTouched } from './utils/isTouched'
+import { PeaForm } from './PeaForm'
 
 export class HandlerBuilder<T> {
   constructor(
     private state: State<T>,
     private actions: Actions<T>,
-    private setState: any, // TODO: handle any
+    private setState: any,
     private methods: Methods<T>,
     private validator: Validator<T>,
   ) {}
+
+  private runExcludes(draft: any) {
+    const target = Object.getPrototypeOf(this.state.values)
+    const excludes = PeaForm.excludeMaps.get(target)
+    if(!excludes) return
+    for (const item of excludes) {
+      if (item.fn(draft.values)) {
+        delete draft.values[item.propertyKey]
+      }
+    }
+  }
 
   private updateBeforeSubmit(errors: Errors<T>) {
     const { state, methods, actions, setState } = this
@@ -31,6 +43,8 @@ export class HandlerBuilder<T> {
       draft.submitting = true
       draft.dirty = true
 
+      this.runExcludes(draft)
+
       if (!isValid && methods.onError) {
         methods.onError(original<any>(draft.errors), { state, actions })
       }
@@ -38,6 +52,7 @@ export class HandlerBuilder<T> {
         methods.onSubmit(draft.values, { state, actions })
       }
     })
+
     setState({ ...nextState })
   }
 
@@ -116,6 +131,7 @@ export class HandlerBuilder<T> {
       // setValues first，do not block ui
       const newState = produce<State<T>, State<T>>(state, draft => {
         set(draft.values as any, fieldName, value)
+        this.runExcludes(draft)
       })
       setState({ ...newState })
 
