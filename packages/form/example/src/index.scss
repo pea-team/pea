@@ -12,6 +12,7 @@ body {
 }
 
 .no-ui {
+
   input,
   input[type="text"],
   input[type="password"],
@@ -91,4 +92,17 @@ form {
 .nav a.selected {
   background: #3cb6a4;
   color: #f0f0f0;
+}
+.title {
+  text-transform: capitalize;
+}
+
+.source-code {
+  display: inline-block;
+  color: #3cb6a4;
+  vertical-align: middle;
+  i {
+    margin-right: 4px;
+  }
+  margin-bottom: 20px;
 }

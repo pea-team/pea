@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react'
+import { Icon } from 'antd'
 import { Link } from '@peajs/router'
 
 import '../index.scss'
@@ -49,11 +50,22 @@ const routes: Item[] = [
     type: 'password-confirm',
   },
   {
+    type: 'linkage',
+  },
+  {
     type: 'material-ui',
     ui: true,
   },
   {
     type: 'antd',
+    ui: true,
+  },
+  {
+    type: 'field',
+    ui: true,
+  },
+  {
+    type: 'item',
     ui: true,
   },
   {
@@ -70,15 +82,30 @@ const routes: Item[] = [
   },
 ]
 
+const codeBaseUrl = 'https://github.com/pea-team/pea/blob/master/packages/form/example/src/pages/'
+
 const App: FC = ({ children }) => {
   const [title, setTitle] = useState(location.pathname.replace('/', ''))
-  const item  = routes.find(i => i.type === title) as Item
-  const [ui, setIsUI] = useState(item?!!item.ui: false)
+  const item = routes.find(i => i.type === title) as Item
 
   function clickItem(item: Item) {
     setTitle(item.type !== '' ? item.type : 'basic')
-    setIsUI(!!item.ui)
   }
+
+  function getUrl() {
+    let type: string
+    if (!item) {
+      type = 'index.tsx'
+    } else {
+      type = item.type + '.tsx'
+    }
+    return codeBaseUrl + type
+  }
+
+  function isUI() {
+    return (item && item.ui) || false
+  }
+
   return (
     <div>
       <div className="nav">
@@ -91,8 +118,12 @@ const App: FC = ({ children }) => {
         ))}
       </div>
 
-      <div className={`card ${ui ? '' : 'no-ui'}`}>
-        <h2>{title}</h2>
+      <div className={`card ${isUI() ? '' : 'no-ui'}`}>
+        <h1 className="title">{title || 'basic'}</h1>
+        <a className="source-code" href={getUrl()} target="_blank" rel="noopener noreferrer">
+          <Icon type="code" />
+          Source Code
+        </a>
         {children}
       </div>
     </div>
