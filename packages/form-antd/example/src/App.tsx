@@ -3,7 +3,6 @@ import { Icon } from 'antd'
 import { Link } from '@peajs/router'
 
 import '../index.scss'
-import 'antd/es/form/style'
 
 interface Item {
   type: string

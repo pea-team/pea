@@ -1,3 +1,4 @@
+import 'antd/es/form/style'
 export * from '@peajs/form'
 export * from './Form'
 export * from './Item'
