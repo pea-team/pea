@@ -1,3 +1,12 @@
+---
+id: error-message
+title: 错误信息
+sidebar_label: 错误信息
+---
+
+`@peajs/form` 使用装饰器来校验字段：
+
+```js
 import React from 'react'
 import { useForm } from '@peajs/form'
 import { IsNotEmpty } from 'class-validator'
@@ -27,3 +36,4 @@ export default () => {
     </form>
   )
 }
+```

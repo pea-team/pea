@@ -1,8 +1,7 @@
-import 'reflect-metadata'
 import React from 'react'
-import { IsNotEmpty } from 'class-validator'
 import { useForm, Form, Item } from '@peajs/form-antd'
 
+import { IsNotEmpty } from 'class-validator'
 class User {
   @IsNotEmpty()
   username = ''

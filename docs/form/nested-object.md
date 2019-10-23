@@ -1,17 +1,25 @@
 ---
-id: array
-title: 数组
-sidebar_label: 数组
+id: nested-object
+title: 嵌套对象
+sidebar_label: 嵌套对象
 ---
 
-`@peajs/form` 默认支持数组，使用 Lodash-like 用法设置 name:
+`@peajs/form` 默认支持嵌套对象，使用 Lodash-like 用法设置 name:
 
 ```js
 import React from 'react'
 import { useForm } from '@peajs/form'
 
+class Profile {
+  name: string
+  intro: string
+}
+
 class User {
-  friends = ['Rose', 'Curry']
+  profile: Profile = {
+    name: 'James',
+    intro: 'hey guys',
+  }
 }
 
 export default () => {
@@ -23,8 +31,8 @@ export default () => {
 
   return (
     <form onSubmit={handlers.handleSubmit}>
-      <input {...name('friends[0]')} />
-      <input {...name('friends[1]')} />
+      <input {...name('profile.name')} />
+      <input {...name('profile.intro')} />
       <button type="submit">Submit</button>
     </form>
   )

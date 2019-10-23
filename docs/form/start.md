@@ -1,29 +1,41 @@
+---
+id: start
+title: 快速上手
+sidebar_label: 快速上手
+---
+
+## 安装
+
+```bash
+npm i @peajs/form
+```
+
+## 使用
+
+下面代码展示 `@peajs/form` 的基本用法：
+
+```js
 import React from 'react'
 import { useForm } from '@peajs/form'
-import { IsNotEmpty } from 'class-validator'
 
 class User {
-  @IsNotEmpty({ message: 'require username' })
   username = 'foo'
-
-  @IsNotEmpty()
   password = ''
 }
 
 export default () => {
-  const { handlers, name, error } = useForm(User, {
+  const { handlers, name } = useForm(User, {
     onSubmit(values) {
-      alert(JSON.stringify(values, null, 2))
+      console.log('values:', values)
     },
   })
 
   return (
     <form onSubmit={handlers.handleSubmit}>
       <input {...name('username')} />
-      <div className="field-error">{error('username')}</div>
       <input {...name('password')} />
-      <div className="field-error">{error('password')}</div>
       <button type="submit">Submit</button>
     </form>
   )
 }
+```

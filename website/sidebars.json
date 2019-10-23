@@ -44,10 +44,14 @@
       "store/ts",
       "store/dir"
     ],
-    "表单": ["doc3"],
-    "弹窗": ["modal/intro", "modal/antd"],
-    "自定义webpack配置": ["webpack/intro", "webpack/plugin"],
-    "例子": ["doc3"],
-    "FAQ": ["faq"]
+    "表单": [
+      "form/start",
+      "form/array",
+      "form/nested-object",
+      "form/validation",
+      "form/async-validation",
+      "form/error-message",
+      "form/antd"
+    ]
   }
 }

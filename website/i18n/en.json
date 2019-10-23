@@ -53,26 +53,33 @@
         "title": "FAQ",
         "sidebar_label": "FAQ"
       },
+      "form/antd": {
+        "title": "使用 Ant Design",
+        "sidebar_label": "使用 Ant Design"
+      },
       "form/array": {
-        "title": "form/array"
+        "title": "数组",
+        "sidebar_label": "数组"
       },
-      "form/controlled": {
-        "title": "form/controlled"
+      "form/async-validation": {
+        "title": "异步校验",
+        "sidebar_label": "异步校验"
       },
-      "form/intro": {
-        "title": "form/intro"
+      "form/error-message": {
+        "title": "错误信息",
+        "sidebar_label": "错误信息"
       },
-      "form/nested-objects": {
-        "title": "form/nested-objects"
+      "form/nested-object": {
+        "title": "嵌套对象",
+        "sidebar_label": "嵌套对象"
       },
-      "form/README": {
-        "title": "form/README"
+      "form/start": {
+        "title": "快速上手",
+        "sidebar_label": "快速上手"
       },
-      "form/uncontrolled": {
-        "title": "form/uncontrolled"
-      },
-      "form/validate": {
-        "title": "form/validate"
+      "form/validation": {
+        "title": "校验",
+        "sidebar_label": "校验"
       },
       "graphql/basic": {
         "title": "简介",
@@ -272,11 +279,7 @@
       "网络请求(Rest)": "网络请求(Rest)",
       "网络请求(GraphQL)": "网络请求(GraphQL)",
       "状态管理": "状态管理",
-      "表单": "表单",
-      "弹窗": "弹窗",
-      "自定义webpack配置": "自定义webpack配置",
-      "例子": "例子",
-      "FAQ": "FAQ"
+      "表单": "表单"
     }
   },
   "pages-strings": {

@@ -1,3 +1,12 @@
+---
+id: validation
+title: 校验
+sidebar_label: 校验
+---
+
+`@peajs/form` 使用装饰器来校验字段：
+
+```js
 import React from 'react'
 import { useForm } from '@peajs/form'
 import { IsNotEmpty } from 'class-validator'
@@ -27,3 +36,4 @@ export default () => {
     </form>
   )
 }
+```

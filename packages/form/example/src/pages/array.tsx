@@ -1,9 +1,8 @@
-import 'reflect-metadata'
 import React from 'react'
 import { useForm } from '@peajs/form'
 
 class User {
-  friends: string[] = ['Rose', 'curry']
+  friends = ['Rose', 'Curry']
 }
 
 export default () => {
