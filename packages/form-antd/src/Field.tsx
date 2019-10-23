@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react'
+import React, { FC, useContext, Fragment } from 'react'
 import get from 'lodash.get'
 import { FormContext } from './Form'
 
@@ -19,7 +19,8 @@ export const Field: FC<FieldProps> = ({ name, children }) => {
   props.value = get(state.values, name)
 
   const visible = get(state.visible, name)
-  if (visible === false) return null
 
-  return React.cloneElement(children as any, props)
+  if (!children || visible === false) return null
+
+  return <Fragment>{React.cloneElement(children as any, props)}</Fragment>
 }

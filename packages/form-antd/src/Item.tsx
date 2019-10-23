@@ -5,7 +5,6 @@ import { FormItemProps } from 'antd/lib/form'
 import { Result } from '@peajs/form'
 import { FormContext } from './Form'
 
-// const types = ['text', 'password', 'number', 'radio', 'checkbox']
 const FormItem = Form.Item
 
 interface ItemProps extends FormItemProps {
@@ -48,7 +47,7 @@ export const Item: FC<ItemProps> = props => {
   fieldProps.value = get(state.values, name)
 
   const visible = get(state.visible, name)
-  if (visible === false) return null
+  if (!children || visible === false) return null
   return (
     <FormItem {...itemProps} {...help(name, result)}>
       {React.cloneElement(children as any, fieldProps)}
