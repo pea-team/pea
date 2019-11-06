@@ -25,7 +25,7 @@ Then open：http://localhost:3000
 
 ## Scripts
 
-- `npm start`
+- `npm run dev`
 - `npm test`
 - `npm build`
 
