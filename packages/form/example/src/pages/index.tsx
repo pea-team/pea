@@ -1,7 +1,7 @@
 import 'reflect-metadata'
 import React from 'react'
 // import { useForm } from '@peajs/form'
-import { useForm } from '../../../src'
+import { useForm } from '../src'
 
 class User {
   username = 'Jack'
@@ -11,6 +11,7 @@ class User {
 export default () => {
   const { handlers, name } = useForm(User, {
     initValues(values) {
+      console.log('init.........');
       return {
         ...values,
         username: 'new name',

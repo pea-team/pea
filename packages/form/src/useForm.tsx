@@ -5,6 +5,7 @@ import { HandlerBuilder } from './HandlerBuilder'
 import { ActionBuilder } from './ActionBuilder'
 import { ToolBuilder } from './ToolBuilder'
 import { Validator } from './Validator'
+import { useIsMounted } from './utils/useIsMounted'
 
 /**
  * useForm hooks
@@ -13,10 +14,8 @@ import { Validator } from './Validator'
  */
 export function useForm<T>(Model: ModelType<T>, methods: Methods<T> = {}) {
   const instance = new Model()
-  const values = !methods.initValues ? instance : deepmerge(instance, methods.initValues(instance) || {})
-
+  const isMounted = useIsMounted()
   const initialValue = {
-    values,
     touched: {},
     errors: {},
     visible: {},
@@ -25,6 +24,12 @@ export function useForm<T>(Model: ModelType<T>, methods: Methods<T> = {}) {
     submitCount: 0,
     submitting: false,
   } as State<T>
+
+  if (!isMounted) {
+    initialValue.values = !methods.initValues
+      ? instance
+      : deepmerge<T>(instance, methods.initValues(instance) || {})
+  }
 
   const [state, setState] = useState(initialValue)
   const actionBuilder = new ActionBuilder(state, setState, initialValue)
