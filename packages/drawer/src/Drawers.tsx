@@ -4,6 +4,8 @@ import { observe } from '@peajs/store'
 import { drawerStore } from './drawerStore'
 import { DrawerConfig } from './typings'
 
+import 'antd/es/drawer/style'
+
 const close = (name: string) => {
   drawerStore.close(name)
 }

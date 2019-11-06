@@ -13,18 +13,15 @@ interface Drawers {
 export const drawerStore = createStore({
   drawers: {} as Drawers,
   open(name: string, data?: any) {
-    drawerStore.drawers[name] = {
-      name,
-      data,
-      visible: true,
+    if (!drawerStore.drawers[name]) {
+      drawerStore.drawers[name] = { name } as DrawerInstnce
     }
+
+    drawerStore.drawers[name].data = data
+    drawerStore.drawers[name].visible = true
   },
 
   close(name: string) {
     drawerStore.drawers[name].visible = false
-  },
-
-  getDrawer(name: string) {
-    return drawerStore.drawers[name]
   },
 })
