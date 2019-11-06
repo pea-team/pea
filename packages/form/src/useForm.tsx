@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import deepmerge from 'deepmerge'
 import { State, ModelType, Handlers, Actions, Result, Methods } from './types'
 import { HandlerBuilder } from './HandlerBuilder'
@@ -14,8 +14,8 @@ import { useIsMounted } from './utils/useIsMounted'
  */
 export function useForm<T>(Model: ModelType<T>, methods: Methods<T> = {}) {
   const instance = new Model()
-  const isMounted = useIsMounted()
-  const initialValue = {
+  const initialValue = useRef<State<T>>({
+    values: instance,
     touched: {},
     errors: {},
     visible: {},
@@ -23,16 +23,17 @@ export function useForm<T>(Model: ModelType<T>, methods: Methods<T> = {}) {
     valid: true,
     submitCount: 0,
     submitting: false,
-  } as State<T>
+  })
+  const isMounted = useIsMounted()
 
   if (!isMounted) {
-    initialValue.values = !methods.initValues
+    initialValue.current.values = !methods.initValues
       ? instance
       : deepmerge<T>(instance, methods.initValues(instance) || {})
   }
 
-  const [state, setState] = useState(initialValue)
-  const actionBuilder = new ActionBuilder(state, setState, initialValue)
+  const [state, setState] = useState(initialValue.current)
+  const actionBuilder = new ActionBuilder(state, setState, initialValue.current)
 
   const actions = {
     setTouched: actionBuilder.setTouched,

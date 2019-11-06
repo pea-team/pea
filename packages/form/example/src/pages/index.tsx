@@ -9,9 +9,9 @@ class User {
 }
 
 export default () => {
-  const { handlers, name } = useForm(User, {
+  const { handlers, name, actions, state } = useForm(User, {
     initValues(values) {
-      console.log('init.........');
+      console.log('init.........')
       return {
         ...values,
         username: 'new name',
@@ -25,9 +25,13 @@ export default () => {
 
   return (
     <form onSubmit={handlers.handleSubmit}>
+      <pre>{JSON.stringify(state, null, 2)}</pre>
       <input placeholder="username" {...name('username')} />
       <input placeholder="password" {...name('password')} />
       <button type="submit">Submit</button>
+      <button type="button" onClick={actions.resetForm}>
+        Reset
+      </button>
     </form>
   )
 }
