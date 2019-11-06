@@ -1,6 +1,6 @@
 {
   "name": "@peajs/form-antd",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -50,6 +50,6 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@peajs/form": "^0.2.4"
+    "@peajs/form": "^0.2.5"
   }
 }
