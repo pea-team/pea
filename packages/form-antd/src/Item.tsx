@@ -49,7 +49,7 @@ export const Item: FC<ItemProps> = props => {
   const visible = get(state.visible, name)
   if (!children || visible === false) return null
   return (
-    <FormItem {...itemProps} {...help(name, result)}>
+    <FormItem {...help(name, result)} {...itemProps}>
       {React.cloneElement(children as any, fieldProps)}
     </FormItem>
   )

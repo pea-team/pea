@@ -5,7 +5,6 @@ import { IsNotEmpty } from 'class-validator'
 import { useForm, Form, Item, Field } from '../src'
 // import { useForm, Form, Item, Field } from '@peajs/form-antd'
 
-
 class User {
   @IsNotEmpty()
   username = ''
@@ -30,7 +29,7 @@ export default () => {
       <Item label="Username" name="username" required>
         <Input />
       </Item>
-      <Item label="password" name="password">
+      <Item label="password" name="password" hasFeedback={false}>
         <InputNumber />
       </Item>
       <button type="submit">Submit</button>
