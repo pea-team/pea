@@ -1,8 +1,10 @@
 import React, { ComponentType, Fragment } from 'react'
 import { observe } from '@peajs/store'
-import { DefaultModalContainer } from './DefaultModalContainer'
+import { Modal } from 'antd'
 import { modalStore } from './modalStore'
 import { ModalConfig } from './typings'
+
+import 'antd/es/modal/style'
 
 const handleCancel = (name: string) => {
   modalStore.close(name)
@@ -16,9 +18,7 @@ const isVisible = (name: string) => {
 export const Modals: ComponentType<{ config: ModalConfig }> = observe<{ config: ModalConfig }>(
   ({ config }) => {
     if (!config) return null
-    const { ModalContainer } = modalStore
 
-    const Modal = ModalContainer || DefaultModalContainer
     return (
       <Fragment>
         {config.map(({ name, component }) => {

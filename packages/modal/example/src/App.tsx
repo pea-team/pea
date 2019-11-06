@@ -1,10 +1,8 @@
 import React from 'react'
-// import { Modal } from 'antd'
-import { Modals, ModalConfig, modalStore } from '../src'
+
+import { Modals, ModalConfig, modalStore } from './src'
 
 import 'antd/dist/antd.css'
-
-// modalStore.setModalContainer(Modal)
 
 const About = () => (
   <span>
@@ -27,7 +25,7 @@ const config: ModalConfig = [
 export default () => (
   <div>
     <Modals config={config} />
-    <span>Hi, Dahlia</span>
-    <button onClick={() => modalStore.open('about')}>open</button>
+    <span>Hi, Pea</span>
+    <button onClick={() => modalStore.open('about', { foo: 'bar' })}>open</button>
   </div>
 )

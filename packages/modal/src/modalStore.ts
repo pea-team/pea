@@ -12,23 +12,16 @@ interface Modals {
 
 export const modalStore = createStore({
   modals: {} as Modals,
-  ModalContainer: null,
-  setModalContainer(cmp: any) {
-    modalStore.ModalContainer = cmp
-  },
   open(name: string, data?: any) {
-    modalStore.modals[name] = {
-      name,
-      data,
-      visible: true,
+    if (!modalStore.modals[name]) {
+      modalStore.modals[name] = { name } as ModalInstnce
     }
+
+    modalStore.modals[name].data = data
+    modalStore.modals[name].visible = true
   },
 
   close(name: string) {
     modalStore.modals[name].visible = false
-  },
-
-  getModal(name: string) {
-    return modalStore.modals[name]
   },
 })

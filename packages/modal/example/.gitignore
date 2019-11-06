@@ -18,11 +18,6 @@
 .env.test.local
 .env.production.local
 
-# vscode
-.history/
-
-.dahlia/
-
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
