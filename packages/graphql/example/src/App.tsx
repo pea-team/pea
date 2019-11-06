@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import gql from 'gql-tag'
-import { createStore, observe } from 'dahlia-store'
+import { createStore, observe } from '@peajs/store'
 
 import {
   config,
@@ -144,7 +144,7 @@ const store = createStore({
 
 const UseQueryById = observe(() => {
   const { loading, data, error, refetch } = useQuery<any>(GET_USER_BY_ID, {
-    name: 'getUserById',
+    // name: 'getUserById',
     variables: { _id: store._id },
     deps: [store._id],
   })
@@ -160,7 +160,7 @@ const UseQueryById = observe(() => {
       </button>
       <button
         onClick={() =>
-          fetcher.getUserById.refetch({ variables: { _id: '57bb44dd21d2befb7ca3f004' } })
+          fetcher[GET_USER_BY_ID].refetch({ variables: { _id: '57bb44dd21d2befb7ca3f004' } })
         }
       >
         refetch with fetcher

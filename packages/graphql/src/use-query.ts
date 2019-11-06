@@ -36,9 +36,8 @@ export function useQuery<T = any>(input: string, options: Options = {}) {
     fetchData(options)
 
     // store refetch fn to fetcher
-    if (options && options.name) {
-      fetcher[options.name] = { refetch }
-    }
+    console.log('options.name || input:', options.name || input)
+    fetcher[options.name || input] = { refetch }
 
     return () => {
       unmounted = true
