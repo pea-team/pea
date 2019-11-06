@@ -81,6 +81,7 @@ export interface Result<T = any> {
 }
 
 export interface Methods<T = any> {
+  initValues?: (instance: T) => T
   validate?: (values: T, { state, actions }: { state: State<T>; actions: Actions<T> }) => any
   onSubmit?: (values: T, { state, actions }: { state: State<T>; actions: Actions<T> }) => any
   onError?: (errors: Errors<T>, { state, actions }: { state: State<T>; actions: Actions<T> }) => any

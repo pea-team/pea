@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import deepmerge from 'deepmerge'
 import { State, ModelType, Handlers, Actions, Result, Methods } from './types'
 import { HandlerBuilder } from './HandlerBuilder'
 import { ActionBuilder } from './ActionBuilder'
@@ -12,9 +13,10 @@ import { Validator } from './Validator'
  */
 export function useForm<T>(Model: ModelType<T>, methods: Methods<T> = {}) {
   const instance = new Model()
+  const values = !methods.initValues ? instance : deepmerge(instance, methods.initValues(instance) || {})
 
   const initialValue = {
-    values: instance,
+    values,
     touched: {},
     errors: {},
     visible: {},

@@ -1,15 +1,22 @@
 import 'reflect-metadata'
 import React from 'react'
-import { useForm } from '@peajs/form'
-
+// import { useForm } from '@peajs/form'
+import { useForm } from '../../../src'
 
 class User {
-  username = ''
+  username = 'Jack'
   password = ''
 }
 
 export default () => {
   const { handlers, name } = useForm(User, {
+    initValues(values) {
+      return {
+        ...values,
+        username: 'new name',
+        password: '1111',
+      }
+    },
     onSubmit(values) {
       alert(JSON.stringify(values, null, 2))
     },
