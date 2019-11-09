@@ -1,5 +1,3 @@
-import { GraphQLClient } from '@peajs/graphql-client'
-import { SubscriptionClient } from 'subscriptions-transport-ws'
 export interface Variables {
   [key: string]: any
 }
@@ -8,33 +6,39 @@ export type Refetch = <T>(options?: Options) => Promise<T>
 
 export type Deps = ReadonlyArray<any>
 
-export interface Options {
+export interface Options<T = any> {
   name?: string
   variables?: Variables
   deps?: Deps
   headers?: HeadersInit
+  data?: T
+  onChange?(result: Result<T>): any
 }
 
 export type Mutate = (variables: Variables, options?: Options) => any
 
-export interface QueryResult<T> {
+export interface FetcherItem<T = any> {
+  refetch: Refetch
+  result: Result<T>
+}
+
+export interface Fetcher<T = any> {
+  [key: string]: FetcherItem<T>
+}
+
+export interface Result<T = any> {
   loading: boolean
   data: T
   error: any
+}
+
+export interface QueryResult<T> extends Result<T> {
   refetch: Refetch
 }
 
-export interface MutateResult<T> {
-  loading: boolean
-  data: T
-  error: any
-}
+export interface MutateResult<T> extends Result<T> {}
 
-export interface SubscribeResult<T> {
-  loading: boolean
-  data: T
-  error: any
-}
+export interface SubscribeResult<T> extends Result<T> {}
 
 export type RequestInterceptor = (config: Options) => any
 export type RequestErrorInterceptor = (config: any) => any
@@ -53,12 +57,6 @@ export interface GraphqlConfig {
   subscriptionsEndpoint?: string
   interceptor?: Interceptor
   headers?: HeadersInit
-}
-
-export interface Fetcher {
-  [key: string]: {
-    refetch: Refetch
-  }
 }
 
 export interface SubscriptionOption {
