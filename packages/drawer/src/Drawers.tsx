@@ -1,25 +1,28 @@
 import React, { ComponentType, Fragment } from 'react'
 import { Drawer } from 'antd'
-import { observe } from '@peajs/store'
-import { drawerStore } from './drawerStore'
-import { DrawerConfig } from './typings'
+import { useStore } from 'stook'
+import { DrawerConfig, IDrawers } from './typings'
+import { PEA_DRAWER } from './constant'
 
 import 'antd/es/drawer/style'
-
-const close = (name: string) => {
-  drawerStore.close(name)
-}
-
-const isVisible = (name: string) => {
-  const { drawers } = drawerStore
-  return drawers[name] && drawers[name].visible
-}
 
 interface Props {
   config: DrawerConfig
 }
 
-export const Drawers: ComponentType<Props> = observe<Props>(({ config }) => {
+export const Drawers: ComponentType<Props> = ({ config }) => {
+  const [drawers, updateDrawers] = useStore<IDrawers>(PEA_DRAWER, {})
+
+  const close = (name: string) => {
+    updateDrawers(drawers => {
+      drawers[name].visible = false
+    })
+  }
+
+  const isVisible = (name: string) => {
+    return drawers[name] && drawers[name].visible
+  }
+
   if (!config) return null
 
   return (
@@ -41,4 +44,4 @@ export const Drawers: ComponentType<Props> = observe<Props>(({ config }) => {
       })}
     </Fragment>
   )
-})
+}

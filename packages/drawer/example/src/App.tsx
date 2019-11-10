@@ -1,15 +1,15 @@
 import React from 'react'
+import { Button } from 'antd'
 import { Drawers, DrawerConfig, drawerStore } from './src'
-import './App.css'
 
 import 'antd/dist/antd.css'
 
 const About = () => {
   setTimeout(() => {
-    const modal = drawerStore.drawers['about']
-    console.log('modal:', modal)
-    console.log('name:', modal.name)
-    console.log('data:', modal.data)
+    const drawer = drawerStore.get('about')
+    console.log('drawer:', drawer)
+    // console.log('name:', drawer.name)
+    // console.log('data:', drawer.data)
   }, 1002)
   return (
     <span>
@@ -31,7 +31,7 @@ const App: React.FC = () => {
     <div className="App">
       <Drawers config={config} />
       <span>Hi, Dahlia</span>
-      <button onClick={() => drawerStore.open('about', { foo: 'bar' })}>open</button>
+      <Button onClick={() => drawerStore.open('about', { foo: 'bar' })}>open</Button>
     </div>
   )
 }

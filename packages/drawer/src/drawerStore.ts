@@ -1,27 +1,29 @@
-import { createStore } from '@peajs/store'
+import { mutate, getState } from 'stook'
+import { IDrawers, DrawerInstnce } from './typings'
+import { PEA_DRAWER } from './constant'
 
-interface DrawerInstnce {
-  name: string
-  data: any
-  visible: boolean
-}
-
-interface Drawers {
-  [DrawerName: string]: DrawerInstnce
-}
-
-export const drawerStore = createStore({
-  drawers: {} as Drawers,
+export const drawerStore = {
   open(name: string, data?: any) {
-    if (!drawerStore.drawers[name]) {
-      drawerStore.drawers[name] = { name } as DrawerInstnce
-    }
+    mutate(PEA_DRAWER, (drawers: IDrawers) => {
+      if (!drawers[name]) {
+        drawers[name] = { name } as DrawerInstnce
+      }
 
-    drawerStore.drawers[name].data = data
-    drawerStore.drawers[name].visible = true
+      drawers[name].data = data
+      drawers[name].visible = true
+    })
   },
 
   close(name: string) {
-    drawerStore.drawers[name].visible = false
+    mutate(PEA_DRAWER, (drawers: IDrawers) => {
+      if (drawers[name]) {
+        drawers[name].visible = false
+      }
+    })
   },
-})
+  get(name: string): DrawerInstnce {
+    const store: any = getState(PEA_DRAWER)
+    console.log('store:', store)
+    return store[name]
+  },
+}
