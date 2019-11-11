@@ -23,7 +23,6 @@ export const drawerStore = {
   },
   get(name: string): DrawerInstnce {
     const store: any = getState(PEA_DRAWER)
-    console.log('store:', store)
     return store[name]
   },
 }
