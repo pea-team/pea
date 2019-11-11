@@ -38,11 +38,7 @@
       "graphql/query"
     ],
     "状态管理": [
-      "store/intro",
-      "store/started",
-      "store/async",
-      "store/ts",
-      "store/dir"
+      "store/started"
     ],
     "表单": [
       "form/start",
