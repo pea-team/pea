@@ -1,27 +1,28 @@
-import { createStore } from '@peajs/store'
+import { mutate, getState } from 'stook'
+import { IModals, ModalInstnce } from './typings'
+import { PEA_MODAL } from './constant'
 
-interface ModalInstnce {
-  name: string
-  data: any
-  visible: boolean
-}
-
-interface Modals {
-  [modalName: string]: ModalInstnce
-}
-
-export const modalStore = createStore({
-  modals: {} as Modals,
+export const modalStore = {
   open(name: string, data?: any) {
-    if (!modalStore.modals[name]) {
-      modalStore.modals[name] = { name } as ModalInstnce
-    }
+    mutate(PEA_MODAL, (modals: IModals) => {
+      if (!modals[name]) {
+        modals[name] = { name } as ModalInstnce
+      }
 
-    modalStore.modals[name].data = data
-    modalStore.modals[name].visible = true
+      modals[name].data = data
+      modals[name].visible = true
+    })
   },
 
   close(name: string) {
-    modalStore.modals[name].visible = false
+    mutate(PEA_MODAL, (modals: IModals) => {
+      if (modals[name]) {
+        modals[name].visible = false
+      }
+    })
   },
-})
+  get(name: string): ModalInstnce {
+    const store: any = getState(PEA_MODAL)
+    return store[name]
+  },
+}
