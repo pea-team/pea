@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import gql from 'gql-tag'
-import { createStore, observe } from '@peajs/store'
 
-import {
-  config,
-  query,
-  useQuery,
-  useMutate,
-  fetcher,
-  useSubscribe,
-  fromSubscription,
-} from '../../src'
+import { config, query, useQuery, useMutate, fetcher, useSubscribe, fromSubscription } from './src'
+
+export const GET_USER = gql`
+  query GetUser($login: String!) {
+    user(login: $login) {
+      _id
+      login
+      avatar
+      nickname
+      username
+      email
+      intro
+      token
+    }
+  }
+`
 
 function handleResponse(result: any) {
   if (typeof result !== 'object') return result
@@ -30,21 +36,20 @@ function setToken(config: any) {
 
 config({
   // endpoint: 'http://localhost:7001/graphql',
-  endpoint: 'https://graphql-compose.herokuapp.com/user',
-  subscriptionsEndpoint: 'ws://localhost:7001/graphql',
+  // endpoint: 'https://graphql-compose.herokuapp.com/user',
+  endpoint: 'http://localhost:5001/graphql',
+  subscriptionsEndpoint: 'ws://localhost:5001/graphql',
   interceptor: {
     responses: [handleResponse],
     requests: [setToken],
   },
 })
 
-const GET_USER = gql`
-  query User {
-    userOne {
+export const GET_PROJECT = gql`
+  query getProject($slug: String!) {
+    project(slug: $slug) {
       _id
       name
-      gender
-      age
     }
   }
 `
@@ -103,7 +108,11 @@ const QueryApp = () => {
   const [data, setData] = useState()
   useEffect(() => {
     async function queryData() {
-      const res = await query(GET_USER)
+      // const res = await query(GET_USER)
+      const res = await query(GET_PROJECT, {
+        variables: { slug: 'foo' },
+      })
+
       setData(res)
     }
     queryData()
@@ -117,7 +126,10 @@ const QueryApp = () => {
 }
 
 const UseQueryApp = () => {
-  const { loading, data, error, refetch } = useQuery(GET_USER)
+  const { loading, data, error, refetch } = useQuery(GET_PROJECT, { variables: { slug: 'foo' } })
+
+  console.log('loading:', loading)
+  console.log('data:', data)
 
   if (loading) return <div>loading....</div>
   if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>
@@ -131,37 +143,38 @@ const UseQueryApp = () => {
   )
 }
 
-const store = createStore({
-  _id: '57bb44dd21d2befb7ca3f002',
-  setId() {
-    store._id = '57bb44dd21d2befb7ca3f004'
-  },
-})
+interface Project {
+  name: string
+  age: string
+}
 
-// setTimeout(() => {
-//   store.setId()
-// }, 2000)
-
-const UseQueryById = observe(() => {
-  const { loading, data, error, refetch } = useQuery<any>(GET_USER_BY_ID, {
-    // name: 'getUserById',
-    variables: { _id: store._id },
-    deps: [store._id],
+const UseQueryById = () => {
+  const { data: user } = useQuery(GET_USER, {
+    variables: { login: 'forsigner' },
   })
 
+
+  const { loading, data, error, refetch } = useQuery<Project>(GET_PROJECT, {
+    // name: 'getUserById',
+    data: {} as Project,
+    variables: { slug: 'forsigner' },
+    deps: [],
+    onChange({ data }) {
+      console.log('---------:', data)
+    },
+  })
+
+  console.log('loading:', loading)
+  console.log('data:', data)
   console.log('render....')
   if (loading) return <div>loading....</div>
   if (error) return <pre>{JSON.stringify(error, null, 2)}</pre>
 
   return (
     <div className="App">
-      <button onClick={() => refetch({ variables: { _id: '57bb44dd21d2befb7ca3f004' } })}>
-        refetch
-      </button>
+      <button onClick={() => refetch({ variables: { slug: 'bar' } })}>refetch</button>
       <button
-        onClick={() =>
-          fetcher[GET_USER_BY_ID].refetch({ variables: { _id: '57bb44dd21d2befb7ca3f004' } })
-        }
+        onClick={() => fetcher.get(GET_USER_BY_ID + 'xxx').refetch({ variables: { slug: 'bar' } })}
       >
         refetch with fetcher
       </button>
@@ -171,7 +184,7 @@ const UseQueryById = observe(() => {
       </div>
     </div>
   )
-})
+}
 
 const UseMutateApp = () => {
   const [addTodo, { loading, data, error }] = useMutate(GET_USER)
@@ -191,10 +204,10 @@ const UseMutateApp = () => {
 
 export default () => (
   <div>
-    <SubApp></SubApp>
-    <QueryApp />
+    {/* <SubApp></SubApp> */}
+    {/* <QueryApp /> */}
     <UseQueryById />
-    <UseQueryApp />
-    <UseMutateApp />
+    {/* <UseQueryApp /> */}
+    {/* <UseMutateApp /> */}
   </div>
 )
