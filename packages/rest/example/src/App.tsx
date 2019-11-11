@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { observe, createStore } from 'dahlia-store'
 
 import { config, fetch, useFetch, useUpdate, fetcher } from '../../src'
 
@@ -48,26 +47,14 @@ const FetchApp = () => {
   return <pre className="App">{JSON.stringify(data, null, 2)}</pre>
 }
 
-const store = createStore({
-  id: 1,
-  setId() {
-    store.id = 2
-  },
-})
-
-setTimeout(() => {
-  store.setId()
-  console.log(fetcher)
-}, 2000)
-
-const UseFetchApp = observe(() => {
+const UseFetchApp = () => {
   const { loading, data, error, refetch } = useFetch<Todo>(Api.GetTodo, {
-    params: { id: store.id },
-    deps: [store.id],
+    params: { id: 2 },
+    deps: [],
   })
 
   const handleClick = async () => {
-    const r = await refetch<Todo>({ param: { id: 2 } })
+    const r = await refetch<Todo>({ params: { id: 2 } })
     console.log('r:', r)
   }
 
@@ -78,13 +65,13 @@ const UseFetchApp = observe(() => {
     <div className="App">
       <h2>useFetch</h2>
       <button onClick={handleClick}>refetch</button>
-      <button onClick={() => fetcher[Api.GetTodo].refetch({ param: { id: 3 } })}>
+      <button onClick={() => fetcher[Api.GetTodo].refetch({ params: { id: 3 } })}>
         refetch with fetcher
       </button>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   )
-})
+}
 
 const UseUpdateApp = () => {
   const [addTodo, { loading, data, error }] = useUpdate(Api.CreateTodo)
