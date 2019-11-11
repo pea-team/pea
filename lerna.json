@@ -3,6 +3,7 @@
   "npmClient": "npm",
   "command": {
     "publish": {
+      "npmClientArgs": ["--no-package-lock"],
       "ignoreChanges": ["ignored-file", "*.md"],
       "message": "chore(release): publish",
       "registry": "http://registry.npmjs.org"
