@@ -46,8 +46,6 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@peajs/observable": "^0.1.1",
-    "fast-deep-equal": "^2.0.1",
-    "lodash.debounce": "^4.0.8"
+    "stook": "^0.1.0"
   }
 }
