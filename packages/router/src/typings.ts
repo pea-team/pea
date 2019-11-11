@@ -16,8 +16,8 @@ export interface State {
   params: {
     [key: string]: any
   }
-  currentPage?: Page
-  currentPath?: string
+  currentPage: Page | null
+  currentPath: string
 }
 
 export type Routes = Route[]

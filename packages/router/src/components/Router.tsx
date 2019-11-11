@@ -1,26 +1,26 @@
-import React from 'react'
-import { observe } from '@peajs/store'
+import React, { FC, memo } from 'react'
 
 import { getFullPath, useMount, useUnmount, createPage } from '../util'
-import store from '../routerStore'
+import { useRouter } from '../useRouter'
 import { Routes } from '../typings'
 
-const handlePop = () => {
-  store.go({ to: getFullPath(), replace: false })
-}
-
-const Router = observe<{ routes: Routes }>(props => {
-  const { currentPage, defaultPage, inited } = store
+const Router: FC<{ routes: Routes }> = props => {
+  const { state, init, navigate } = useRouter()
+  const { currentPage, defaultPage, inited } = state
 
   useMount(() => {
-    addEventListener('popstate', handlePop)
-    store.init(props.routes)
-    store.go({ to: getFullPath() })
+    document.addEventListener('popstate', handlePop)
+    init(props.routes)
+    navigate(getFullPath())
   })
 
   useUnmount(() => {
-    removeEventListener('popstate', handlePop)
+    document.removeEventListener('popstate', handlePop)
   })
+
+  const handlePop = () => {
+    navigate(getFullPath(), false)
+  }
 
   const DefaultPage = defaultPage.component
 
@@ -30,6 +30,6 @@ const Router = observe<{ routes: Routes }>(props => {
   }
 
   return createPage([currentPage], [])
-})
+}
 
-export default Router
+export default memo(Router)

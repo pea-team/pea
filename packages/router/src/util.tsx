@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import Path from 'path-parser'
-import { Page, Pages } from './typings'
+import { Page, Pages, State } from './typings'
+import { interceptors } from './interceptor'
 
 interface Route {
   path?: string
@@ -23,17 +24,14 @@ export function useUnmount(unmount: any) {
 }
 
 export function pushState(url: string): void {
-  history.pushState(null, '', url)
+  window.history.pushState(null, '', url)
 }
 
 export function replaceState(url: string): void {
-  history.replaceState(null, '', url)
+  window.history.replaceState(null, '', url)
 }
 
-export function matchPath(
-  pagePath: string,
-  clientPath: string,
-): object | null | boolean {
+export function matchPath(pagePath: string, clientPath: string): object | null | boolean {
   try {
     const parser = new Path(pagePath)
     return parser.test(clientPath)
@@ -168,11 +166,54 @@ export function createPage(pages: Pages, paths: string[] = []): any {
       return !!match ? <PG key={index} /> : null
     }
 
-    const currentPaths = item.children.reduce(
-      (result, cur) => [...result, cur.path],
-      [],
-    )
+    const currentPaths = item.children.reduce((result, cur) => [...result, cur.path], [])
 
     return <PG key={index}>{createPage(item.children, currentPaths)}</PG>
   })
+}
+
+export function updateRouterState(state: State, to: string, replace?: boolean) {
+  let path: string = '',
+    search: string = ''
+
+  if (to.indexOf('?') > -1) {
+    const arr = to.split('?')
+    path = arr[0]
+    search = '?' + arr[1]
+  } else {
+    path = to
+  }
+
+  const { pages } = state
+  const rootPage = findRooPage(pages, path)
+
+  // handle interceptors
+  if (interceptors.length) {
+    let canNext = false
+    for (const intercept of interceptors) {
+      canNext = false
+      intercept(
+        {
+          to: path,
+          from: state.currentPath,
+        },
+        () => (canNext = true),
+      )
+      if (!canNext) break
+    }
+
+    if (!canNext) return
+  }
+
+  if (!state.inited) {
+    state.inited = true
+  }
+
+  if (rootPage) {
+    const params = getParams([rootPage], to)
+    state.currentPath = path
+    state.currentPage = rootPage
+    state.params = params || {}
+    replace ? replaceState(path + search) : pushState(path + search)
+  }
 }

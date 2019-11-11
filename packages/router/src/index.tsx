@@ -1,8 +1,8 @@
 import Router from './components/Router'
 import Link from './components/Link'
-import navigate from './navigate'
-import routerStore from './routerStore'
 
 export { intercept } from './interceptor'
+export { navigate } from './navigate'
 export * from './typings'
-export { Router, Link, navigate, routerStore }
+export { useRouter } from './useRouter'
+export { Router, Link }

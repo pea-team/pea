@@ -1,5 +1,10 @@
-import store from './routerStore'
+import { mutate } from 'stook'
+import { PEA_ROUTER } from './constant'
+import { updateRouterState } from './util'
+import { State } from './typings'
 
-export default function navigate(to: string, replace?: boolean) {
-  store.go({ to, replace })
+export function navigate(to: string, replace?: boolean) {
+  mutate(PEA_ROUTER, (state: State) => {
+    updateRouterState(state, to, replace)
+  })
 }
