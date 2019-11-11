@@ -1,28 +1,55 @@
-import { createStore } from '@peajs/store'
+import { mutate, getState } from 'stook'
+import { PEA_POPUP } from './constant'
+import { Popups } from './typings'
 
-export const popupStore = createStore({
-  popups: [] as any[],
-
+export const popupStore = {
   open(name: string) {
-    if (isPopupExist(popupStore.popups, name)) {
-      popupStore.popups = getNewPopups(popupStore.popups, name, true)
+    const popups = getState<Popups>(PEA_POPUP)
+    if (!popups) return
+
+    if (isPopupExist(popups, name)) {
+      mutate(PEA_POPUP, (popups: Popups) => {
+        for (const item of popups) {
+          if (item.name === name) {
+            item.isOpen = true
+          }
+        }
+      })
       return
     }
-    popupStore.popups = [...popupStore.popups, { name, data: {}, isOpen: true }]
+
+    mutate(PEA_POPUP, (popups: Popups) => {
+      popups.push({
+        name,
+        data: {},
+        isOpen: true,
+      })
+    })
   },
 
   close(name: string) {
-    popupStore.popups = getNewPopups(popupStore.popups, name, false)
+    mutate(PEA_POPUP, (popups: Popups) => {
+      for (const item of popups) {
+        if (item.name === name) {
+          item.isOpen = false
+        }
+      }
+    })
   },
 
   closeAll() {
-    popupStore.popups = closeAll(popupStore.popups)
+    mutate(PEA_POPUP, (popups: Popups) => {
+      for (const item of popups) {
+        item.isOpen = false
+      }
+    })
   },
 
-  getPopup(name: string) {
-    return popupStore.popups.find(item => item.name === name)
+  get(name: string) {
+    const popups = getState(PEA_POPUP) as Popups
+    return popups.find(item => (item.name = name))
   },
-})
+}
 
 /**
  * popup是否打开过
@@ -32,18 +59,4 @@ function isPopupExist(popups: any[], name: string) {
     return item.name === name
   })
   return result.length > 0
-}
-
-function getNewPopups(popups: any[], name: string, isOpen: boolean) {
-  return popups.map(item => {
-    if (item.name === name) item.isOpen = isOpen
-    return item
-  })
-}
-
-function closeAll(popups: any[]) {
-  return popups.map(item => {
-    item.isOpen = false
-    return item
-  })
 }

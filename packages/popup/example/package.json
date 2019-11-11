@@ -1,13 +1,21 @@
 {
-  "name": "exam",
+  "name": "example",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "dahlia-scripts start ",
-    "build": "dahlia-scripts build"
+    "dev": "pea dev",
+    "build": "pea build",
+    "test": "pea test"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "prettier": {
+    "semi": false,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "printWidth": 100
   },
   "browserslist": {
     "production": [
@@ -22,16 +30,14 @@
     ]
   },
   "dependencies": {
-    "dahlia": "^1.15.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
-  },
-  "devDependencies": {
-    "@types/jest": "^24.0.12",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.8.17",
-    "@types/react-dom": "^16.8.4",
-    "dahlia-scripts": "^0.2.0",
-    "typescript": "^3.4.5"
+    "@peajs/core": "^0.1.0",
+    "@peajs/router": "^0.1.1",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
+    "antd": "^3.25.1",
+    "pea-cli": "^0.1.2",
+    "pea-plugin-router": "^0.1.1",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0"
   }
 }

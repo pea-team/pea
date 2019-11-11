@@ -4,3 +4,11 @@ export interface PopupConfigItem {
 }
 
 export type PopupConfig = PopupConfigItem[]
+
+export interface PopupItem {
+  name: string
+  data: any
+  isOpen: boolean
+}
+
+export type Popups = PopupItem[]
