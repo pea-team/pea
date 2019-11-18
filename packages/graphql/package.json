@@ -43,6 +43,7 @@
     "typescript": "^3.7.2"
   },
   "dependencies": {
+    "stook": "^0.1.1",
     "stook-graphql": "^0.1.0"
   }
 }

@@ -45,6 +45,6 @@
   },
   "dependencies": {
     "cross-fetch": "^3.0.4",
-    "qs": "^6.9.0"
+    "qs": "^6.9.1"
   }
 }

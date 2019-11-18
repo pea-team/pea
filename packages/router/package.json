@@ -44,6 +44,6 @@
   },
   "dependencies": {
     "path-parser": "^4.2.0",
-    "stook": "^0.1.0"
+    "stook": "^0.1.1"
   }
 }
