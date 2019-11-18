@@ -1,7 +1,8 @@
 import 'reflect-metadata'
 import React from 'react'
-// import { useForm } from '@peajs/form'
+// import { useForm } from 'stook-form'
 import { useForm } from '../src'
+import { useStore } from 'stook'
 
 class User {
   username = 'Jack'
@@ -10,6 +11,7 @@ class User {
 
 export default () => {
   const { handlers, name, actions, state } = useForm(User, {
+    name: 'my',
     initValues(values) {
       console.log('init.........')
       return {
@@ -22,6 +24,9 @@ export default () => {
       alert(JSON.stringify(values, null, 2))
     },
   })
+
+  const [formState] = useStore('my')
+  console.log('formState:', formState)
 
   return (
     <form onSubmit={handlers.handleSubmit}>
