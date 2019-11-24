@@ -1,0 +1,18 @@
+{
+  "id": "form/start",
+  "title": "快速上手",
+  "sidebar_label": "快速上手",
+  "description": "## 安装",
+  "source": "@site/docs/form/start.md",
+  "permalink": "/docs/form/start",
+  "sidebar": "docs",
+  "next": {
+    "title": "数组",
+    "permalink": "/docs/form/array"
+  },
+  "previous": {
+    "title": "基本使用",
+    "permalink": "/docs/store/started"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/form/start.md"
+}

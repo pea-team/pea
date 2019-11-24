@@ -1,0 +1,18 @@
+{
+  "id": "router/intercept",
+  "title": "路由拦截",
+  "sidebar_label": "路由拦截",
+  "description": "有些场景，你可能在路由跳转前做一些动作:",
+  "source": "@site/docs/router/intercept.md",
+  "permalink": "/docs/router/intercept",
+  "sidebar": "docs",
+  "next": {
+    "title": "快速开始",
+    "permalink": "/docs/rest/started"
+  },
+  "previous": {
+    "title": "Active Link",
+    "permalink": "/docs/router/active-link"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/router/intercept.md"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "rest/useUpdate",
+  "title": "更新数据 (useUpdate)",
+  "sidebar_label": "更新数据 (useUpdate)",
+  "description": "```jsx",
+  "source": "@site/docs/rest/useUpdate.md",
+  "permalink": "/docs/rest/useUpdate",
+  "sidebar": "docs",
+  "next": {
+    "title": "网络请求 (fetch)",
+    "permalink": "/docs/rest/fetch"
+  },
+  "previous": {
+    "title": "获取数据 (useFetch)",
+    "permalink": "/docs/rest/useFetch"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/rest/useUpdate.md"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "router/plugin",
+  "title": "路由插件",
+  "sidebar_label": "路由插件",
+  "description": "`peajs` 是一个插件化的框架，`peajs` 提供了路由插件 `pea-plugin-router` 让你方便快速地使用路由。",
+  "source": "@site/docs/router/plugin.md",
+  "permalink": "/docs/router/plugin",
+  "sidebar": "docs",
+  "next": {
+    "title": "约定式路由",
+    "permalink": "/docs/router/convention"
+  },
+  "previous": {
+    "title": "使用 styled-jsx",
+    "permalink": "/docs/styles/styled-jsx"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/router/plugin.md"
+}

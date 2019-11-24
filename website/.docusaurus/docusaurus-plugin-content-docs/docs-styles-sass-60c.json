@@ -1,0 +1,18 @@
+{
+  "id": "styles/sass",
+  "title": "使用 Sass",
+  "sidebar_label": "使用 Sass",
+  "description": "在 `peajs` 使用 Sass 非常简单，`peajs`已经内置了`sass-loader`，你只需安装 `node-sass`:",
+  "source": "@site/docs/styles/sass.md",
+  "permalink": "/docs/styles/sass",
+  "sidebar": "docs",
+  "next": {
+    "title": "使用 Less",
+    "permalink": "/docs/styles/less"
+  },
+  "previous": {
+    "title": "使用 CSS Modules",
+    "permalink": "/docs/styles/css-modules"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/styles/sass.md"
+}

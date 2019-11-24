@@ -1,0 +1,9 @@
+{
+  "id": "webpack/plugin",
+  "title": "插件",
+  "sidebar_label": "使用插件",
+  "description": "自定义 webpack 配置，最好的是使用 plugin。",
+  "source": "@site/docs/webpack/plugin.md",
+  "permalink": "/docs/webpack/plugin",
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/webpack/plugin.md"
+}

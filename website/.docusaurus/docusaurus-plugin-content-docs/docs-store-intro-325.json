@@ -1,0 +1,9 @@
+{
+  "id": "store/intro",
+  "title": "简介",
+  "sidebar_label": "简介",
+  "description": "Pea 有自己的状态管理方案，我们叫它 `@peajs/store`，在介绍它之前，我们先来看看 React 官方推荐并且最简单的状态管理方案，我觉得是 hooks 版本的 useState，它是这样用的：",
+  "source": "@site/docs/store/intro.md",
+  "permalink": "/docs/store/intro",
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/store/intro.md"
+}

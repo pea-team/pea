@@ -1,0 +1,18 @@
+{
+  "id": "styles/styled-jsx",
+  "title": "使用 styled-jsx",
+  "sidebar_label": "使用 styled-jsx",
+  "description": "`styled-jsx` 是一个非常优秀的 React CSS 解决方案，`Pea` 默认支持 `styled-jsx`，你可以直接使用：",
+  "source": "@site/docs/styles/styled-jsx.md",
+  "permalink": "/docs/styles/styled-jsx",
+  "sidebar": "docs",
+  "next": {
+    "title": "路由插件",
+    "permalink": "/docs/router/plugin"
+  },
+  "previous": {
+    "title": "使用 styled-components",
+    "permalink": "/docs/styles/styled-components"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/styles/styled-jsx.md"
+}

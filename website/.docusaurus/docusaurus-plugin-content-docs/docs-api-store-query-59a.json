@@ -1,0 +1,8 @@
+{
+  "id": "api/store.query",
+  "title": "store.query",
+  "description": "# store.query",
+  "source": "@site/docs/api/store.query.md",
+  "permalink": "/docs/api/store.query",
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/api/store.query.md"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "form/array",
+  "title": "数组",
+  "sidebar_label": "数组",
+  "description": "`@peajs/form` 默认支持数组，使用 Lodash-like 用法设置 name:",
+  "source": "@site/docs/form/array.md",
+  "permalink": "/docs/form/array",
+  "sidebar": "docs",
+  "next": {
+    "title": "嵌套对象",
+    "permalink": "/docs/form/nested-object"
+  },
+  "previous": {
+    "title": "快速上手",
+    "permalink": "/docs/form/start"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/form/array.md"
+}

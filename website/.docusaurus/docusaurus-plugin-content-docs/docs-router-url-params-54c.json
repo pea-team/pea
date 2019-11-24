@@ -1,0 +1,18 @@
+{
+  "id": "router/url-params",
+  "title": "路由参数",
+  "sidebar_label": "路由参数",
+  "description": "首先，在路由配置使用参数，例如`/users/:name` :",
+  "source": "@site/docs/router/url-params.md",
+  "permalink": "/docs/router/url-params",
+  "sidebar": "docs",
+  "next": {
+    "title": "嵌套路由",
+    "permalink": "/docs/router/nested"
+  },
+  "previous": {
+    "title": "使用 `navigate`",
+    "permalink": "/docs/router/navigate"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/router/url-params.md"
+}

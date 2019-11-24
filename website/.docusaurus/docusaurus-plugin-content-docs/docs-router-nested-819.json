@@ -1,0 +1,18 @@
+{
+  "id": "router/nested",
+  "title": "嵌套路由",
+  "sidebar_label": "嵌套路由",
+  "description": "嵌套路由必须使用配置式路由，路由配置：",
+  "source": "@site/docs/router/nested.md",
+  "permalink": "/docs/router/nested",
+  "sidebar": "docs",
+  "next": {
+    "title": "Active Link",
+    "permalink": "/docs/router/active-link"
+  },
+  "previous": {
+    "title": "路由参数",
+    "permalink": "/docs/router/url-params"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/router/nested.md"
+}

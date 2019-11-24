@@ -1,0 +1,9 @@
+{
+  "id": "rest/basic",
+  "title": "简介",
+  "sidebar_label": "简介",
+  "description": "异步数据管理一直是一个难点，在 React 的生态圈中，很多人把异步数据使用状态管理维护，比如使用 Redux，用异步 Action 获取远程数据。Pea 不推崇使用状态管理维护异步数据，Pea 推荐在组件内直接获取异步数据，使用 hooks，简化数据的获取和管理。",
+  "source": "@site/docs/rest/basic.md",
+  "permalink": "/docs/rest/basic",
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/rest/basic.md"
+}

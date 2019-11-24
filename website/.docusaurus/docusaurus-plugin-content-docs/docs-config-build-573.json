@@ -1,0 +1,18 @@
+{
+  "id": "config/build",
+  "title": "构建配置",
+  "sidebar_label": "构建配置",
+  "description": "顾名思义，构建配置会影响 `peajs` 的构建过程，构建配置在根目录中 `peajs.config.ts`，构建配置示例：",
+  "source": "@site/docs/config/build.md",
+  "permalink": "/docs/config/build",
+  "sidebar": "docs",
+  "next": {
+    "title": "使用插件",
+    "permalink": "/docs/plugin/use"
+  },
+  "previous": {
+    "title": "业务配置",
+    "permalink": "/docs/config/business"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/config/build.md"
+}

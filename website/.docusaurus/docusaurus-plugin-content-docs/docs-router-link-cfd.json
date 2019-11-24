@@ -1,0 +1,18 @@
+{
+  "id": "router/link",
+  "title": "使用 `<Link>`",
+  "sidebar_label": "使用 `<Link>`",
+  "description": "假设你有两个页面：Home 和 About，使用 `<Link>` 组件进行页面跳转：",
+  "source": "@site/docs/router/link.md",
+  "permalink": "/docs/router/link",
+  "sidebar": "docs",
+  "next": {
+    "title": "使用 `navigate`",
+    "permalink": "/docs/router/navigate"
+  },
+  "previous": {
+    "title": "配置式路由",
+    "permalink": "/docs/router/config"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/router/link.md"
+}

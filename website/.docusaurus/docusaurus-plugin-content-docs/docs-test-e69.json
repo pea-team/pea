@@ -1,0 +1,9 @@
+{
+  "id": "test",
+  "title": "Ft",
+  "sidebar_label": "Ft",
+  "description": "# faq",
+  "source": "@site/docs/test.md",
+  "permalink": "/docs/test",
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/test.md"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "form/antd",
+  "title": "使用 Ant Design",
+  "sidebar_label": "使用 Ant Design",
+  "description": "## Field",
+  "source": "@site/docs/form/antd.md",
+  "permalink": "/docs/form/antd",
+  "sidebar": "docs",
+  "previous": {
+    "title": "错误信息",
+    "permalink": "/docs/form/error-message"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/form/antd.md"
+}

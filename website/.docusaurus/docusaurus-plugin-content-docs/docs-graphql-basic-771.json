@@ -1,0 +1,9 @@
+{
+  "id": "graphql/basic",
+  "title": "简介",
+  "sidebar_label": "简介",
+  "description": "有人说，GraphQL 是未来，这里不讨论 GraphQL 和 RESTful 谁更优秀。Pea 对 GraphQL 和 RESTful 都有很好的支持。如果你愿意，你可以在项目中同时使用两者。",
+  "source": "@site/docs/graphql/basic.md",
+  "permalink": "/docs/graphql/basic",
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/graphql/basic.md"
+}

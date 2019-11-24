@@ -1,0 +1,18 @@
+{
+  "id": "plugin/development",
+  "title": "插件开发",
+  "sidebar_label": "插件开发",
+  "description": "wip...",
+  "source": "@site/docs/plugin/development.md",
+  "permalink": "/docs/plugin/development",
+  "sidebar": "docs",
+  "next": {
+    "title": "使用原生 CSS",
+    "permalink": "/docs/styles/css"
+  },
+  "previous": {
+    "title": "插件列表",
+    "permalink": "/docs/plugin/list"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/plugin/development.md"
+}

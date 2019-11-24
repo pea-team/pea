@@ -1,0 +1,296 @@
+{
+  "docsSidebars": {
+    "docs": [
+      {
+        "type": "category",
+        "label": "简介",
+        "items": [
+          {
+            "type": "link",
+            "label": "快速上手",
+            "href": "/docs/intro/quick-start"
+          },
+          {
+            "type": "link",
+            "label": "关于 peajs",
+            "href": "/docs/intro/about"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "配置",
+        "items": [
+          {
+            "type": "link",
+            "label": "业务配置",
+            "href": "/docs/config/business"
+          },
+          {
+            "type": "link",
+            "label": "构建配置",
+            "href": "/docs/config/build"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "插件",
+        "items": [
+          {
+            "type": "link",
+            "label": "使用插件",
+            "href": "/docs/plugin/use"
+          },
+          {
+            "type": "link",
+            "label": "插件列表",
+            "href": "/docs/plugin/list"
+          },
+          {
+            "type": "link",
+            "label": "插件开发",
+            "href": "/docs/plugin/development"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "样式",
+        "items": [
+          {
+            "type": "link",
+            "label": "使用原生 CSS",
+            "href": "/docs/styles/css"
+          },
+          {
+            "type": "link",
+            "label": "使用 CSS Modules",
+            "href": "/docs/styles/css-modules"
+          },
+          {
+            "type": "link",
+            "label": "使用 Sass",
+            "href": "/docs/styles/sass"
+          },
+          {
+            "type": "link",
+            "label": "使用 Less",
+            "href": "/docs/styles/less"
+          },
+          {
+            "type": "link",
+            "label": "使用 styled-components",
+            "href": "/docs/styles/styled-components"
+          },
+          {
+            "type": "link",
+            "label": "使用 styled-jsx",
+            "href": "/docs/styles/styled-jsx"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "路由",
+        "items": [
+          {
+            "type": "link",
+            "label": "路由插件",
+            "href": "/docs/router/plugin"
+          },
+          {
+            "type": "link",
+            "label": "约定式路由",
+            "href": "/docs/router/convention"
+          },
+          {
+            "type": "link",
+            "label": "配置式路由",
+            "href": "/docs/router/config"
+          },
+          {
+            "type": "link",
+            "label": "使用 `<Link>`",
+            "href": "/docs/router/link"
+          },
+          {
+            "type": "link",
+            "label": "使用 `navigate`",
+            "href": "/docs/router/navigate"
+          },
+          {
+            "type": "link",
+            "label": "路由参数",
+            "href": "/docs/router/url-params"
+          },
+          {
+            "type": "link",
+            "label": "嵌套路由",
+            "href": "/docs/router/nested"
+          },
+          {
+            "type": "link",
+            "label": "Active Link",
+            "href": "/docs/router/active-link"
+          },
+          {
+            "type": "link",
+            "label": "路由拦截",
+            "href": "/docs/router/intercept"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "网络请求(Rest)",
+        "items": [
+          {
+            "type": "link",
+            "label": "快速开始",
+            "href": "/docs/rest/started"
+          },
+          {
+            "type": "link",
+            "label": "获取数据 (useFetch)",
+            "href": "/docs/rest/useFetch"
+          },
+          {
+            "type": "link",
+            "label": "更新数据 (useUpdate)",
+            "href": "/docs/rest/useUpdate"
+          },
+          {
+            "type": "link",
+            "label": "网络请求 (fetch)",
+            "href": "/docs/rest/fetch"
+          },
+          {
+            "type": "link",
+            "label": "重新获取 (reFetch)",
+            "href": "/docs/rest/reFetch"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "网络请求(GraphQL)",
+        "items": [
+          {
+            "type": "link",
+            "label": "快速开始",
+            "href": "/docs/graphql/started"
+          },
+          {
+            "type": "link",
+            "label": "获取数据 (useQuery)",
+            "href": "/docs/graphql/useQuery"
+          },
+          {
+            "type": "link",
+            "label": "useMutate",
+            "href": "/docs/graphql/useMutate"
+          },
+          {
+            "type": "link",
+            "label": "query",
+            "href": "/docs/graphql/query"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "状态管理",
+        "items": [
+          {
+            "type": "link",
+            "label": "基本使用",
+            "href": "/docs/store/started"
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "label": "表单",
+        "items": [
+          {
+            "type": "link",
+            "label": "快速上手",
+            "href": "/docs/form/start"
+          },
+          {
+            "type": "link",
+            "label": "数组",
+            "href": "/docs/form/array"
+          },
+          {
+            "type": "link",
+            "label": "嵌套对象",
+            "href": "/docs/form/nested-object"
+          },
+          {
+            "type": "link",
+            "label": "校验",
+            "href": "/docs/form/validation"
+          },
+          {
+            "type": "link",
+            "label": "异步校验",
+            "href": "/docs/form/async-validation"
+          },
+          {
+            "type": "link",
+            "label": "错误信息",
+            "href": "/docs/form/error-message"
+          },
+          {
+            "type": "link",
+            "label": "使用 Ant Design",
+            "href": "/docs/form/antd"
+          }
+        ]
+      }
+    ]
+  },
+  "permalinkToSidebar": {
+    "/docs/config/build": "docs",
+    "/docs/config/business": "docs",
+    "/docs/form/antd": "docs",
+    "/docs/form/array": "docs",
+    "/docs/form/async-validation": "docs",
+    "/docs/form/error-message": "docs",
+    "/docs/form/nested-object": "docs",
+    "/docs/form/start": "docs",
+    "/docs/form/validation": "docs",
+    "/docs/graphql/query": "docs",
+    "/docs/graphql/started": "docs",
+    "/docs/graphql/useMutate": "docs",
+    "/docs/graphql/useQuery": "docs",
+    "/docs/intro/about": "docs",
+    "/docs/intro/quick-start": "docs",
+    "/docs/plugin/development": "docs",
+    "/docs/plugin/list": "docs",
+    "/docs/plugin/use": "docs",
+    "/docs/rest/fetch": "docs",
+    "/docs/rest/reFetch": "docs",
+    "/docs/rest/started": "docs",
+    "/docs/rest/useFetch": "docs",
+    "/docs/rest/useUpdate": "docs",
+    "/docs/router/active-link": "docs",
+    "/docs/router/config": "docs",
+    "/docs/router/convention": "docs",
+    "/docs/router/intercept": "docs",
+    "/docs/router/link": "docs",
+    "/docs/router/navigate": "docs",
+    "/docs/router/nested": "docs",
+    "/docs/router/plugin": "docs",
+    "/docs/router/url-params": "docs",
+    "/docs/store/started": "docs",
+    "/docs/styles/css": "docs",
+    "/docs/styles/css-modules": "docs",
+    "/docs/styles/less": "docs",
+    "/docs/styles/sass": "docs",
+    "/docs/styles/styled-components": "docs",
+    "/docs/styles/styled-jsx": "docs"
+  }
+}

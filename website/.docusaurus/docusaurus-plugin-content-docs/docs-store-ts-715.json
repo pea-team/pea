@@ -1,0 +1,9 @@
+{
+  "id": "store/ts",
+  "title": "使用 TypeScript",
+  "sidebar_label": "使用 TypeScript",
+  "description": "`@peajs/store` 对 TypeScript 有着非常良好的支持，通常有三种方式确定 store 的类型:",
+  "source": "@site/docs/store/ts.md",
+  "permalink": "/docs/store/ts",
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/store/ts.md"
+}

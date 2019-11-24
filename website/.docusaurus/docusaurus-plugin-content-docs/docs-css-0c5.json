@@ -1,0 +1,8 @@
+{
+  "id": "css",
+  "title": "css",
+  "description": "# CSS",
+  "source": "@site/docs/css.md",
+  "permalink": "/docs/css",
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/css.md"
+}

@@ -1,0 +1,8 @@
+{
+  "id": "api/createstore",
+  "title": "createstore",
+  "description": "# createStore",
+  "source": "@site/docs/api/createstore.md",
+  "permalink": "/docs/api/createstore",
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/api/createstore.md"
+}

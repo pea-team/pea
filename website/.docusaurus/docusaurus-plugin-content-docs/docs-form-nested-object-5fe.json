@@ -1,0 +1,18 @@
+{
+  "id": "form/nested-object",
+  "title": "嵌套对象",
+  "sidebar_label": "嵌套对象",
+  "description": "`@peajs/form` 默认支持嵌套对象，使用 Lodash-like 用法设置 name:",
+  "source": "@site/docs/form/nested-object.md",
+  "permalink": "/docs/form/nested-object",
+  "sidebar": "docs",
+  "next": {
+    "title": "校验",
+    "permalink": "/docs/form/validation"
+  },
+  "previous": {
+    "title": "数组",
+    "permalink": "/docs/form/array"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/form/nested-object.md"
+}

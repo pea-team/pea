@@ -1,0 +1,18 @@
+{
+  "id": "intro/about",
+  "title": "pea",
+  "sidebar_label": "关于 peajs",
+  "description": "> An opinionated React Framework for building modern web applications.",
+  "source": "@site/docs/intro/about.md",
+  "permalink": "/docs/intro/about",
+  "sidebar": "docs",
+  "next": {
+    "title": "业务配置",
+    "permalink": "/docs/config/business"
+  },
+  "previous": {
+    "title": "快速上手",
+    "permalink": "/docs/intro/quick-start"
+  },
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/intro/about.md"
+}

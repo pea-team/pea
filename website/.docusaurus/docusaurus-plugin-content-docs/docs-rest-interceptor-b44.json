@@ -1,0 +1,9 @@
+{
+  "id": "rest/interceptor",
+  "title": "拦截器",
+  "sidebar_label": "拦截器",
+  "description": "wip...",
+  "source": "@site/docs/rest/interceptor.md",
+  "permalink": "/docs/rest/interceptor",
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/rest/interceptor.md"
+}

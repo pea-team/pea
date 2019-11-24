@@ -1,0 +1,9 @@
+{
+  "id": "faq",
+  "title": "FAQ",
+  "sidebar_label": "FAQ",
+  "description": "# faq",
+  "source": "@site/docs/faq.md",
+  "permalink": "/docs/faq",
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/faq.md"
+}

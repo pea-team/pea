@@ -22,8 +22,14 @@ body {
 .projectTitle small {
   font-weight: 200;
 }
+
 .fixedHeaderContainer header .headerTitleWithLogo {
   margin-bottom: -5px;
+}
+
+.feature {
+  padding-top: 30px;
+  padding: 0;
 }
 
 .feature li {

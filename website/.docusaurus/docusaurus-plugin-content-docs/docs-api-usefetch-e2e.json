@@ -1,0 +1,8 @@
+{
+  "id": "api/usefetch",
+  "title": "usefetch",
+  "description": "# useFetch",
+  "source": "@site/docs/api/usefetch.md",
+  "permalink": "/docs/api/usefetch",
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/api/usefetch.md"
+}

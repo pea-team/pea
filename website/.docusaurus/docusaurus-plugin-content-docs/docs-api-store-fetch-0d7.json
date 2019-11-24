@@ -1,0 +1,8 @@
+{
+  "id": "api/store.fetch",
+  "title": "store.fetch",
+  "description": "# store.fetch",
+  "source": "@site/docs/api/store.fetch.md",
+  "permalink": "/docs/api/store.fetch",
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/api/store.fetch.md"
+}
