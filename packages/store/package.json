@@ -1,6 +1,6 @@
 {
   "name": "@peajs/store",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "State management for Pea",
   "main": "dist/index.js",
   "module": "dist/store.esm.js",
