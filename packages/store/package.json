@@ -46,6 +46,6 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "stook": "^0.1.1"
+    "stook": "^0.1.3"
   }
 }
