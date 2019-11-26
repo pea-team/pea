@@ -33,15 +33,15 @@
   },
   "homepage": "https://github.com/pea-team/pea/tree/master/packages/request",
   "devDependencies": {
-    "@types/jest": "^24.0.18",
-    "@types/qs": "^6.5.3",
-    "@types/react": "^16.9.5",
+    "@types/jest": "^24.0.23",
+    "@types/qs": "^6.9.0",
+    "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.1",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "tsdx": "^0.9.3",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "tsdx": "^0.11.0",
     "tslib": "^1.10.0",
-    "typescript": "^3.6.4"
+    "typescript": "^3.7.2"
   },
   "dependencies": {
     "cross-fetch": "^3.0.4",

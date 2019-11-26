@@ -37,11 +37,10 @@
     "antd": "^3.25.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "stook": "^0.2.1",
     "tsdx": "^0.11.0",
     "tslib": "^1.10.0",
     "typescript": "^3.7.2"
   },
-  "dependencies": {
-    "stook": "^0.2.0"
-  }
+  "dependencies": {}
 }

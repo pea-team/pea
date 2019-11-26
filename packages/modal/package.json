@@ -36,14 +36,14 @@
     "@types/jest": "^24.0.22",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
-    "antd": "^3.25.1",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "antd": "^3.25.3",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "stook": "^0.2.1",
     "tsdx": "^0.11.0",
     "tslib": "^1.10.0",
     "typescript": "^3.7.2"
   },
   "dependencies": {
-    "stook": "^0.2.0"
   }
 }

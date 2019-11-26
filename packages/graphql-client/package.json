@@ -43,6 +43,6 @@
     "typescript": "^3.6.4"
   },
   "dependencies": {
-    "@peajs/request": "^0.2.0"
+    "@peajs/request": "^0.1.1"
   }
 }
