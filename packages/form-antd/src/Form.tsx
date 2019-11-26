@@ -1,7 +1,7 @@
 import React, { FC, createContext } from 'react'
 import { Form as AntdForm } from 'antd'
 import { FormProps as AntdFormProps } from 'antd/lib/form'
-import { Result } from '@peajs/form'
+import { Result } from 'stook-form'
 
 interface FormProps extends AntdFormProps {
   use: Result

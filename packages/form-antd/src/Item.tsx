@@ -2,7 +2,7 @@ import React, { FC, useContext, ReactElement } from 'react'
 import get from 'lodash.get'
 import { Form } from 'antd'
 import { FormItemProps } from 'antd/lib/form'
-import { Result } from '@peajs/form'
+import { Result } from 'stook-form'
 import { FormContext } from './Form'
 
 const FormItem = Form.Item
