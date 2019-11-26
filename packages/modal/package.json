@@ -1,6 +1,6 @@
 {
   "name": "@peajs/modal",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "main": "dist/index.js",
   "module": "dist/modal.esm.js",
   "typings": "dist/index.d.ts",
@@ -43,7 +43,5 @@
     "tsdx": "^0.11.0",
     "tslib": "^1.10.0",
     "typescript": "^3.7.2"
-  },
-  "dependencies": {
   }
 }

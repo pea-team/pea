@@ -1,6 +1,6 @@
 {
   "name": "@peajs/drawer",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Drawer component for peajs",
   "main": "dist/index.js",
   "module": "dist/drawer.esm.js",
@@ -41,6 +41,5 @@
     "tsdx": "^0.11.0",
     "tslib": "^1.10.0",
     "typescript": "^3.7.2"
-  },
-  "dependencies": {}
+  }
 }
