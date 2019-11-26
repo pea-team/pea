@@ -48,6 +48,6 @@
   },
   "dependencies": {
     "lodash.get": "^4.4.2",
-    "stook-form": "^0.2.0"
+    "stook-form": "^0.2.1"
   }
 }
