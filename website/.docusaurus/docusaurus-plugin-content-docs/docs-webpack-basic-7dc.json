@@ -5,5 +5,7 @@
   "description": "`pea-cli` 能让你快速初始化项目，但有时候你需要对 webpack、devServer 等进行扩展，这时，你可以使用 `pea.config.ts`。",
   "source": "@site/docs/webpack/basic.md",
   "permalink": "/docs/webpack/basic",
-  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/webpack/basic.md"
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/webpack/basic.md",
+  "lastUpdatedBy": "forsigner",
+  "lastUpdatedAt": 1574583185
 }

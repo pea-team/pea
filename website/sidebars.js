@@ -29,28 +29,9 @@ module.exports = {
       "router/active-link",
       "router/intercept"
     ],
-    "网络请求(Rest)": [
-      "rest/started",
-      "rest/useFetch",
-      "rest/useUpdate",
-      "rest/fetch",
-      "rest/reFetch"
-    ],
-    "网络请求(GraphQL)": [
-      "graphql/started",
-      "graphql/useQuery",
-      "graphql/useMutate",
-      "graphql/query"
-    ],
-    状态管理: ["store/started"],
-    表单: [
-      "form/start",
-      "form/array",
-      "form/nested-object",
-      "form/validation",
-      "form/async-validation",
-      "form/error-message",
-      "form/antd"
-    ]
+    "网络请求(Rest)": ["rest/intro"],
+    "网络请求(GraphQL)": ["graphql/intro"],
+    状态管理: ["store/intro"],
+    表单: ["form/intro"]
   }
 };

@@ -160,74 +160,14 @@ export default [
   
 },
 {
-  path: '/docs/form/antd',
-  component: ComponentCreator('/docs/form/antd'),
+  path: '/docs/form/intro',
+  component: ComponentCreator('/docs/form/intro'),
   exact: true,
   
 },
 {
-  path: '/docs/form/array',
-  component: ComponentCreator('/docs/form/array'),
-  exact: true,
-  
-},
-{
-  path: '/docs/form/async-validation',
-  component: ComponentCreator('/docs/form/async-validation'),
-  exact: true,
-  
-},
-{
-  path: '/docs/form/error-message',
-  component: ComponentCreator('/docs/form/error-message'),
-  exact: true,
-  
-},
-{
-  path: '/docs/form/nested-object',
-  component: ComponentCreator('/docs/form/nested-object'),
-  exact: true,
-  
-},
-{
-  path: '/docs/form/start',
-  component: ComponentCreator('/docs/form/start'),
-  exact: true,
-  
-},
-{
-  path: '/docs/form/validation',
-  component: ComponentCreator('/docs/form/validation'),
-  exact: true,
-  
-},
-{
-  path: '/docs/graphql/basic',
-  component: ComponentCreator('/docs/graphql/basic'),
-  exact: true,
-  
-},
-{
-  path: '/docs/graphql/query',
-  component: ComponentCreator('/docs/graphql/query'),
-  exact: true,
-  
-},
-{
-  path: '/docs/graphql/started',
-  component: ComponentCreator('/docs/graphql/started'),
-  exact: true,
-  
-},
-{
-  path: '/docs/graphql/useMutate',
-  component: ComponentCreator('/docs/graphql/useMutate'),
-  exact: true,
-  
-},
-{
-  path: '/docs/graphql/useQuery',
-  component: ComponentCreator('/docs/graphql/useQuery'),
+  path: '/docs/graphql/intro',
+  component: ComponentCreator('/docs/graphql/intro'),
   exact: true,
   
 },
@@ -274,44 +214,8 @@ export default [
   
 },
 {
-  path: '/docs/rest/basic',
-  component: ComponentCreator('/docs/rest/basic'),
-  exact: true,
-  
-},
-{
-  path: '/docs/rest/fetch',
-  component: ComponentCreator('/docs/rest/fetch'),
-  exact: true,
-  
-},
-{
-  path: '/docs/rest/interceptor',
-  component: ComponentCreator('/docs/rest/interceptor'),
-  exact: true,
-  
-},
-{
-  path: '/docs/rest/reFetch',
-  component: ComponentCreator('/docs/rest/reFetch'),
-  exact: true,
-  
-},
-{
-  path: '/docs/rest/started',
-  component: ComponentCreator('/docs/rest/started'),
-  exact: true,
-  
-},
-{
-  path: '/docs/rest/useFetch',
-  component: ComponentCreator('/docs/rest/useFetch'),
-  exact: true,
-  
-},
-{
-  path: '/docs/rest/useUpdate',
-  component: ComponentCreator('/docs/rest/useUpdate'),
+  path: '/docs/rest/intro',
+  component: ComponentCreator('/docs/rest/intro'),
   exact: true,
   
 },
@@ -376,38 +280,8 @@ export default [
   
 },
 {
-  path: '/docs/store/async',
-  component: ComponentCreator('/docs/store/async'),
-  exact: true,
-  
-},
-{
-  path: '/docs/store/computed',
-  component: ComponentCreator('/docs/store/computed'),
-  exact: true,
-  
-},
-{
-  path: '/docs/store/dir',
-  component: ComponentCreator('/docs/store/dir'),
-  exact: true,
-  
-},
-{
   path: '/docs/store/intro',
   component: ComponentCreator('/docs/store/intro'),
-  exact: true,
-  
-},
-{
-  path: '/docs/store/started',
-  component: ComponentCreator('/docs/store/started'),
-  exact: true,
-  
-},
-{
-  path: '/docs/store/ts',
-  component: ComponentCreator('/docs/store/ts'),
   exact: true,
   
 },

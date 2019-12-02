@@ -4,5 +4,7 @@
   "description": "# bootstrap",
   "source": "@site/docs/api/bootstrap.md",
   "permalink": "/docs/api/bootstrap",
-  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/api/bootstrap.md"
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/api/bootstrap.md",
+  "lastUpdatedBy": "forsigner",
+  "lastUpdatedAt": 1574583185
 }

@@ -147,28 +147,8 @@
         "items": [
           {
             "type": "link",
-            "label": "快速开始",
-            "href": "/docs/rest/started"
-          },
-          {
-            "type": "link",
-            "label": "获取数据 (useFetch)",
-            "href": "/docs/rest/useFetch"
-          },
-          {
-            "type": "link",
-            "label": "更新数据 (useUpdate)",
-            "href": "/docs/rest/useUpdate"
-          },
-          {
-            "type": "link",
-            "label": "网络请求 (fetch)",
-            "href": "/docs/rest/fetch"
-          },
-          {
-            "type": "link",
-            "label": "重新获取 (reFetch)",
-            "href": "/docs/rest/reFetch"
+            "label": "简介",
+            "href": "/docs/rest/intro"
           }
         ]
       },
@@ -178,23 +158,8 @@
         "items": [
           {
             "type": "link",
-            "label": "快速开始",
-            "href": "/docs/graphql/started"
-          },
-          {
-            "type": "link",
-            "label": "获取数据 (useQuery)",
-            "href": "/docs/graphql/useQuery"
-          },
-          {
-            "type": "link",
-            "label": "useMutate",
-            "href": "/docs/graphql/useMutate"
-          },
-          {
-            "type": "link",
-            "label": "query",
-            "href": "/docs/graphql/query"
+            "label": "简介",
+            "href": "/docs/graphql/intro"
           }
         ]
       },
@@ -204,8 +169,8 @@
         "items": [
           {
             "type": "link",
-            "label": "基本使用",
-            "href": "/docs/store/started"
+            "label": "简介",
+            "href": "/docs/store/intro"
           }
         ]
       },
@@ -215,38 +180,8 @@
         "items": [
           {
             "type": "link",
-            "label": "快速上手",
-            "href": "/docs/form/start"
-          },
-          {
-            "type": "link",
-            "label": "数组",
-            "href": "/docs/form/array"
-          },
-          {
-            "type": "link",
-            "label": "嵌套对象",
-            "href": "/docs/form/nested-object"
-          },
-          {
-            "type": "link",
-            "label": "校验",
-            "href": "/docs/form/validation"
-          },
-          {
-            "type": "link",
-            "label": "异步校验",
-            "href": "/docs/form/async-validation"
-          },
-          {
-            "type": "link",
-            "label": "错误信息",
-            "href": "/docs/form/error-message"
-          },
-          {
-            "type": "link",
-            "label": "使用 Ant Design",
-            "href": "/docs/form/antd"
+            "label": "简介",
+            "href": "/docs/form/intro"
           }
         ]
       }
@@ -255,27 +190,14 @@
   "permalinkToSidebar": {
     "/docs/config/build": "docs",
     "/docs/config/business": "docs",
-    "/docs/form/antd": "docs",
-    "/docs/form/array": "docs",
-    "/docs/form/async-validation": "docs",
-    "/docs/form/error-message": "docs",
-    "/docs/form/nested-object": "docs",
-    "/docs/form/start": "docs",
-    "/docs/form/validation": "docs",
-    "/docs/graphql/query": "docs",
-    "/docs/graphql/started": "docs",
-    "/docs/graphql/useMutate": "docs",
-    "/docs/graphql/useQuery": "docs",
+    "/docs/form/intro": "docs",
+    "/docs/graphql/intro": "docs",
     "/docs/intro/about": "docs",
     "/docs/intro/quick-start": "docs",
     "/docs/plugin/development": "docs",
     "/docs/plugin/list": "docs",
     "/docs/plugin/use": "docs",
-    "/docs/rest/fetch": "docs",
-    "/docs/rest/reFetch": "docs",
-    "/docs/rest/started": "docs",
-    "/docs/rest/useFetch": "docs",
-    "/docs/rest/useUpdate": "docs",
+    "/docs/rest/intro": "docs",
     "/docs/router/active-link": "docs",
     "/docs/router/config": "docs",
     "/docs/router/convention": "docs",
@@ -285,7 +207,7 @@
     "/docs/router/nested": "docs",
     "/docs/router/plugin": "docs",
     "/docs/router/url-params": "docs",
-    "/docs/store/started": "docs",
+    "/docs/store/intro": "docs",
     "/docs/styles/css": "docs",
     "/docs/styles/css-modules": "docs",
     "/docs/styles/less": "docs",

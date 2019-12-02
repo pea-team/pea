@@ -5,5 +5,7 @@
   "description": "自定义 webpack 配置，最好的是使用 plugin。",
   "source": "@site/docs/webpack/plugin.md",
   "permalink": "/docs/webpack/plugin",
-  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/webpack/plugin.md"
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/webpack/plugin.md",
+  "lastUpdatedBy": "forsigner",
+  "lastUpdatedAt": 1574583185
 }

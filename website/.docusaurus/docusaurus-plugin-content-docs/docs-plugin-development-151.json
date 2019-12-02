@@ -14,5 +14,7 @@
     "title": "插件列表",
     "permalink": "/docs/plugin/list"
   },
-  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/plugin/development.md"
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/plugin/development.md",
+  "lastUpdatedBy": "forsigner",
+  "lastUpdatedAt": 1574583185
 }

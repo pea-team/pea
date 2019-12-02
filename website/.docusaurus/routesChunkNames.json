@@ -170,65 +170,15 @@
     "content": "0480b142",
     "metadata": "431ca13d"
   },
-  "/docs/form/antd": {
+  "/docs/form/intro": {
     "component": "17896441",
-    "content": "7bc7b674",
-    "metadata": "3bb1bbf8"
+    "content": "79a9e2f0",
+    "metadata": "35413164"
   },
-  "/docs/form/array": {
+  "/docs/graphql/intro": {
     "component": "17896441",
-    "content": "89316927",
-    "metadata": "99a5b53f"
-  },
-  "/docs/form/async-validation": {
-    "component": "17896441",
-    "content": "00e6e85f",
-    "metadata": "d0924c8f"
-  },
-  "/docs/form/error-message": {
-    "component": "17896441",
-    "content": "c18d53d0",
-    "metadata": "be32671f"
-  },
-  "/docs/form/nested-object": {
-    "component": "17896441",
-    "content": "dd19172b",
-    "metadata": "79097072"
-  },
-  "/docs/form/start": {
-    "component": "17896441",
-    "content": "896f4f2c",
-    "metadata": "5bee971f"
-  },
-  "/docs/form/validation": {
-    "component": "17896441",
-    "content": "1aca8c49",
-    "metadata": "16bdec34"
-  },
-  "/docs/graphql/basic": {
-    "component": "17896441",
-    "content": "8024678d",
-    "metadata": "74611501"
-  },
-  "/docs/graphql/query": {
-    "component": "17896441",
-    "content": "2326d674",
-    "metadata": "620db1d8"
-  },
-  "/docs/graphql/started": {
-    "component": "17896441",
-    "content": "201f0b58",
-    "metadata": "0905e9b0"
-  },
-  "/docs/graphql/useMutate": {
-    "component": "17896441",
-    "content": "e65f8261",
-    "metadata": "0b45af46"
-  },
-  "/docs/graphql/useQuery": {
-    "component": "17896441",
-    "content": "00b99fbb",
-    "metadata": "d5a5b8c2"
+    "content": "55f697b0",
+    "metadata": "40670ae9"
   },
   "/docs/intro/about": {
     "component": "17896441",
@@ -265,40 +215,10 @@
     "content": "68db6b13",
     "metadata": "80f5e93b"
   },
-  "/docs/rest/basic": {
+  "/docs/rest/intro": {
     "component": "17896441",
-    "content": "c4a33100",
-    "metadata": "62105e03"
-  },
-  "/docs/rest/fetch": {
-    "component": "17896441",
-    "content": "652aca1e",
-    "metadata": "8a930f2b"
-  },
-  "/docs/rest/interceptor": {
-    "component": "17896441",
-    "content": "6933b23e",
-    "metadata": "36060169"
-  },
-  "/docs/rest/reFetch": {
-    "component": "17896441",
-    "content": "17af923f",
-    "metadata": "832ebb67"
-  },
-  "/docs/rest/started": {
-    "component": "17896441",
-    "content": "e0bc719c",
-    "metadata": "4c8bf008"
-  },
-  "/docs/rest/useFetch": {
-    "component": "17896441",
-    "content": "fd937c12",
-    "metadata": "3853ab09"
-  },
-  "/docs/rest/useUpdate": {
-    "component": "17896441",
-    "content": "3c5cd9eb",
-    "metadata": "aeca071d"
+    "content": "dc6e6f5b",
+    "metadata": "5790c800"
   },
   "/docs/router/active-link": {
     "component": "17896441",
@@ -350,35 +270,10 @@
     "content": "21927bc9",
     "metadata": "afc5584d"
   },
-  "/docs/store/async": {
-    "component": "17896441",
-    "content": "491111e7",
-    "metadata": "a07f74fc"
-  },
-  "/docs/store/computed": {
-    "component": "17896441",
-    "content": "e58697fd",
-    "metadata": "740f484c"
-  },
-  "/docs/store/dir": {
-    "component": "17896441",
-    "content": "7ad752ab",
-    "metadata": "ff7760eb"
-  },
   "/docs/store/intro": {
     "component": "17896441",
     "content": "77535acb",
     "metadata": "231b7f9e"
-  },
-  "/docs/store/started": {
-    "component": "17896441",
-    "content": "8ce7945b",
-    "metadata": "0ac83d6b"
-  },
-  "/docs/store/ts": {
-    "component": "17896441",
-    "content": "b70ebc95",
-    "metadata": "d65d32fe"
   },
   "/docs/styles/css": {
     "component": "17896441",

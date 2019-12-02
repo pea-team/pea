@@ -1,9 +1,0 @@
-{
-  "id": "store/async",
-  "title": "异步 Action",
-  "sidebar_label": "异步 Action",
-  "description": "在 `@peajs/store` 中，异步获取数据并且改变 state 非常简单，你只需创建一个异步的 Action，异步 Action 是一个普通的 async 函数。",
-  "source": "@site/docs/store/async.md",
-  "permalink": "/docs/store/async",
-  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/store/async.md"
-}

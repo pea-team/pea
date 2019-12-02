@@ -4,5 +4,7 @@
   "description": "# useFetch",
   "source": "@site/docs/api/usefetch.md",
   "permalink": "/docs/api/usefetch",
-  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/api/usefetch.md"
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/api/usefetch.md",
+  "lastUpdatedBy": "forsigner",
+  "lastUpdatedAt": 1574583185
 }

@@ -1,9 +1,0 @@
-{
-  "id": "store/computed",
-  "title": "computed",
-  "sidebar_label": "computed",
-  "description": "类似Mobx，@peajs/store 也可以使用计算值 (computed):",
-  "source": "@site/docs/store/computed.md",
-  "permalink": "/docs/store/computed",
-  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/store/computed.md"
-}

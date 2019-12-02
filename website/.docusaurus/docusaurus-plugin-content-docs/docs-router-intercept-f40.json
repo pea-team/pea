@@ -7,12 +7,14 @@
   "permalink": "/docs/router/intercept",
   "sidebar": "docs",
   "next": {
-    "title": "快速开始",
-    "permalink": "/docs/rest/started"
+    "title": "简介",
+    "permalink": "/docs/rest/intro"
   },
   "previous": {
     "title": "Active Link",
     "permalink": "/docs/router/active-link"
   },
-  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/router/intercept.md"
+  "editUrl": "https://github.com/pea-team/pea/edit/master/website/docs/router/intercept.md",
+  "lastUpdatedBy": "forsigner",
+  "lastUpdatedAt": 1574583185
 }
