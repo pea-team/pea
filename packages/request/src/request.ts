@@ -93,6 +93,8 @@ export async function request<T = any>(url: string, options?: Options): Promise<
   const input = getURL(url, options)
   const init = getOpt(url, options)
 
+  console.log('init:', init)
+
   try {
     const response = await fetch(input, init)
     if (response.status >= 200 && response.status < 300) {

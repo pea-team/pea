@@ -16,6 +16,14 @@ class App extends React.Component {
       params: {
         id: 1,
       },
+      method: 'POST',
+      body: {
+        a: 'a',
+      },
+      headers: {
+        'content-type': 'multipart/form-data; boundary=%s',
+      },
+      type: 'formData',
     })
     console.log('data:', data)
     this.setState({ data })
