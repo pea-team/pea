@@ -20,7 +20,7 @@ function getDefaultOpt(url: string, options: Options = {}): RequestInit {
   const method = getMethod(url, options)
   const baseOpt = { method, headers: {} } as Options
   const isJsonTypeMethod = method && methods.includes(method)
-  if (isJsonTypeMethod) {
+  if (isJsonTypeMethod && baseOpt.type !== 'formData') {
     baseOpt.headers = { 'content-type': 'application/json; charset=utf-8' }
   }
   return baseOpt as RequestInit
@@ -92,8 +92,6 @@ async function getErrorMsg(error: any): Promise<any> {
 export async function request<T = any>(url: string, options?: Options): Promise<T> {
   const input = getURL(url, options)
   const init = getOpt(url, options)
-
-  console.log('init:', init)
 
   try {
     const response = await fetch(input, init)
