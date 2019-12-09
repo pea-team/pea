@@ -20,7 +20,7 @@ function getDefaultOpt(url: string, options: Options = {}): RequestInit {
   const method = getMethod(url, options)
   const baseOpt = { method, headers: {} } as Options
   const isJsonTypeMethod = method && methods.includes(method)
-  if (isJsonTypeMethod && baseOpt.type !== 'formData') {
+  if (isJsonTypeMethod && options.type !== 'formData') {
     baseOpt.headers = { 'content-type': 'application/json; charset=utf-8' }
   }
   return baseOpt as RequestInit
