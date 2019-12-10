@@ -23,6 +23,10 @@ export interface Params {
   [key: string]: string | number | boolean
 }
 
+export interface Headers {
+  [key: string]: string
+}
+
 export type Type = 'text' | 'json' | 'blob' | 'arrayBuffer' | 'formData'
 
 export interface Options {
@@ -31,7 +35,7 @@ export interface Options {
   params?: Params
   cache?: RequestCache
   credentials?: RequestCredentials
-  headers?: HeadersInit
+  headers?: Headers
   integrity?: string
   keepalive?: boolean
   method?: Method
