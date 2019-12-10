@@ -12,8 +12,3 @@ export interface Variables {
 export interface Headers {
   [key: string]: string
 }
-
-export interface Options {
-  endpoint: string
-  headers?: Headers
-}
