@@ -30,9 +30,9 @@ export interface Headers {
 export type Type = 'text' | 'json' | 'blob' | 'arrayBuffer' | 'formData'
 
 export interface Options {
-  query?: Query
-  body?: Body
-  params?: Params
+  query?: Query | (() => Query)
+  body?: Body | (() => Body)
+  params?: Params | (() => Params)
   cache?: RequestCache
   credentials?: RequestCredentials
   headers?: Headers

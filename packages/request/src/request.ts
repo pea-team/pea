@@ -9,11 +9,11 @@ function last<T>(arr: T[]): T {
   return arr[arr.length - 1]
 }
 
+// TODO: check url format
 function getMethod(url: string, options: Options = {}) {
   const arr = url.split(/\s+/)
   if (arr.length === 2) return arr[0]
-  const { method = 'GET' } = options
-  return method
+  return options.method || 'GET'
 }
 
 function getDefaultOpt(url: string, options: Options = {}): RequestInit {
@@ -26,12 +26,14 @@ function getDefaultOpt(url: string, options: Options = {}): RequestInit {
   return baseOpt as RequestInit
 }
 
-function setUrlParam(url: string = '', params: Params) {
+function setUrlParam(url: string = '', params: Params | (() => Params)) {
   return url
     .split('/')
     .map(item => {
       if (item.startsWith(':')) {
-        return params[item.replace(/^\:/, '')]
+        const urlParams = typeof params === 'function' ? params() : params
+        const key = item.replace(/^\:/, '')
+        return urlParams[key]
       }
       return item
     })
@@ -70,7 +72,7 @@ function getOpt(url: string, options?: Options): RequestInit {
   const body = getBody(options.body)
   if (body) options.body = body
   const { headers } = options
-  options.headers = { ...defaultOpt.headers, ...headers }
+  options.headers = { ...defaultOpt.headers, ...headers } as any
   return { ...defaultOpt, ...options } as RequestInit
 }
 
