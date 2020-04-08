@@ -1,8 +1,7 @@
 import React, { ComponentType, Fragment } from 'react'
 import { Drawer } from 'antd'
-import { useStore } from 'stook'
-import { DrawerConfig, IDrawers } from './typings'
-import { PEA_DRAWER } from './constant'
+import { DrawerConfig } from './typings'
+import { useDawers } from './drawer.hooks'
 
 import 'antd/es/drawer/style'
 
@@ -11,10 +10,10 @@ interface Props {
 }
 
 export const Drawers: ComponentType<Props> = ({ config }) => {
-  const [drawers, updateDrawers] = useStore<IDrawers>(PEA_DRAWER, {})
+  const { drawers, setDrawers } = useDawers()
 
   const close = (name: string) => {
-    updateDrawers(drawers => {
+    setDrawers(drawers => {
       drawers[name].visible = false
     })
   }
@@ -34,6 +33,7 @@ export const Drawers: ComponentType<Props> = ({ config }) => {
           <Drawer
             visible={isVisible(name)}
             onClose={() => close(name)}
+            maskClosable={false}
             width={720}
             key={name}
             {...props}

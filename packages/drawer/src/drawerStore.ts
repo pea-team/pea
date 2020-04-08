@@ -21,6 +21,7 @@ export const drawerStore = {
       }
     })
   },
+
   get(name: string): DrawerInstnce {
     const store: any = getState(PEA_DRAWER)
     return store[name]

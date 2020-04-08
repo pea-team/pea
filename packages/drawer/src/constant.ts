@@ -1,1 +1,1 @@
-export const PEA_DRAWER = 'PEA_DRAWER'
+export const PEA_DRAWER = '@common/drawer'
