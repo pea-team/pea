@@ -9,9 +9,8 @@ export interface IDrawers {
   [DrawerName: string]: DrawerInstnce
 }
 
-
-export interface DrawerInstnce {
+export interface DrawerInstnce<T = any> {
   name: string
-  data: any
+  data: T
   visible: boolean
 }
