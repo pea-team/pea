@@ -1,6 +1,6 @@
 {
   "name": "@peajs/graphql-client",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "main": "dist/index.js",
   "module": "dist/graphql-client.esm.js",
   "typings": "dist/index.d.ts",
