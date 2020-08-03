@@ -1,9 +1,14 @@
-import { request, Options } from '@peajs/request'
+import { request, Options as RequestOptions } from '@peajs/request'
 import { serializeFetchParameter } from 'apollo-link-http-common'
 import { parse } from 'graphql'
 import { Variables } from './typings'
 
 const { extractFiles } = require('extract-files')
+
+interface Options extends RequestOptions {
+  // 覆盖 endpoint
+  endpoint?: string
+}
 
 export class GraphQLClient {
   constructor(private readonly endpoint: string, private readonly clientOptions: Options = {}) {}
@@ -66,7 +71,7 @@ export class GraphQLClient {
   ): Promise<T> => {
     const opt = this.getOptions(input, variables, options)
     try {
-      const res = await request(this.endpoint, opt)
+      const res = await request(options.endpoint || this.endpoint, opt)
       if (res.data) return res.data
       throw res
     } catch (error) {
