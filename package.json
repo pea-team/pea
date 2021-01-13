@@ -1,5 +1,13 @@
 {
   "name": "pea-project",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "examples/*",
+      "website"
+    ]
+  },
   "scripts": {
     "build": "lerna run --parallel --stream build",
     "build:watch": "lerna run --parallel --stream build:watch",
@@ -8,6 +16,6 @@
     "test:watch": "lerna run --parallel --stream test:watch"
   },
   "devDependencies": {
-    "lerna": "^3.16.4"
+    "lerna": "^3.22.1"
   }
 }

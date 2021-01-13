@@ -1,16 +1,20 @@
+
 {
-  "packages": ["packages/*"],
-  "npmClient": "npm",
+  "packages": [
+    "packages/*"
+  ],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
   "command": {
     "publish": {
-      "npmClientArgs": ["--no-package-lock"],
-      "ignoreChanges": ["ignored-file", "*.md"],
+      "ignoreChanges": [
+        "ignored-file",
+        "*.md",
+        "*.tsconfg.json"
+      ],
       "message": "chore(release): publish",
       "registry": "http://registry.npmjs.org"
-    },
-    "bootstrap": {
-      "npmClientArgs": ["--registry", "https://registry.npm.taobao.org"]
     }
   },
-  "version": "independent"
+  "version": "0.5.0"
 }

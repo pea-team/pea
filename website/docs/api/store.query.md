@@ -1,6 +1,0 @@
-# store.query
-
-```javascript
-TODO:
-```
-

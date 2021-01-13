@@ -8,14 +8,14 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "@peajs/request": "^0.2.2",
-    "@types/extract-files": "^3.1.0",
-    "apollo-link-http-common": "^0.2.15",
-    "extract-files": "^6.0.0",
+    "@peajs/request": "^0.3.1",
+    "@types/extract-files": "^8.1.0",
+    "apollo-link-http-common": "^0.2.16",
+    "extract-files": "^9.0.0",
     "gql-tag": "^1.0.1",
-    "graphql": "^14.5.8",
-    "graphql-tag": "^2.10.1",
-    "react-app-polyfill": "^1.0.0"
+    "graphql": "^15.4.0",
+    "graphql-tag": "^2.11.0",
+    "react-app-polyfill": "^2.0.0"
   },
   "alias": {
     "react": "../node_modules/react",
@@ -23,9 +23,9 @@
     "scheduler/tracing": "../node_modules/scheduler/tracing-profiling"
   },
   "devDependencies": {
-    "@types/react": "^16.8.15",
-    "@types/react-dom": "^16.8.4",
-    "parcel": "^1.12.3",
-    "typescript": "^3.4.5"
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "parcel": "^1.12.4",
+    "typescript": "^4.1.3"
   }
 }
