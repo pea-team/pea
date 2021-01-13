@@ -1,6 +1,6 @@
 {
   "name": "@peajs/drawer",
-  "version": "0.3.1",
+  "version": "0.6.0",
   "description": "Drawer component for peajs",
   "main": "dist/index.js",
   "module": "dist/drawer.esm.js",

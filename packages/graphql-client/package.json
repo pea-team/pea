@@ -1,6 +1,6 @@
 {
   "name": "@peajs/graphql-client",
-  "version": "0.4.0",
+  "version": "0.6.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -22,13 +22,12 @@
   "module": "dist/graphql-client.esm.js",
   "devDependencies": {
     "graphql": "^15.4.0",
-
     "tsdx": "^0.14.1",
     "tslib": "^2.1.0",
     "typescript": "^4.1.3"
   },
   "dependencies": {
-    "@peajs/request": "^0.3.1",
+    "@peajs/request": "^0.6.0",
     "apollo-link-http-common": "^0.2.16",
     "extract-files": "^9.0.0"
   }
