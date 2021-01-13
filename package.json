@@ -4,8 +4,7 @@
   "workspaces": {
     "packages": [
       "packages/*",
-      "examples/*",
-      "website"
+      "examples/*"
     ]
   },
   "scripts": {
@@ -16,6 +15,9 @@
     "test:watch": "lerna run --parallel --stream test:watch"
   },
   "devDependencies": {
-    "lerna": "^3.22.1"
+    "@types/prettier": "^2.1.6",
+    "lerna": "^3.22.1",
+    "prettier": "^2.2.1"
+
   }
 }

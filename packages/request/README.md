@@ -12,7 +12,6 @@ npm i @peajs/request
 
 ```js
 import { request } from '@peajs/request'
-
 ;(async () => {
   const data = await request('https://jsonplaceholder.typicode.com/todos/1')
 })()
