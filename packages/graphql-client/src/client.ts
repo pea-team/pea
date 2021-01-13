@@ -17,7 +17,7 @@ export class GraphQLClient {
     try {
       return (parse(input).definitions[0] as any).name.value
     } catch (error) {
-      return ''
+      return null
     }
   }
 

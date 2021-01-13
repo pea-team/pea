@@ -8,15 +8,15 @@ export default class App extends React.Component {
   };
   async componentDidMount() {
     const USERS = gql`
-      {
-        userMany {
-          _id
+      query User {
+        User(id: 1) {
+          id
           name
         }
       }
     `;
 
-    const endpoint = 'https://graphql-compose.herokuapp.com/user';
+    const endpoint = 'https://graphql.anilist.co';
 
     const data = await query(endpoint, USERS, {});
     this.setState({ data });
